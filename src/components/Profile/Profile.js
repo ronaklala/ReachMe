@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import Header from '../Header';
 import Sidebar from '../Sidebar';
-import '../sass/sidebar.scss';
-import CreatePostForm from './CreatePostForm';
+import ProfileMenu from './ProfileMenu';
+import ViewProfile from './ViewProfile';
 
-const CreatePost = () => {
+const Profile = () => {
   const [user, setUser] = useState({});
   useEffect(() => {
     if (sessionStorage.getItem('user') !== null) {
@@ -13,6 +13,7 @@ const CreatePost = () => {
       setUser();
     }
   }, []);
+
   return (
     <>
       <Header />
@@ -23,11 +24,14 @@ const CreatePost = () => {
             wallet={user.wallet}
             profile_url={user.profile_url}
           />
-          <CreatePostForm username={user.username} wallet={user.wallet} />
+          <div className="profile-column">
+            <ViewProfile />
+            <ProfileMenu username={user.username} wallet={user.wallet} />
+          </div>
         </section>
       </section>
     </>
   );
 };
 
-export default CreatePost;
+export default Profile;

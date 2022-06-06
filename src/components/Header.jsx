@@ -47,13 +47,25 @@ const Header = () => {
                 </a>
               </li>
               {user !== null ? (
-                <a href={'/profile/' + user.wallet}>
+                <a href={'/' + user.wallet}>
                   <li>
-                    <Avatar
-                      alt="Remy Sharp"
-                      src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                      sx={{width: 30, height: 30}}
-                    />
+                    {user.profile_url === null ? (
+                      <>
+                        <Avatar
+                          alt="Remy Sharp"
+                          src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                          sx={{width: 30, height: 30}}
+                        />
+                      </>
+                    ) : (
+                      <>
+                        <Avatar
+                          alt="Remy Sharp"
+                          src={user.profile_url}
+                          sx={{width: 30, height: 30}}
+                        />
+                      </>
+                    )}
                   </li>
                 </a>
               ) : (

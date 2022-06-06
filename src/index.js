@@ -9,6 +9,7 @@ import Register from './components/Register';
 import Page404 from './components/Page404';
 import CreatePost from './components/posts/CreatePost';
 import ViewPosts from './components/posts/ViewPosts';
+import Profile from './components/Profile/Profile';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -20,7 +21,9 @@ root.render(
         <Route path="/Register" element={<Register />} />
         <Route path="/create-post" element={<CreatePost />} />
         <Route path="/posts/:uid" element={<ViewPosts />} />
+        <Route path="/:uid" element={<Profile />} />
         <Route exact path="*" element={<Page404 msg="404" />} />
+        <Route exact path="/error" element={<Page404 msg="403" />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

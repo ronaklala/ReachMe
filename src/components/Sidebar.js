@@ -4,7 +4,6 @@ import PeopleIcon from '@mui/icons-material/People';
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import GroupsIcon from '@mui/icons-material/Groups';
 import {Avatar} from '@mui/material';
-import ImageIcon from '@mui/icons-material/Image';
 
 const Sidebar = (props) => {
   return (
@@ -13,12 +12,25 @@ const Sidebar = (props) => {
         <nav>
           <ul>
             <li>
-              <a href={'/profile/' + props.wallet}>
-                <Avatar
-                  alt="Remy Sharp"
-                  src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                  sx={{width: 26, height: 26}}
-                />
+              <a href={'/' + props.wallet}>
+                {props.profile_url === null ? (
+                  <>
+                    <Avatar
+                      alt="Remy Sharp"
+                      src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                      sx={{width: 26, height: 26}}
+                    />
+                  </>
+                ) : (
+                  <>
+                    <Avatar
+                      alt="Remy Sharp"
+                      src={props.profile_url}
+                      sx={{width: 26, height: 26}}
+                    />
+                  </>
+                )}
+
                 {props.username}
               </a>
             </li>

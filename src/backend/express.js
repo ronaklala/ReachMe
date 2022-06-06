@@ -25,11 +25,12 @@ app.listen(port, console.log('Listening on Port 5000'));
 
 //registering a user
 app.post('/register', async (req, res) => {
+  const profile_url = null;
   const {username, wallet, email} = req.body;
   const userExist = await User.findOne({wallet: wallet});
   try {
     if (!userExist) {
-      const user = new User({username, wallet, email});
+      const user = new User({username, wallet, email, profile_url});
       user
         .save()
         .then(() => {

@@ -16,7 +16,11 @@ const Main = () => {
     <>
       <section className="wrapper">
         <section className="container">
-          <Sidebar username={user.username} wallet={user.wallet} />
+          <Sidebar
+            username={user.username}
+            wallet={user.wallet}
+            profile_url={user.profile_url}
+          />
           <HomePage
             username={user.username}
             wallet={user.wallet}

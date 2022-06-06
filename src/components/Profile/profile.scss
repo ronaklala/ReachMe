@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&family=Open+Sans&display=swap');
+$font: 'Nanum Gothic',
+sans-serif;
+$font2: 'Open Sans',
+sans-serif;
+$button: #283747;
+$bg: #932432;
+
+
+.profile {
+    margin-top: 20px;
+    height: auto;
+    width: 70vw;
+    background-color: #fff;
+    display: flex;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+
+    .profile-image {
+        height: auto;
+        width: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        label {
+            display: flex;
+            justify-content: center;
+
+            img {
+                height: auto;
+                width: auto;
+                max-height: 60%;
+                max-width: 60%;
+                border-radius: 50%;
+            }
+        }
+
+
+    }
+
+    .profile-info {
+        color: #000;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-family: $font2;
+        font-weight: bold;
+        font-size: 18px;
+        justify-content: center;
+        word-wrap: break-word;
+    }
+}
+
+.profile-column ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-left: -40px;
+
+    li {
+        list-style: none;
+        height: 45px;
+        width: 150px;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: #000;
+        text-align: center;
+        font-family: $font;
+    }
+}
+
+@media (min-width:250px) and (max-width:900px) {
+    .profile {
+        width: 90vw !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 1vw;
+        text-align: center;
+    }
+}
