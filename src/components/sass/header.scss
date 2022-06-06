@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&family=Open+Sans&display=swap');
+$font: 'Nanum Gothic',
+sans-serif;
+$font2: 'Open Sans',
+sans-serif;
+$button: #283747;
+$bg: #932432;
+
+body {
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+.header {
+    height: 80px;
+    width: 100vw;
+    background-color: $bg;
+    display: flex;
+    justify-content: center;
+    -webkit-box-shadow: 0 10px 10px -10px #000000;
+    -moz-box-shadow: 0 10px 10px -10px #000000;
+    box-shadow: -8px 8px 8px -10px #000000;
+    position: relative;
+    z-index: 30;
+
+    nav {
+        height: 100%;
+        width: 80vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h2 {
+            font-family: $font;
+            color: #fff;
+        }
+
+        .search {
+            background-color: #fff;
+            padding: 2px;
+            display: flex;
+            align-items: center;
+
+            input {
+                height: 40px;
+                width: 30vw;
+                padding-left: 10px;
+                font-family: $font2;
+                border: none;
+                border-radius: 3px;
+                outline: none;
+            }
+
+            button {
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: transparent;
+                border: none;
+            }
+        }
+
+        menu ul {
+            display: flex;
+            gap: 15px;
+            height: 100%;
+            align-items: center;
+
+            li {
+                a {
+                    color: #fff;
+                }
+
+                list-style: none;
+                color: #fff;
+
+                button {
+                    height: 35px;
+                    width: 100px;
+                    padding: 5px;
+                    border: none;
+                    border-radius: 3px;
+                    font-family: $font2;
+                    background-color: $button;
+                    color: #fff;
+                }
+
+                img {
+                    height: 30px;
+                }
+            }
+        }
+
+        .menu-icon {
+            display: none;
+            color: #fff;
+        }
+    }
+}
+
+@media (min-width:250px) and (max-width:1024px) {
+
+    .header nav .search,
+    .header nav menu {
+        display: none;
+    }
+
+    .menu-icon {
+        display: block !important;
+    }
+}

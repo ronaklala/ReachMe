@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&family=Open+Sans&display=swap');
+$font: 'Nanum Gothic',
+sans-serif;
+$font2: 'Open Sans',
+sans-serif;
+$button: #283747;
+$bg: #932432;
+
+.error-section {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color: $bg;
+
+    .container {
+        height: 70vh;
+        width: 80vw;
+        padding: 30px;
+        background-color: #fff;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        border-radius: 15px;
+        box-shadow: 2px 2px 25px rgba(0, 0, 0, 0.4387);
+
+        .error-left {
+            display: flex;
+            height: 100%;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                height: 60%;
+                width: auto;
+            }
+        }
+
+        .error-right {
+            height: auto;
+            width: 100%;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+            font-family: $font;
+
+            span {
+                font-size: 20px;
+            }
+
+            .text-404 {
+                font-size: 7em;
+            }
+
+            a {
+                width: 200px;
+
+                button {
+                    height: 40px;
+                    width: 200px;
+                    border: none;
+                    color: #fff;
+                    background-color: $button;
+                    font-family: $font;
+                    border-radius: 5px;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width:250px) and (max-width:1024px) {
+    .error-section {
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .error-section .container {
+        flex-direction: column;
+        height: auto;
+        width: 80vw;
+        gap: 15px;
+
+        .error-left img {
+            height: 200px;
+        }
+
+        .error-right {
+            align-items: center;
+            text-align: center;
+
+            .text-404 {
+                font-size: 5em;
+            }
+
+            span {
+                font-size: 18px;
+            }
+        }
+    }
+}

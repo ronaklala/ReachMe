@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&family=Open+Sans&display=swap');
+$font: 'Nanum Gothic',
+sans-serif;
+$font2: 'Open Sans',
+sans-serif;
+$button: #283747;
+$bg: #932432;
+
+.home {
+    .post {
+        height: auto;
+        width: 90%;
+        background-color: #fff;
+        border-radius: 15px;
+        box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+        color: #000;
+        font-family: $font2;
+
+        form {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            input {
+                font-family: $font;
+            }
+
+            input[type="submit"] {
+                height: 45px;
+                width: 100%;
+                background-color: $button;
+                color: #fff;
+            }
+
+            .btn-choose {
+                background-color: $button;
+            }
+
+            .image {
+                height: auto;
+                width: auto;
+                max-width: 250px;
+                max-height: 250px;
+                padding: 10px;
+
+                img {
+                    height: auto;
+                    width: auto;
+                    max-height: 90%;
+                    max-width: 90%;
+                    border-radius: 5px;
+                }
+            }
+
+        }
+    }
+}
+
+@media (min-width:250px) and (max-width:900px) {
+    .home .post {
+        width: 90vw;
+    }
+}

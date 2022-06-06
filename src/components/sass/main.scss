@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&family=Open+Sans&display=swap');
+$font2: 'Open Sans',
+sans-serif;
+$button: #283747;
+$bg: #932432;
+
+.login {
+    height: 100vh;
+    width: 100vw;
+    background-color: $bg;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    div {
+        height: auto;
+        width: 35vw;
+        padding: 30px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 1px 1px 100px rgba(0, 0, 0, 0.5);
+        font-family: $font2;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        label {
+            font-size: 20px;
+        }
+
+        button {
+            height: 45px;
+            width: auto;
+            border: none;
+            font-family: $font2;
+            background-color: $button;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        input {
+            height: 35px;
+            width: auto;
+            padding-left: 5px;
+            border-radius: 5px;
+            outline: none;
+            font-family: $font2;
+            border: none;
+            border: 1px solid rgb(180, 180, 180);
+        }
+    }
+}
+
+//Media Quries For Mobiles
+@media (min-width:250px) and (max-width:1024px) {
+    .login div {
+        width: 80vw;
+    }
+}
