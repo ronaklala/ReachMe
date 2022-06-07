@@ -1,5 +1,7 @@
 const express = require('express');
 const Post = require('../schemas/postSchema');
+const AddNFT = require('../schemas/AddNft');
+
 const User = require('../schemas/userSchema');
 const router = express.Router();
 
@@ -11,6 +13,20 @@ router.post('/create-post', (req, res) => {
     .save()
     .then(() => {
       res.status(201).json({message: 'Post Created Successfully'});
+    })
+    .catch(() => {
+      res.status(500).json({message: 'Internal Server Error'});
+    });
+});
+
+
+router.post('/MarketPlace', (req, res) => {
+  const {image,ethereum, wallet, username} = req.body;
+  const post = new AddNFT({image, wallet, username, ethereum});
+  post
+    .save()
+    .then(() => {
+      res.status(201).json({message: 'NFT Added Successfully'});
     })
     .catch(() => {
       res.status(500).json({message: 'Internal Server Error'});

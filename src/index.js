@@ -11,6 +11,7 @@ import CreatePost from './components/posts/CreatePost';
 import ViewPosts from './components/posts/ViewPosts';
 import Profile from './components/Profile/Profile';
 import Comment from './components/Comment';
+import AddNftpage from './components/MarketPlace/AddNftpage';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -21,6 +22,7 @@ root.render(
         <Route path="/Register" element={<Register />} />
         <Route path="/comment" element={<Comment />} />
         <Route path="/create-post" element={<CreatePost />} />
+        <Route path="/marketplace" element={<AddNftpage />} />
         <Route path="/posts/:uid" element={<ViewPosts />} />
         <Route path="/:uid" element={<Profile />} />
         <Route exact path="*" element={<Page404 msg="404" />} />

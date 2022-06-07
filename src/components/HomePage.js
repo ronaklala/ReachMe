@@ -95,7 +95,7 @@ const HomePage = (props) => {
                 <>
                   
                   
-                  (<ul>
+                  <ul>
                 {posts.map((post) => (
                   post.username != user.username ?(
                     <>
@@ -111,7 +111,7 @@ const HomePage = (props) => {
                   </>
                   ):<></>
                 ))}
-              </ul>)
+              </ul>
                       
 
                   
