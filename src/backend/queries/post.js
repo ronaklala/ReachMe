@@ -30,6 +30,11 @@ router.get('/posts/:uid', async (req, res) => {
 
 //get user Date
 
+//home page post 
+router.get('/posts', async (req, res) => res.json(await Post.find({}).sort({ createdAt: -1 }).exec()));
+
+
+
 router.get('/:uid', async (req, res) => {
   const Data = {
     users: {},

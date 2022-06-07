@@ -2,7 +2,7 @@
   "name": "social_media",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5000",
+  "proxy": "http://localhost:5001",
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
@@ -19,6 +19,7 @@
     "mongodb": "^4.6.0",
     "mongoose": "^6.3.5",
     "node-datetime": "^2.1.2",
+    "nodemon": "^2.0.16",
     "phosphor-react": "^1.4.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
@@ -30,7 +31,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts --max-http-header-size=1024 start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

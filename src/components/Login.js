@@ -40,7 +40,7 @@ const Login = () => {
   const LoginUser = () => {
     if (wallet !== '') {
       axios
-        .post('http://localhost:5000/login', wallet, axiosConfig)
+        .post('http://localhost:5001/login', wallet, axiosConfig)
         .then((res) => {
           if (res.status === 200) {
             let data = res.data.doc;

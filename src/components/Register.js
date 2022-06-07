@@ -35,7 +35,7 @@ const Register = () => {
   //Register a User
   const RegisterUser = async (e) => {
     e.preventDefault();
-    if (user.email === '' || user.username === '') {
+    if (user.email == '' || user.username == '') {
       toast.error('Fill Form', {
         toastId: customId + 123,
       });
@@ -43,7 +43,7 @@ const Register = () => {
       ConnectWallet();
     } else {
       axios
-        .post('http://localhost:5000/register', user, axiosConfig)
+        .post('http://localhost:5001/register', user, axiosConfig)
         .then((res) => {
           if (res.status === 201) {
             toast.success('Wallet Registration Done Successfully', {

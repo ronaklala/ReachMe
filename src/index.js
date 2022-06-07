@@ -10,7 +10,7 @@ import Page404 from './components/Page404';
 import CreatePost from './components/posts/CreatePost';
 import ViewPosts from './components/posts/ViewPosts';
 import Profile from './components/Profile/Profile';
-
+import Comment from './components/Comment';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -19,6 +19,7 @@ root.render(
         <Route path="/" element={<App />} />
         <Route path="/login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
+        <Route path="/comment" element={<Comment />} />
         <Route path="/create-post" element={<CreatePost />} />
         <Route path="/posts/:uid" element={<ViewPosts />} />
         <Route path="/:uid" element={<Profile />} />

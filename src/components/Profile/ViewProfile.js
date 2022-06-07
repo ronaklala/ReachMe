@@ -57,7 +57,7 @@ const ViewProfile = () => {
       url: url,
     };
     await axios
-      .post('http://localhost:5000/user_pic', photo)
+      .post('http://localhost:5001/user_pic', photo)
       .then((res) => {
         console.log('Data sent');
         if (res.status === 200) {
