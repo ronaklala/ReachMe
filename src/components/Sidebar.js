@@ -16,7 +16,7 @@ const Sidebar = (props) => {
                 {props.profile_url === null ? (
                   <>
                     <Avatar
-                      alt="Remy Sharp"
+                      alt="Profile Image"
                       src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
                       sx={{width: 26, height: 26}}
                     />

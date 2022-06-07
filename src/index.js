@@ -10,6 +10,9 @@ import Page404 from './components/Page404';
 import CreatePost from './components/posts/CreatePost';
 import ViewPosts from './components/posts/ViewPosts';
 import Profile from './components/Profile/Profile';
+import SinglePost from './components/posts/SinglePost';
+import Users from './components/Users/Users';
+
 import Comment from './components/Comment';
 import AddNftpage from './components/MarketPlace/AddNftpage';
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -25,6 +28,8 @@ root.render(
         <Route path="/marketplace" element={<AddNftpage />} />
         <Route path="/posts/:uid" element={<ViewPosts />} />
         <Route path="/:uid" element={<Profile />} />
+        <Route path="/p-self/:postid" element={<SinglePost />} />
+        <Route path="/users" element={<Users />} />
         <Route exact path="*" element={<Page404 msg="404" />} />
         <Route exact path="/error" element={<Page404 msg="403" />} />
       </Routes>

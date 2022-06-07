@@ -67,7 +67,7 @@ const Login = () => {
   return (
     <>
       <section className="login">
-        <div>
+        <div className="form">
           <center>
             <h1>Login Into {process.env.REACT_APP_NAME}</h1>
           </center>

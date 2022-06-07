@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import {toast, ToastContainer} from 'react-toastify';
 import './sass/main.scss';
 import {Link, useNavigate} from 'react-router-dom';
+import {TextField} from '@mui/material';
 const Register = () => {
   const navigate = useNavigate();
   let axiosConfig = {
@@ -78,7 +79,7 @@ const Register = () => {
   };
 
   const accountChangeHandler = (account) => {
-    // Setting
+    // Setting the users wallet
     user.wallet = account;
     toast.success(account + 'Successfully Connected', {
       toastId: customId,
@@ -88,25 +89,25 @@ const Register = () => {
   return (
     <>
       <section className="login">
-        <div>
+        <div className="form">
           <center>
             <h1>Register Into {process.env.REACT_APP_NAME}</h1>
           </center>
           <label>Wallet Address</label>
           <button onClick={ConnectWallet}>Connect Wallet</button>
-          <label>Email Address</label>
-          <input
-            type="email"
+          <TextField
+            variant="outlined"
+            label="Email"
             name="email"
-            placeholder="Enter Email Address Here"
+            fullWidth
             defaultValue={user.email}
             onChange={handleChange}
           />
-          <label>NickName / Username</label>
-          <input
-            type="name"
+          <TextField
+            variant="outlined"
+            label="User / Display Name"
             name="username"
-            placeholder="Enter NickName / Username Here"
+            fullWidth
             defaultValue={user.username}
             onChange={handleChange}
           />
