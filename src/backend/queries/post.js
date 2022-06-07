@@ -43,7 +43,11 @@ router.get('/users', (req, res) => {
     });
 });
 
-//get Logged in Users Data
+//home page post 
+router.get('/posts', async (req, res) => res.json(await Post.find({}).sort({ createdAt: -1 }).exec()));
+
+
+
 router.get('/:uid', async (req, res) => {
   const Data = {
     users: {},

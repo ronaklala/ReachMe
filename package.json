@@ -20,7 +20,11 @@
     "mongodb": "^4.6.0",
     "mongoose": "^6.3.5",
     "node-datetime": "^2.1.2",
+<<<<<<< HEAD
     "node-sessionstorage": "^1.0.0",
+=======
+    "nodemon": "^2.0.16",
+>>>>>>> 55eb4ee0a8f36821ea6c896876ff446094325ba9
     "phosphor-react": "^1.4.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
@@ -32,7 +36,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts --max-http-header-size=1024 start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

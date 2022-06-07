@@ -12,7 +12,12 @@ import {css} from '@emotion/react';
 const CreatePostForm = (props) => {
   const navigate = useNavigate();
   const [file, setFile] = useState();
-
+  let axiosConfig = {
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8',
+      'Access-Control-Allow-Origin': '*',
+    },
+  };
   const [post, setPost] = useState({
     caption: '',
     tag: '',
@@ -74,7 +79,7 @@ const CreatePostForm = (props) => {
       post.username = props.username;
       post.wallet = props.wallet;
       axios
-        .post('http://localhost:5001/create-post', post)
+        .post('http://localhost:5001/create-post', post,axiosConfig)
         .then((res) => {
           console.log(res.status);
           if (res.status === 201) {

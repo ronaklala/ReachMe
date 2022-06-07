@@ -6,6 +6,15 @@ sans-serif;
 body {
     background-color: #2A2727;
 }
+.grid-container{
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 158px 22px;
+}
+.gridc{
+       grid-row: 1/2;
+
+   }
 
 .wrapper {
     width: 100vw;
@@ -66,7 +75,7 @@ body {
         }
 
         .home {
-            height: 100vh;
+            // height: 100vh;
             width: 50vw;
             padding: 15px;
             display: flex;

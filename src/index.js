@@ -13,6 +13,7 @@ import Profile from './components/Profile/Profile';
 import SinglePost from './components/posts/SinglePost';
 import Users from './components/Users/Users';
 
+import Comment from './components/Comment';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -21,6 +22,7 @@ root.render(
         <Route path="/" element={<App />} />
         <Route path="/login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
+        <Route path="/comment" element={<Comment />} />
         <Route path="/create-post" element={<CreatePost />} />
         <Route path="/posts/:uid" element={<ViewPosts />} />
         <Route path="/:uid" element={<Profile />} />
