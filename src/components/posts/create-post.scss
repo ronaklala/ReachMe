@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&family=Open+Sans&display=swap');
+@import '../sass/globals.scss';
 $font: 'Nanum Gothic',
 sans-serif;
 $font2: 'Open Sans',
 sans-serif;
-$button: #283747;
-$bg: #932432;
+
 
 .home {
     .post {
@@ -57,8 +57,80 @@ $bg: #932432;
     }
 }
 
-@media (min-width:250px) and (max-width:900px) {
+
+//Single Post CSS
+.single-post {
+    height: 70vh;
+    width: 75vw;
+    display: flex;
+
+    .post-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 70%;
+        max-height: 600px;
+
+        img {
+            height: auto;
+            max-height: 100%;
+            width: auto;
+            max-width: 100%;
+            border-radius: 25px;
+        }
+    }
+
+    .post-info {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        padding-top: 30px;
+        margin-left: 30px;
+        width: auto;
+        max-width: 100%;
+
+        .user {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            color: #fff;
+        }
+
+        span {
+            font-size: 22px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    }
+}
+
+@media (min-width:250px) and (max-width:1200px) {
     .home .post {
         width: 90vw;
     }
+
+    .single-post {
+        flex-direction: column !important;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        padding-top: 15px;
+        width: 95vw;
+
+        .post-image {
+            height: auto;
+            min-height: 300px;
+            width: 100%;
+            margin-left: 4vw;
+
+            img {
+                min-height: 300px;
+                width: auto;
+                max-height: 450px;
+
+            }
+        }
+    }
+
 }

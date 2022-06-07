@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&family=Open+Sans&display=swap');
+@import '../sass/globals.scss';
 $font: 'Nanum Gothic',
 sans-serif;
 $font2: 'Open Sans',
 sans-serif;
-$button: #283747;
-$bg: #932432;
+@import '../sass/globals.scss';
 
 body {
     overflow-x: hidden;

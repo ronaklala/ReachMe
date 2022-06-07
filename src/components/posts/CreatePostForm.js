@@ -6,6 +6,8 @@ import $ from 'jquery';
 import axios from 'axios';
 import {toast, ToastContainer} from 'react-toastify';
 import {useNavigate} from 'react-router-dom';
+import {SyncLoader} from 'react-spinners';
+import {css} from '@emotion/react';
 
 const CreatePostForm = (props) => {
   const navigate = useNavigate();
@@ -19,13 +21,21 @@ const CreatePostForm = (props) => {
     wallet: '',
   });
 
+  const override = css`
+    display: block;
+    margin: 0 auto;
+    border-color: red;
+  `;
+
+  let [loading, setLoading] = useState(false);
+
   //Adding image to Cloudinary and Post State
   const handleChange = async (e) => {
     const data = new FormData();
     data.append('file', e.target.files[0]);
     data.append('upload_preset', 'social_posts');
     $('#image-text').hide();
-
+    setLoading(true);
     const dataFile = await fetch(
       'https://api.cloudinary.com/v1_1/ronaklala-games/image/upload',
       {
@@ -35,6 +45,7 @@ const CreatePostForm = (props) => {
     ).then((r) => r.json());
 
     post.image = dataFile.secure_url;
+    setLoading(false);
     setFile(dataFile.secure_url);
   };
 
@@ -63,7 +74,7 @@ const CreatePostForm = (props) => {
       post.username = props.username;
       post.wallet = props.wallet;
       axios
-        .post('http://localhost:5000/create-post', post)
+        .post('http://localhost:5001/create-post', post)
         .then((res) => {
           console.log(res.status);
           if (res.status === 201) {
@@ -131,6 +142,16 @@ const CreatePostForm = (props) => {
             <div className="image">
               <span id="image-text">{'/* Image Goes Here */'}</span>
               <img src={file} />
+              {loading === true ? (
+                <SyncLoader
+                  loading={loading}
+                  css={override}
+                  size={20}
+                  color={'#2F2934'}
+                />
+              ) : (
+                <></>
+              )}
             </div>
             <input type="submit" onClick={handleSubmit} />
           </form>

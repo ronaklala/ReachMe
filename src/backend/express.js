@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 5000;
+const port = 5001;
 const mongoose = require('mongoose');
 const User = require('./schemas/userSchema');
 var bodyParser = require('body-parser');
@@ -21,7 +21,7 @@ app.use(cors());
 //Create User Post
 app.use(require('./queries/post'));
 
-app.listen(port, console.log('Listening on Port 5000'));
+app.listen(port, console.log('Listening on Port 5001'));
 
 //registering a user
 app.post('/register', async (req, res) => {
