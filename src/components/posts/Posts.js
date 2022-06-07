@@ -19,7 +19,7 @@ const Posts = () => {
   const wallet = useParams();
 
   const getPosts = async () => {
-    await axios.get('/posts/' + wallet.uid).then((res) => {
+    await axios.get('http://localhost:5001/posts' + wallet.uid).then((res) => {
       setPosts(res.data.doc);
       setLoading(false);
       console.log(posts);

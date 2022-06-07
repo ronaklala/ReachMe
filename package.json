@@ -15,16 +15,15 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "i": "^0.3.7",
     "jquery": "^3.6.0",
     "moment": "^2.29.3",
     "mongodb": "^4.6.0",
     "mongoose": "^6.3.5",
     "node-datetime": "^2.1.2",
-<<<<<<< HEAD
     "node-sessionstorage": "^1.0.0",
-=======
     "nodemon": "^2.0.16",
->>>>>>> 55eb4ee0a8f36821ea6c896876ff446094325ba9
+    "npm": "^8.12.1",
     "phosphor-react": "^1.4.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
