@@ -1,11 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import Header from '../Header';
 import Sidebar from '../Sidebar';
+import {useParams} from 'react-router-dom';
 import ProfileMenu from './ProfileMenu';
 import ViewProfile from './ViewProfile';
 
 const Profile = () => {
   const [user, setUser] = useState({});
+  
+  const uid = useParams();
   useEffect(() => {
     if (sessionStorage.getItem('user') !== null) {
       setUser(JSON.parse(sessionStorage.getItem('user')));
@@ -16,6 +19,7 @@ const Profile = () => {
 
   return (
     <>
+    {console.log(uid.uid)}
       <Header />
       <section className="wrapper">
         <section className="container">
@@ -26,7 +30,7 @@ const Profile = () => {
           />
           <div className="profile-column">
             <ViewProfile />
-            <ProfileMenu username={user.username} wallet={user.wallet} />
+            <ProfileMenu username={user.username} uid={uid.uid} />
           </div>
         </section>
       </section>

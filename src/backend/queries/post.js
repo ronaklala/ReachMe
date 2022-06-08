@@ -40,6 +40,7 @@ router.get('/posts/:uid', async (req, res) => {
       res.status(404).json({message: 'No Posts Found'});
     } else {
       res.status(203).json({doc});
+      console.log("hello :::::::::",res.json({doc}));
     }
   });
 });

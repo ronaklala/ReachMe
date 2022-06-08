@@ -158,7 +158,9 @@ const HomePage = (props) => {
                                   />
                                 ))}
 
-                                <b>{post.username}</b>
+                                <a style={{color:"#fff"}} href={`/${post.wallet}`}>
+                                  <b>{post.username}</b>
+                                  </a>
                               </div>
                               {post.image === '' ? (
                                 <></>
