@@ -20,6 +20,7 @@
     "moment": "^2.29.3",
     "mongodb": "^4.6.0",
     "mongoose": "^6.3.5",
+    "moralis": "^1.8.0",
     "node-datetime": "^2.1.2",
     "node-sessionstorage": "^1.0.0",
     "nodemon": "^2.0.16",
@@ -27,12 +28,14 @@
     "phosphor-react": "^1.4.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-moralis": "^1.4.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.12.0",
     "react-toastify": "^9.0.3",
     "sass": "^1.52.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "web3": "^1.7.3"
   },
   "scripts": {
     "start": "react-scripts --max-http-header-size=1024 start",
@@ -57,5 +60,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@iconify/react": "^3.2.2"
   }
 }

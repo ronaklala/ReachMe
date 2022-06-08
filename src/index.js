@@ -12,13 +12,16 @@ import ViewPosts from './components/posts/ViewPosts';
 import Profile from './components/Profile/Profile';
 import SinglePost from './components/posts/SinglePost';
 import Users from './components/Users/Users';
-
+import {MoralisProvider} from 'react-moralis';
 import Comment from './components/Comment';
 import AddNftpage from './components/MarketPlace/AddNftpage';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+    <MoralisProvider
+  appId="n19572pX5K7PJen1TcnEDizQaDnMQxf7zgAmDnoh"
+  serverUrl="https://ya7rkwykqzkd.usemoralis.com:2053/server">
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/login" element={<Login />} />
@@ -33,6 +36,7 @@ root.render(
         <Route exact path="*" element={<Page404 msg="404" />} />
         <Route exact path="/error" element={<Page404 msg="403" />} />
       </Routes>
+      </MoralisProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

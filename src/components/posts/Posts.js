@@ -17,22 +17,22 @@ const Posts = () => {
   let [loading, setLoading] = useState(true);
 
   const wallet = useParams();
-
+  useEffect(() => {
+    getPosts();
+  },[]);
   const getPosts = async () => {
-    await axios.get('http://localhost:5001/posts' + wallet.uid).then((res) => {
-      setPosts(res.data.doc);
+    await axios.get('http://localhost:5001/posts/' + wallet.uid).then((res) => {
       setLoading(false);
+      setPosts(res.data.doc);
       console.log(posts);
     });
   };
 
-  useEffect(() => {
-    getPosts();
-  }, []);
+  
 
   return (
     <>
-      {loading === true ? (
+      {loading == true ? (
         <>
           <div className="spinner">
             <center>
@@ -59,7 +59,8 @@ const Posts = () => {
                     <button>Create One Now</button>
                   </a>
                 </>
-              ) : (
+              ) :
+               (
                 <>
                   <ul>
                     {posts.map((post, id) => (
