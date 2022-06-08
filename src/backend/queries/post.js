@@ -1,7 +1,6 @@
 const express = require('express');
 const Post = require('../schemas/postSchema');
 const User = require('../schemas/userSchema');
-const storage = require('node-sessionstorage');
 const router = express.Router();
 
 //Creating a Post
@@ -43,10 +42,23 @@ router.get('/users', (req, res) => {
     });
 });
 
-//home page post 
-router.get('/posts', async (req, res) => res.json(await Post.find({}).sort({ createdAt: -1 }).exec()));
-
-
+//home page post
+router.get('/', async (req, res) => {
+  const posts = Post.aggregate([
+    {
+      $lookup: {
+        from: 'users',
+        localField: 'username',
+        foreignField: 'username',
+        as: 'user_details',
+      },
+    },
+  ])
+    .sort({createdAt: -1})
+    .then((doc) => {
+      res.json({doc});
+    });
+});
 
 router.get('/:uid', async (req, res) => {
   const Data = {

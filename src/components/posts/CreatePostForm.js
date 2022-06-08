@@ -79,7 +79,7 @@ const CreatePostForm = (props) => {
       post.username = props.username;
       post.wallet = props.wallet;
       axios
-        .post('http://localhost:5001/create-post', post,axiosConfig)
+        .post('http://localhost:5001/create-post', post, axiosConfig)
         .then((res) => {
           console.log(res.status);
           if (res.status === 201) {

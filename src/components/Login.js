@@ -3,8 +3,25 @@ import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {toast, ToastContainer} from 'react-toastify';
 import './sass/main.scss';
+import {useMoralis} from 'react-moralis';
 
 const Login = () => {
+  const {authenticate, isAuthenticated, user} = useMoralis();
+
+  const login = async () => {
+    if (!isAuthenticated) {
+      await authenticate()
+        .then(function (user) {
+          console.log(user.get('ethAddress'));
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    } else {
+      console.log(user);
+    }
+  };
+
   //Axios Config
   let axiosConfig = {
     headers: {
@@ -17,6 +34,7 @@ const Login = () => {
   const [wallet, setWallet] = useState({});
 
   useEffect(() => {
+    login();
     const ConnectWallet = () => {
       if (window.ethereum) {
         window.ethereum

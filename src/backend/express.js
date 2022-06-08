@@ -20,6 +20,7 @@ app.use(cors());
 
 //Create User Post
 app.use(require('./queries/post'));
+app.use(require('./queries/transaction'));
 
 app.listen(port, console.log('Listening on Port 5001'));
 
