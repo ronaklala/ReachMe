@@ -106,7 +106,7 @@ const ShowUsersList = (props) => {
                               </span>
                             </div>
                             <center>
-                              <a href={'/profile/' + user.wallet}>
+                              <a href={`/${user.wallet}`}>
                                 <button>View Profile</button>
                               </a>
                             </center>
