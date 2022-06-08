@@ -14,7 +14,7 @@ mongoose
   .catch((err) => console.log(err));
 
 // Put these statements before you define any routes.
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 
