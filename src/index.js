@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './components/Login';
 import Register from './components/Register';
 import Page404 from './components/Page404';
@@ -28,7 +28,7 @@ root.render(
         <Route path="/marketplace" element={<AddNftpage />} />
         <Route path="/posts/:uid" element={<ViewPosts />} />
         <Route path="/:uid" element={<Profile />} />
-        <Route path="/p-self/:postid" element={<SinglePost />} />
+        <Route path="/p/:postid" element={<SinglePost />} />
         <Route path="/users" element={<Users />} />
         <Route exact path="*" element={<Page404 msg="404" />} />
         <Route exact path="/error" element={<Page404 msg="403" />} />

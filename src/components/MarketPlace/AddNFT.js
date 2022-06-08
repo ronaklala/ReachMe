@@ -1,14 +1,16 @@
-import {PhotoCamera} from '@mui/icons-material';
-import {Button, TextField} from '@mui/material';
-import React, {useState} from 'react';
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable no-unused-vars */
+import { PhotoCamera } from '@mui/icons-material';
+import { Button, TextField } from '@mui/material';
+import React, { useState } from 'react';
 import "../posts/create-post.scss"
 import $ from 'jquery';
 import axios from 'axios';
-import {toast, ToastContainer} from 'react-toastify';
-import {useNavigate} from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const AddNFT = (props) => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [file, setFile] = useState();
   let axiosConfig = {
     headers: {
@@ -17,7 +19,7 @@ const AddNFT = (props) => {
     },
   };
   const [post, setPost] = useState({
-    ethereum:'',
+    ethereum: '',
     image: '',
     username: '',
     wallet: '',
@@ -44,7 +46,7 @@ const AddNFT = (props) => {
 
   //Handling the Input Data
   const handleInput = (e) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
     setPost((event) => {
       return {
         ...event,
@@ -67,7 +69,7 @@ const AddNFT = (props) => {
       post.username = props.username;
       post.wallet = props.wallet;
       axios
-        .post('http://localhost:5001/MarketPlace', post,axiosConfig)
+        .post('http://localhost:5001/MarketPlace', post, axiosConfig)
         .then((res) => {
           console.log(res.status);
           if (res.status === 201) {
@@ -90,14 +92,14 @@ const AddNFT = (props) => {
   };
   return (
     <>
-    <section className="home">
+      <section className="home">
         <div className="post">
           <form>
             <center>
               <h2>Add NFT {process.env.REACT_APP_NAME}</h2>
             </center>
 
-            
+
             <TextField
               variant="outlined"
               inputMode='numeric'
@@ -112,7 +114,7 @@ const AddNFT = (props) => {
               <input
                 id="btn-upload"
                 name="btn-upload"
-                style={{display: 'none'}}
+                style={{ display: 'none' }}
                 type="file"
                 accept="image/*"
                 onChange={handleChange}

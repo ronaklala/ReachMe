@@ -1,10 +1,11 @@
-import {Avatar} from '@mui/material';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { Avatar } from '@mui/material';
 import axios from 'axios';
 import moment from 'moment';
-import React, {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
-import {SyncLoader} from 'react-spinners';
-import {css} from '@emotion/react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { SyncLoader } from 'react-spinners';
+import { css } from '@emotion/react';
 
 const ShowSinglePost = (props) => {
   const postid = useParams();
