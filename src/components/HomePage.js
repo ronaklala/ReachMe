@@ -166,11 +166,12 @@ const HomePage = (props) => {
                                 <></>
                               ) : (
                                 <>
-                                  <img
+                                 <a href={`/p-self/${post._id}`}> <img
                                     alt="Post Image"
                                     src={post.image}
                                     className="post-image"
                                   />
+                                  </a>
                                 </>
                               )}
 
