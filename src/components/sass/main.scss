@@ -45,7 +45,8 @@ sans-serif;
 
 //Media Quries For Mobiles
 @media (min-width:250px) and (max-width:1024px) {
-    .login div {
+
+    .login .form {
         width: 80vw;
     }
 }

@@ -27,6 +27,7 @@ const HomePage = (props) => {
     border-color: red;
   `;
   const [user, setUser] = useState({});
+
   const [time, setTime] = useState({});
   let [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
@@ -71,6 +72,13 @@ const HomePage = (props) => {
         .then(async () => {
           toast.success('Transaction Initiated', {
             toastId: 1 + 1,
+            position: 'top-center',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
           });
           setTimeout(() => {
             console.log(transactionDetails);
@@ -78,7 +86,15 @@ const HomePage = (props) => {
           }, 5000);
         })
         .catch((err) => {
-          toast.error('User Denied Transaction');
+          toast.error('User Denied Transaction', {
+            position: 'top-center',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
         });
     };
   };

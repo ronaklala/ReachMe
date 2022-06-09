@@ -1,0 +1,131 @@
+@import '../sass/globals.scss';
+
+
+.products {
+    height: 500px;
+    width: 75vw;
+    max-width: 1500px;
+    flex-direction: column;
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
+
+    .add-nft {
+        height: 35px;
+        width: 200px;
+        padding: 10px;
+        margin-left: 40px;
+        background-color: #285EDB;
+        color: #fff;
+        font-family: $font2;
+        padding-bottom: 30px;
+        border-radius: 5px;
+        border: none;
+    }
+
+    ul {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        li {
+            height: auto;
+            width: auto;
+            max-width: 300px;
+            max-height: 300px;
+            background-color: transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            padding-bottom: 10px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.01);
+
+            img {
+                height: auto;
+                width: auto;
+                max-height: 150px;
+                max-width: 250px;
+            }
+
+            .user-info {
+                display: flex;
+                padding: 10px;
+                color: #fff;
+                align-items: center;
+                gap: 10px;
+
+                span {
+                    overflow: hidden;
+                    width: 200px;
+                    text-overflow: ellipsis;
+                }
+
+                img {
+                    height: 35px;
+                    width: 35px;
+                    border-radius: 50%;
+                    background-position: center;
+                    background-size: cover;
+                }
+            }
+
+            .buttons {
+                display: flex;
+                flex-direction: row;
+
+                svg {
+                    height: 24px;
+                    width: 24px;
+                }
+            }
+
+            button {
+                width: 180px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 15px;
+                font-size: auto;
+                font-family: $font2;
+                background-color: $bg;
+                color: #fff;
+                padding: 10px;
+                border-radius: 5px;
+                border: none;
+            }
+        }
+    }
+}
+
+@media (min-width:250px) and (max-width:900px) {
+    .products {
+        width: 98vw !important;
+
+        .add-nft {
+            width: 80%;
+        }
+
+        ul {
+            justify-content: center;
+            align-items: center;
+            margin-left: -40px;
+            gap: 15px;
+
+            li {
+                text-align: center;
+                width: 100%;
+                max-height: 400px;
+
+                img {
+                    max-height: 250px;
+                    max-width: 300px;
+                }
+            }
+        }
+    }
+}

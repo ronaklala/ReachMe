@@ -73,6 +73,13 @@ const CreatePostForm = (props) => {
         'Please Add Some Data to Post, Empty post Cannot be created',
         {
           toastId: 'customer' + 1,
+          position: 'top-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
         }
       );
     } else {
@@ -85,6 +92,13 @@ const CreatePostForm = (props) => {
           if (res.status === 201) {
             toast.success('Post Created Successfully', {
               toastId: 1234 + 111,
+              position: 'top-center',
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
             });
             setTimeout(() => {
               navigate('/posts/' + post.wallet);
@@ -95,6 +109,13 @@ const CreatePostForm = (props) => {
           if (err.response.status === 500) {
             toast.error('Internal Server Error', {
               toastId: 111 + 123,
+              position: 'top-center',
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
             });
           }
         });

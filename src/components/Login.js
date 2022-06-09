@@ -44,6 +44,13 @@ const Login = () => {
       } else {
         toast.error('install metamask extension!!', {
           toastId: 127 + 7,
+          position: 'top-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
         });
       }
     };
@@ -63,7 +70,15 @@ const Login = () => {
           if (res.status === 200) {
             let data = res.data.doc;
             sessionStorage.setItem('user', JSON.stringify(data));
-            toast.success('Logged In Successfully');
+            toast.success('Logged In Successfully', {
+              position: 'top-center',
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
             setTimeout(() => {
               window.location.href = '/';
             }, 2000);
@@ -75,6 +90,13 @@ const Login = () => {
               'No Id is Registered With This Wallet Address! Please Register First',
               {
                 toastId: 123 + 3,
+                position: 'top-center',
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
               }
             );
           }

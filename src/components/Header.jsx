@@ -74,16 +74,7 @@ const Header = () => {
               <li>
                 <button onClick={Logout}>Logout</button>
               </li>
-              <ToastContainer
-                position="top-right"
-                autoClose={5001}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover></ToastContainer>
+              <ToastContainer />
             </ul>
           </menu>
           <MenuRounded className="menu-icon" />

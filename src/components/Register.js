@@ -39,6 +39,13 @@ const Register = () => {
     if (user.email == '' || user.username == '') {
       toast.error('Fill Form', {
         toastId: customId + 123,
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
       });
     } else if (user.wallet === '') {
       ConnectWallet();
@@ -49,6 +56,13 @@ const Register = () => {
           if (res.status === 201) {
             toast.success('Wallet Registration Done Successfully', {
               toastId: customId + 2,
+              position: 'top-center',
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
             });
             setTimeout(() => {
               navigate('/login');
@@ -59,6 +73,13 @@ const Register = () => {
           if (error.response.status === 500) {
             toast.error('Wallet Already Registered', {
               toastId: customId + 3,
+              position: 'top-center',
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
             });
           }
         });
@@ -74,6 +95,13 @@ const Register = () => {
     } else {
       toast.error('install metamask extension!!', {
         toastId: 127 + 7,
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
       });
     }
   };

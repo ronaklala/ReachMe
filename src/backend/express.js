@@ -14,13 +14,13 @@ mongoose
   .catch((err) => console.log(err));
 
 // Put these statements before you define any routes.
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cors());
 
 //Create User Post
-app.use(require('./queries/post'));
 app.use(require('./queries/transaction'));
+app.use(require('./queries/post'));
 
 app.listen(port, console.log('Listening on Port 5001'));
 

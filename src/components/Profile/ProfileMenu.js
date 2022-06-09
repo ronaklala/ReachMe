@@ -14,8 +14,8 @@ const ProfileMenu = (props) => {
         <a href={'/' + props.wallet}>
           <li>Profile</li>
         </a>
-        <a href={'/activity/' + props.wallet}>
-          <li>Activity</li>
+        <a href={'/showcase-nft/' + props.wallet}>
+          <li>NFTS Minted</li>
         </a>
         <a href={'/posts/' + props.wallet}>
           <li>Posts</li>

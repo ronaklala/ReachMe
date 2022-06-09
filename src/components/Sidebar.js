@@ -43,7 +43,7 @@ const Sidebar = (props) => {
             <li>
               <a href="/MarketPlace">
                 <LocalGroceryStoreIcon />
-                MarketPlace
+                NFT ShowCase
               </a>
             </li>
             <li>
