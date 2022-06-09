@@ -31,7 +31,7 @@ root.render(
         <Route path="/marketplace" element={<AddNftpage />} />
         <Route path="/posts/:uid" element={<ViewPosts />} />
         <Route path="/:uid" element={<Profile />} />
-        <Route path="/p/:postid" element={<SinglePost />} />
+        <Route path="/p-self/:postid" element={<SinglePost />} />
         <Route path="/users" element={<Users />} />
         <Route exact path="*" element={<Page404 msg="404" />} />
         <Route exact path="/error" element={<Page404 msg="403" />} />
