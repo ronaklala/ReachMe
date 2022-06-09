@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { ObjectId } = mongoose.Schema;
 
 const postSchema = mongoose.Schema(
   {
@@ -7,8 +8,12 @@ const postSchema = mongoose.Schema(
     tag: String,
     caption: String,
     image: String,
+    comment: {
+      type: ObjectId,
+      ref: 'comment'
+    }
   },
-  {timestamps: {type: Number, default: new Date().getTime()}}
+  { timestamps: { type: Number, default: new Date().getTime() } }
 );
 
 const Post = mongoose.model('Post', postSchema);

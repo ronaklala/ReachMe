@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import {PhotoCamera} from '@mui/icons-material';
 import {Button, TextField} from '@mui/material';
 import React, {useState} from 'react';

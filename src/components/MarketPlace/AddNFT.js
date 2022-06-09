@@ -176,7 +176,7 @@ const AddNFT = (props) => {
               label="Enter Token name"
               fullWidth
               onChange={handleInput}
-              defaultValue={post.ethereum}
+              defaultValue={post.token_name}
               name="token_name"
             />
 
@@ -186,7 +186,7 @@ const AddNFT = (props) => {
               label="Enter Description"
               fullWidth
               onChange={handleInput}
-              defaultValue={post.ethereum}
+              defaultValue={post.description}
               name="description"
             />
             <label htmlFor="btn-upload">
