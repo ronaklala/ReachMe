@@ -28,28 +28,26 @@ const Market = (props) => {
             ) : (
               <>
                 <li key={nft._id}>
-                  <img src={nft.image} alt="Nft Image" />
                   <div className="user-info">
                     {nft.user_details.map((user, index) => (
                       <>
                         {user.profile_url === null ? (
                           <>
                             <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" />
-                            <span>{user.username}</span>
+                            <span>{user.username} </span>
                           </>
                         ) : (
                           <>
                             <img src={user.profile_url} />
-                            <span>{user.username}</span>
+                            <span>{user.username} </span>
                           </>
                         )}
                       </>
                     ))}
                   </div>
-                  <div className="buttons">
-                    {nft.description}
-                    <Icon icon="mdi:ethereum" />
-                  </div>
+                  <img src={nft.image} alt="Nft Image" />
+
+                  <div className="buttons">{nft.description}</div>
                   <a
                     target="_blank"
                     href={

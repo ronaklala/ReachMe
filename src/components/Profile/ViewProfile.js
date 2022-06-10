@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 import './profile.scss';
-import {toast, ToastContainer} from 'react-toastify';
+import {toast} from 'react-toastify';
 
 const ViewProfile = () => {
   const navigate = useNavigate();

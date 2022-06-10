@@ -16,6 +16,7 @@ import {MoralisProvider} from 'react-moralis';
 import Comment from './components/Comment';
 import AddNftpage from './components/MarketPlace/AddNftpage';
 import MarketPlace from './components/MarketPlace/MarketPlace';
+import Showcase from './components/posts/Showcase';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -33,8 +34,9 @@ root.render(
           <Route path="/create-Nft" element={<AddNftpage />} />
           <Route path="/posts/:uid" element={<ViewPosts />} />
           <Route path="/:uid" element={<Profile />} />
-          <Route path="/p-self/:postid" element={<SinglePost />} />
+          <Route path="/post/:postid" element={<SinglePost />} />
           <Route path="/users" element={<Users />} />
+          <Route path="/showcase-nft/:uid" element={<Showcase />} />
           <Route exact path="*" element={<Page404 msg="404" />} />
           <Route exact path="/error" element={<Page404 msg="403" />} />
         </Routes>

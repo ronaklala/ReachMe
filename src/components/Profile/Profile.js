@@ -7,7 +7,7 @@ import ViewProfile from './ViewProfile';
 
 const Profile = () => {
   const [user, setUser] = useState({});
-  
+
   const uid = useParams();
   useEffect(() => {
     if (sessionStorage.getItem('user') !== null) {
@@ -19,7 +19,7 @@ const Profile = () => {
 
   return (
     <>
-    {console.log(uid.uid)}
+      {console.log(uid.uid)}
       <Header />
       <section className="wrapper">
         <section className="container">
@@ -30,7 +30,11 @@ const Profile = () => {
           />
           <div className="profile-column">
             <ViewProfile />
-            <ProfileMenu username={user.username} uid={uid.uid} />
+            <ProfileMenu
+              username={user.username}
+              uid={uid.uid}
+              wallet={user.wallet}
+            />
           </div>
         </section>
       </section>

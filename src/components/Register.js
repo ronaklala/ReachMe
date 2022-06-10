@@ -36,7 +36,7 @@ const Register = () => {
   //Register a User
   const RegisterUser = async (e) => {
     e.preventDefault();
-    if (user.email == '' || user.username == '') {
+    if (user.email === '' || user.username === '') {
       toast.error('Fill Form', {
         toastId: customId + 123,
         position: 'top-center',

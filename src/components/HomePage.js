@@ -7,9 +7,29 @@ import {Avatar} from '@mui/material';
 import {Icon} from '@iconify/react';
 import {useMoralis, useWeb3Transfer} from 'react-moralis';
 import {toast} from 'react-toastify';
+import moment from 'moment';
 
 const HomePage = (props) => {
-  const {Moralis, isAuthenticated, enableWeb3} = useMoralis();
+  const {Moralis, isAuthenticated} = useMoralis();
+
+  function urlify(text) {
+    var urlRegex = /(https?:\/\/[^\s]+)/g;
+
+    return text.replace(urlRegex, function (url) {
+      var hyperlink = url;
+      if (!hyperlink.match('^https?://')) {
+        hyperlink = 'http://' + hyperlink;
+      }
+      return (
+        '<a className="blue" href="' +
+        url +
+        '" rel="noopener" noreferrer>' +
+        url +
+        '</a>'
+      );
+    });
+    // or alternatively
+  }
 
   let [transactionDetails, setTransactionDetails] = useState({
     from: '',
@@ -174,27 +194,39 @@ const HomePage = (props) => {
                                   />
                                 ))}
 
-                                <a style={{color:"#fff"}} href={`/${post.wallet}`}>
-                                  <b>{post.username}</b>
-                                  </a>
+                                <a
+                                  style={{color: '#fff'}}
+                                  href={`/${post.wallet}`}>
+                                  <b>
+                                    {post.username}
+                                    <greyscale>
+                                      posted on{' '}
+                                      {moment(post.createdAt).format('LLL')}
+                                    </greyscale>
+                                  </b>
+                                </a>
+                              </div>
+                              <div className="user-caption">
+                                <span
+                                  dangerouslySetInnerHTML={{
+                                    __html: urlify(post.caption),
+                                  }}></span>
                               </div>
                               {post.image === '' ? (
                                 <></>
                               ) : (
                                 <>
-                                 <a href={`/p-self/${post._id}`}> <img
-                                    alt="Post Image"
-                                    src={post.image}
-                                    className="post-image"
-                                  />
+                                  <a href={`/post/${post._id}`}>
+                                    {' '}
+                                    <img
+                                      alt="Post Image"
+                                      src={post.image}
+                                      className="post-image"
+                                    />
                                   </a>
                                 </>
                               )}
 
-                              <div className="user-caption">
-                                <b>{post.username}</b>
-                                <span>{post.caption}</span>
-                              </div>
                               <div className="buttons">
                                 <button>Like</button>
                                 <button

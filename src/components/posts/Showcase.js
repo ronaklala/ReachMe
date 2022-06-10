@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import Header from '../Header';
 import Sidebar from '../Sidebar';
-import '../sass/sidebar.scss';
-import ShowSinglePost from './ShowSinglePost';
 
-const SinglePost = () => {
+const Showcase = () => {
   const [user, setUser] = useState({});
   useEffect(() => {
     if (sessionStorage.getItem('user') !== null) {
@@ -23,15 +21,10 @@ const SinglePost = () => {
             wallet={user.wallet}
             profile_url={user.profile_url}
           />
-          <ShowSinglePost
-            username={user.username}
-            wallet={user.wallet}
-            profile_url={user.profile_url}
-          />
         </section>
       </section>
     </>
   );
 };
 
-export default SinglePost;
+export default Showcase;

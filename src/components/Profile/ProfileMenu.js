@@ -23,7 +23,6 @@ const ProfileMenu = (props) => {
         <a href={'/followers/' + props.uid}>
           <li>Followers</li>
         </a>
-        uid
         <a href={'/transactions/' + props.uid}>
           <li>Transactions</li>
         </a>

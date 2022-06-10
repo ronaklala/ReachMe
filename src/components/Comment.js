@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import './comment.css';
 import axios from 'axios';
-import { toast } from 'react-toastify';
-import { useParams } from 'react-router-dom';
+import {toast} from 'react-toastify';
+import {useParams} from 'react-router-dom';
 
 const Comment = () => {
   const postid = useParams();
@@ -55,56 +55,32 @@ const Comment = () => {
   };
   return (
     <>
-      <div className="container" style={{
-        marginTop: '-25%',
-      }}>
+      <div>
         <div className="row">
-          <div className="col-lg-12">
-            <div className="d-flex justify-content-center flex-column align-items-end pb-5">
-
+          <div>
+            <div>
               <div className="d-flex flex-column border py-3 my-3">
-                <p
-                  className="author ps-3 ms-3 text-light"
-                  style={{
-                    position: 'relative',
-                    fontWeight: 'bold',
-                    fontSize: '18px',
-                    fontFamily: 'sans-serif',
-                    paddingLeft: '20px',
-                  }}
-                >
-                  LEAVE A COMMENT
-                </p>
-                <form
-                  action="POST"
-                  className="p-3"
-                  style={{
-                    color: '#222',
-                    paddingLeft: '20px',
-                    fontFamily: 'sans-serif',
-                    fontWeight: '600',
-                  }}
-                  onSubmit={handleSubmit}
-                >
-                  <div class="form-group py-3">
-                    <label className="pb-1 text-light" for="exampleFormControlTextarea1">
+                <p className="author ps-3 ms-3 text-light">LEAVE A COMMENT</p>
+                <form action="POST" className="p-3" onSubmit={handleSubmit}>
+                  {/* <div class="form-group py-3">
+                    <label
+                      className="pb-1 text-light"
+                      for="exampleFormControlTextarea1">
                       Comment
                     </label>
                     <textarea
                       class="form-control"
                       id="exampleFormControlTextarea1"
                       rows="3"
-                      onChange={(e) => setContent(e.target.value)}
-                    ></textarea>
+                      onChange={(e) => setContent(e.target.value)}></textarea>
                   </div>
 
                   <button
                     type="submit"
                     className="btn combtn rounded"
-                    style={{ fontWeight: 'bold' }}
-                  >
+                    style={{fontWeight: 'bold'}}>
                     Post Comment
-                  </button>
+                  </button> */}
                 </form>
               </div>
             </div>

@@ -84,17 +84,33 @@ sans-serif;
     .post-info {
         display: flex;
         flex-direction: column;
-        gap: 25px;
+        gap: 11px;
         padding-top: 30px;
         margin-left: 30px;
         width: auto;
-        max-width: 100%;
+        max-width: 40%;
 
         .user {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 20px;
             color: #fff;
+            flex-direction: column;
+            gap: 5px;
+
+            span {
+                width: 100%;
+            }
+
+            greyscale {
+                font-size: 14px;
+                color: rgb(143, 143, 143);
+            }
+
+        }
+
+        .caption {
+            font-size: 14px;
         }
 
         span {

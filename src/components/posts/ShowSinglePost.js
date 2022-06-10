@@ -1,16 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Avatar } from '@mui/material';
+import {Avatar} from '@mui/material';
 import axios from 'axios';
 import moment from 'moment';
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { SyncLoader } from 'react-spinners';
-import { css } from '@emotion/react';
+import React, {useEffect, useState} from 'react';
+import {useParams} from 'react-router-dom';
+import {SyncLoader} from 'react-spinners';
+import {css} from '@emotion/react';
+import Comment from './../Comment';
+import Comments from './../Comments/Comments';
 
 const ShowSinglePost = (props) => {
   const postid = useParams();
   const [loading, setLoading] = useState(true);
   const [post, setPost] = useState({});
+  const [user_data, setUser_data] = useState({});
 
   const override = css`
     display: block;
@@ -24,7 +27,8 @@ const ShowSinglePost = (props) => {
       .get('http://localhost:5001/p-self/' + postid.postid)
       .then((res) => {
         if (res.status === 201) {
-          setPost(res.data);
+          setPost(res.data[0]);
+          setUser_data(res.data[1]);
           setLoading(false);
         }
       })
@@ -39,6 +43,14 @@ const ShowSinglePost = (props) => {
   useEffect(() => {
     getPostData();
   }, []);
+
+  function dateFormat(date) {
+    const month = date.getMonth();
+    const day = date.getDate();
+    const monthString = month >= 10 ? month : `0${month}`;
+    const dayString = day >= 10 ? day : `0${day}`;
+    return `${date.getFullYear()}-${monthString}-${dayString}`;
+  }
 
   return (
     <>
@@ -72,16 +84,25 @@ const ShowSinglePost = (props) => {
             )}
 
             <div className="post-info">
-              <span>{post.tag}</span>
-              <span>{post.caption}</span>
               <a href={'/' + post.wallet}>
-                <div className="user">
-                  <Avatar src={props.profile_url}></Avatar>
-                  <span>{props.wallet}</span>
-                </div>
+                {user_data.map((user, index) => (
+                  <>
+                    <div className="user">
+                      <Avatar src={user.profile_url}></Avatar>
+                      <span>{post.wallet}</span>
+                      <greyscale>
+                        Posted {moment(post.createdAt).fromNow()}
+                      </greyscale>
+                    </div>
+                  </>
+                ))}
               </a>
-              <span>{moment(post.createdAt).format('LLL')}</span>
+              <span>{post.tag}</span>
+              <span className="caption">{post.caption}</span>
             </div>
+
+            {/* <Comments />
+            <Comment /> */}
           </section>
         </>
       )}
