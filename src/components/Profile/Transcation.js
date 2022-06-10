@@ -19,6 +19,14 @@ const Transcation = () => {
     
   return (
     <>
+    {trans.length == 0 ? (
+                <>
+                <div style={{height:"54px",width:"19vw",backgroundColor:"#fff",textAlign:"center",display:"flex",borderRadius:"10px",marginLeft:"auto",marginRight:"auto",marginTop:"20%",padding:"130px", justifyContent:"center",alignItems:"center"}}>
+
+                  <h1>No Transcation Found For this user</h1>
+                  </div>
+                </>
+              ) :(
     <table>
   <thead>
     <tr>
@@ -55,7 +63,7 @@ const Transcation = () => {
     ))}
     
   </tbody>
-</table>
+</table>)}
     </>
   )
 }
