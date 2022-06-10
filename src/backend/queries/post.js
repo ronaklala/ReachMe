@@ -5,6 +5,7 @@ const Post = require('../schemas/postSchema');
 const AddNFT = require('../schemas/AddNft');
 const Comment = require('./../schemas/commentSchema');
 const User = require('../schemas/userSchema');
+const Transaction = require('../schemas/TransactionSchema');
 const router = express.Router();
 
 //Creating a Post
@@ -41,6 +42,18 @@ router.get('/posts/:uid', async (req, res) => {
       res.status(404).json({message: 'No Posts Found'});
     } else {
       res.status(203).json({doc});
+    }
+  });
+});
+
+router.get('/transcation/:uid', async (req, res) => {
+  const to = req.params.uid;
+  const user_posts = await Transaction.find({to: to}).then((doc) => {
+    if (!doc) {
+      res.status(404).json({message: 'No transcation Found'});
+    } else {
+      res.status(203).json({doc});
+      console.log('hello :::::::::', res.json({doc}));
     }
   });
 });
