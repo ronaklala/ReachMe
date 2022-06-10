@@ -38,7 +38,7 @@ const Comment = () => {
       .post('http://localhost:5001/add-comment', comment, axiosConfig)
       .then((res) => {
         console.log(res.status);
-        if (res.status === 201) {
+        if (res.status == 201) {
           toast.success('Comment Added Successfully', {
             toastId: 1234 + 111,
           });

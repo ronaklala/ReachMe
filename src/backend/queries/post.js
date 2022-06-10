@@ -5,6 +5,7 @@ const Post = require('../schemas/postSchema');
 const AddNFT = require('../schemas/AddNft');
 const Comment = require('./../schemas/commentSchema');
 const User = require('../schemas/userSchema');
+const Transaction = require('../schemas/TransactionSchema');
 const router = express.Router();
 
 //Creating a Post
@@ -22,13 +23,8 @@ router.post('/create-post', (req, res) => {
 });
 
 router.post('/MarketPlace', (req, res) => {
-<<<<<<< HEAD
-  const {image, token_name, wallet, username, description} = req.body;
-  const post = new AddNFT({image, wallet, username, token_name, description});
-=======
   const { image, ethereum, wallet, username } = req.body;
   const post = new AddNFT({ image, wallet, username, ethereum });
->>>>>>> 9940c401307946c3a55accae8b982d6abbc6d1f1
   post
     .save()
     .then(() => {
@@ -44,6 +40,18 @@ router.get('/posts/:uid', async (req, res) => {
   const user_posts = await Post.find({ wallet: wallet }).then((doc) => {
     if (!doc) {
       res.status(404).json({ message: 'No Posts Found' });
+    } else {
+      res.status(203).json({doc});
+      console.log("hello :::::::::",res.json({doc}));
+    }
+  });
+});
+
+router.get('/transcation/:uid', async (req, res) => {
+  const to = req.params.uid;
+  const user_posts = await Transaction.find({ to: to }).then((doc) => {
+    if (!doc) {
+      res.status(404).json({ message: 'No transcation Found' });
     } else {
       res.status(203).json({doc});
       console.log("hello :::::::::",res.json({doc}));
