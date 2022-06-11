@@ -8,6 +8,7 @@ import {Icon} from '@iconify/react';
 import {useMoralis, useWeb3Transfer} from 'react-moralis';
 import {toast} from 'react-toastify';
 import moment from 'moment';
+import { post } from 'jquery';
 
 const HomePage = (props) => {
   const {Moralis, isAuthenticated} = useMoralis();
@@ -68,6 +69,7 @@ const HomePage = (props) => {
   const getPosts = async () => {
     await axios.get('http://localhost:5001/').then((res) => {
       setPosts(res.data.doc);
+      console.log(res)
       setLoading(false);
     });
   };
@@ -118,6 +120,49 @@ const HomePage = (props) => {
         });
     };
   };
+
+  let axiosConfig = {
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8',
+      'Access-Control-Allow-Origin': '*',
+    },
+  };
+
+  //function for LIKING a post
+  const likePost = async (id)=>{
+    let user_data = {
+      post_id: id,
+      uid:user._id,
+    }
+     await axios.put('http://localhost:5001/likes',JSON.stringify(user_data),axiosConfig)
+     .then(result=> {         
+      // console.log(result.data._id)
+      const newData = posts.map(item=>{
+        if(item._id==result.data._id){
+          return result.data
+        }else{
+          return item
+        }
+      })
+      // setlikeCount(newData)
+      // console.log(setlikeCount)
+     }).catch((err) => {
+       console.log(err);
+     })
+  }
+
+    //function for UNLIKING a post
+    const unlikePost = async (id)=>{
+      let user_data_ = {
+        post_id: id,
+        uid:user._id,
+      }  
+       await axios.put('http://localhost:5001/unlikes',JSON.stringify(user_data_),axiosConfig).then((res) => {
+        console.log(res)
+       }).catch((err) => {
+         console.log(err);
+       })
+    }
 
   return (
     <>
@@ -228,14 +273,36 @@ const HomePage = (props) => {
                               )}
 
                               <div className="buttons">
-                                <button>Like</button>
+                              {post.likes.includes(user._id)
+                               ? <button onClick={()=> {unlikePost(post._id)}}>
+                                  UnLike
+                                 </button>
+                               :
+                                <button 
+                                  onClick={()=> {likePost(post._id)}}>
+                                  Like
+                                </button>
+                              }
+                                {/* <button 
+                                  onClick={()=> {likePost(post._id)}}>
+                                  Like
+                                </button>
+                                <button onClick={()=> {unlikePost(post._id)}}>
+                                  UnLike
+                                </button> */}
+
                                 <button
                                   onClick={handleTip(post.wallet, post._id)}>
                                   Tip 0.05 &nbsp;
                                   <Icon icon="mdi:ethereum" />
                                 </button>
                               </div>
+
                               <div className="comment-section">
+                                {post.likes.length > 0 ?
+                                  <span>{post.likes.length} likes</span>
+                                  : <span>0 likes</span>
+                                }                                
                                 <span>View All Comments</span>
                               </div>
                             </div>
