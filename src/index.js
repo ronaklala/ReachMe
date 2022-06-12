@@ -16,7 +16,7 @@ import { MoralisProvider } from 'react-moralis';
 import Comment from './components/Comment';
 import AddNftpage from './components/MarketPlace/AddNftpage';
 import MarketPlace from './components/MarketPlace/MarketPlace';
-import Transcation from './components/Profile/Transcation';
+import Transcation from './components/Users/Transcation';
 import Chat from './Chat/Chat';
 import Showcase from './components/posts/Showcase';
 import UserSearch from './components/posts/UserSearch';
