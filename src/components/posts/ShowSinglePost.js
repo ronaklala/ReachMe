@@ -30,6 +30,7 @@ const ShowSinglePost = (props) => {
           setPost(res.data[0]);
           setUser_data(res.data[1]);
           setLoading(false);
+          console.log(res);
         }
       })
       .catch((err) => {
@@ -43,14 +44,6 @@ const ShowSinglePost = (props) => {
   useEffect(() => {
     getPostData();
   }, []);
-
-  function dateFormat(date) {
-    const month = date.getMonth();
-    const day = date.getDate();
-    const monthString = month >= 10 ? month : `0${month}`;
-    const dayString = day >= 10 ? day : `0${day}`;
-    return `${date.getFullYear()}-${monthString}-${dayString}`;
-  }
 
   return (
     <>
@@ -90,13 +83,20 @@ const ShowSinglePost = (props) => {
                     <div className="user">
                       <Avatar src={user.profile_url}></Avatar>
                       <span>{post.wallet}</span>
-                      <greyscale>
-                        Posted {moment(post.createdAt).fromNow()}
-                      </greyscale>
                     </div>
                   </>
                 ))}
               </a>
+              <greyscale>Posted {moment(post.createdAt).fromNow()}</greyscale>
+              {post.likes.length === 0 ? (
+                <>
+                  <greyscale>No Likes Till Now on this Post</greyscale>
+                </>
+              ) : (
+                <>
+                  <greyscale>{post.likes.length} likes on this post</greyscale>
+                </>
+              )}
               <text style={{fontSize: '18px'}}>{post.tag}</text>
               <text>{post.caption}</text>
               <Comment

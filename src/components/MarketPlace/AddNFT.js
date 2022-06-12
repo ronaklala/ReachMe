@@ -91,7 +91,7 @@ const AddNFT = (props) => {
         method: 'POST',
         body: data,
       }
-    ).then((r) => {});
+    ).then((r) => r.json());
 
     post.image = dataFile.secure_url;
     setLoading(false);

@@ -22,6 +22,7 @@ router.post('/create-post', (req, res) => {
     });
 });
 
+//Adding a NFT Minted Data in Backend
 router.post('/MarketPlace', (req, res) => {
   const {image, token_name, wallet, username, description} = req.body;
   const post = new AddNFT({image, wallet, username, token_name, description});
@@ -35,6 +36,7 @@ router.post('/MarketPlace', (req, res) => {
     });
 });
 
+//Getting Posts for a particular User
 router.get('/posts/:uid', async (req, res) => {
   const wallet = req.params.uid;
   const user_posts = await Post.find({wallet: wallet}).then((doc) => {
@@ -46,6 +48,7 @@ router.get('/posts/:uid', async (req, res) => {
   });
 });
 
+//Getting Transactions for a particular User
 router.get('/transcation/:uid', async (req, res) => {
   const user_id = req.params.uid;
   const user_transaction = await Transaction.find({userId: user_id})
@@ -73,14 +76,13 @@ router.get('/users', (req, res) => {
     });
 });
 
+//Function for search of users
 router.get('/search', (req, res) => {
-  // const search = req.params.search;
   const usersData = User.find()
     .then((doc) => {
       if (!doc) {
         res.status(404).json({message: 'No transcation Found'});
       } else {
-        // const data=doc.filter((item) =>item.username.toLowerCase().includes(search.toLowerCase()))
         res.json(doc);
       }
     })
@@ -102,6 +104,7 @@ router.get('/posts', async (req, res) => {
       res.status(500).json({error: 'No Data Found'});
     });
 });
+
 //home page post
 router.get('/', async (req, res) => {
   const posts = Post.aggregate([
@@ -120,6 +123,7 @@ router.get('/', async (req, res) => {
     });
 });
 
+//Getting users profile Details
 router.get('/:uid', async (req, res) => {
   const Data = {
     users: {},

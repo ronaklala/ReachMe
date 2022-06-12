@@ -4,9 +4,9 @@ const AddNFT = require('../schemas/AddNft');
 const commentSchema = require('../schemas/commentSchema');
 const Post = require('../schemas/postSchema');
 const Transaction = require('../schemas/TransactionSchema');
-const User = require('../schemas/userSchema');
 const router = express.Router();
 
+//Saving the tip of user in backend
 router.post('/user_tip', (req, res) => {
   const {from, to, hash, eth, userId, postId, txntype} = req.body;
   const txn = new Transaction({from, to, hash, eth, userId, postId, txntype});

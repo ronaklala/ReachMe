@@ -17,8 +17,9 @@ import AddNftpage from './components/MarketPlace/AddNftpage';
 import MarketPlace from './components/MarketPlace/MarketPlace';
 import Showcase from './components/posts/Showcase';
 import Comment from './components/Comment';
-import Transcation from './components/Profile/Transcation';
+import Transcation from './components/Users/Transcation';
 import UserSearch from './components/posts/UserSearch';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

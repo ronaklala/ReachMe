@@ -28,17 +28,6 @@ const Comments = () => {
   return (
     <div className="container">
       <div className="comments">
-        <p
-          className="author ps-3 ms-3 text-light"
-          style={{
-            position: 'relative',
-            fontWeight: 'bold',
-            fontSize: '18px',
-            fontFamily: 'sans-serif',
-            paddingLeft: '00px',
-          }}>
-          COMMENTS
-        </p>
         <section className="comments-display">
           {comments.length === 0 ? (
             <>

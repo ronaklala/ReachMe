@@ -47,6 +47,7 @@ app.post('/register', async (req, res) => {
   }
 });
 
+//Login of a user
 app.post('/login', async (req, res) => {
   const userExist = await User.findOne({wallet: req.body.wallet}).then(
     (doc) => {
