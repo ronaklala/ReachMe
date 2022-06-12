@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './components/Login';
 import Register from './components/Register';
 import Page404 from './components/Page404';
@@ -12,11 +12,13 @@ import ViewPosts from './components/posts/ViewPosts';
 import Profile from './components/Profile/Profile';
 import SinglePost from './components/posts/SinglePost';
 import Users from './components/Users/Users';
-import {MoralisProvider} from 'react-moralis';
+import { MoralisProvider } from 'react-moralis';
 import Comment from './components/Comment';
 import AddNftpage from './components/MarketPlace/AddNftpage';
 import MarketPlace from './components/MarketPlace/MarketPlace';
 import Transcation from './components/Profile/Transcation';
+import Chat from './Chat/Chat';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -24,6 +26,7 @@ root.render(
       <MoralisProvider
         appId="ni9S72pX5K7PJen1TcnEDizQaDnMQxf7zgAmDnOh"
         serverUrl="https://ya7rkwykqzkd.usemoralis.com:2053/server">
+
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/login" element={<Login />} />
@@ -36,9 +39,10 @@ root.render(
           <Route path="/:uid" element={<Profile />} />
           <Route path="/p-self/:postid" element={<SinglePost />} />
           <Route path="/users" element={<Users />} />
-          <Route path="/transcation/:uid" element={<Transcation/>} />
+          <Route path="/transcation/:uid" element={<Transcation />} />
           <Route exact path="*" element={<Page404 msg="404" />} />
           <Route exact path="/error" element={<Page404 msg="403" />} />
+          <Route exact path="/messages" element={<Chat />} />
         </Routes>
       </MoralisProvider>
     </BrowserRouter>

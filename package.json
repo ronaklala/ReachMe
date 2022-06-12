@@ -4,6 +4,8 @@
   "private": true,
   "proxy": "http://localhost:5001",
   "dependencies": {
+    "@chakra-ui/icons": "^1.0.13",
+    "@chakra-ui/react": "^1.8.8",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.8.2",
@@ -15,6 +17,8 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "firebase": "^9.8.3",
+    "framer-motion": "^6.3.11",
     "i": "^0.3.7",
     "jquery": "^3.6.0",
     "moment": "^2.29.3",
@@ -28,12 +32,14 @@
     "phosphor-react": "^1.4.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-moment": "^1.1.2",
     "react-moralis": "^1.4.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.12.0",
     "react-toastify": "^9.0.3",
     "sass": "^1.52.1",
+    "socket.io-client": "^4.1.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
