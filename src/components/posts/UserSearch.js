@@ -97,7 +97,9 @@ const UserSearch = () => {
 
      (
       <>
+      <div style={{display:"flex",flexDirection:"column",flexWrap:"wrap"}}>
       {Object.values(serach1).map((data) => (
+        
         <section className="profile" key={data._id}>
           <div className="profile-image">
             <label htmlFor="btn-upload">
@@ -127,6 +129,7 @@ const UserSearch = () => {
           </div>
         </section>
       ))}
+      </div>
       
       </>
       )

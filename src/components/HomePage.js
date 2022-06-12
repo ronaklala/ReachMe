@@ -274,11 +274,11 @@ const HomePage = (props) => {
 
                               <div className="buttons">
                               {post.likes.includes(user._id)
-                               ? <button onClick={()=> {unlikePost(post._id)}}>
+                               ? <button type="submit" onClick={()=> {unlikePost(post._id)}}>
                                   UnLike
                                  </button>
                                :
-                                <button 
+                                <button  type="submit"
                                   onClick={()=> {likePost(post._id)}}>
                                   Like
                                 </button>
@@ -299,6 +299,7 @@ const HomePage = (props) => {
                               </div>
 
                               <div className="comment-section">
+                                {console.log(post.likes)}
                                 {post.likes.length > 0 ?
                                   <span>{post.likes.length} likes</span>
                                   : <span>0 likes</span>
