@@ -18,6 +18,8 @@ import AddNftpage from './components/MarketPlace/AddNftpage';
 import MarketPlace from './components/MarketPlace/MarketPlace';
 import Transcation from './components/Profile/Transcation';
 import Chat from './Chat/Chat';
+import Showcase from './components/posts/Showcase';
+import UserSearch from './components/posts/UserSearch';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -35,10 +37,13 @@ root.render(
           <Route path="/create-post" element={<CreatePost />} />
           <Route path="/MarketPlace" element={<MarketPlace />} />
           <Route path="/create-Nft" element={<AddNftpage />} />
+          <Route path="/search/:search" element={<UserSearch />} />
+
           <Route path="/posts/:uid" element={<ViewPosts />} />
           <Route path="/:uid" element={<Profile />} />
-          <Route path="/p-self/:postid" element={<SinglePost />} />
+          <Route path="/post/:postid" element={<SinglePost />} />
           <Route path="/users" element={<Users />} />
+          <Route path="/showcase-nft/:uid" element={<Showcase />} />
           <Route path="/transcation/:uid" element={<Transcation />} />
           <Route exact path="*" element={<Page404 msg="404" />} />
           <Route exact path="/error" element={<Page404 msg="403" />} />

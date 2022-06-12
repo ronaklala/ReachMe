@@ -30,7 +30,7 @@ const Posts = () => {
 
   return (
     <>
-      {loading == true ? (
+      {loading === true ? (
         <>
           <div className="spinner">
             <center>
@@ -61,7 +61,7 @@ const Posts = () => {
                 <>
                   <ul>
                     {posts.map((post, id) => (
-                      <a href={'/p-self/' + post._id}>
+                      <a href={'/post/' + post._id}>
                         <li key={post._id} id={post._id}>
                           <div className="post">
                             <img src={post.image} alt={post.image} />

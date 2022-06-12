@@ -1,14 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import Header from '../Header';
 import Sidebar from '../Sidebar';
-import {useParams} from 'react-router-dom';
-import ProfileMenu from './ProfileMenu';
-import ViewProfile from './ViewProfile';
+import Self_NFT_Showcase from './Self_NFT_Showcase';
 
-const Profile = () => {
+const Showcase = () => {
   const [user, setUser] = useState({});
-
-  const uid = useParams();
   useEffect(() => {
     if (sessionStorage.getItem('user') !== null) {
       setUser(JSON.parse(sessionStorage.getItem('user')));
@@ -16,10 +12,8 @@ const Profile = () => {
       setUser();
     }
   }, []);
-
   return (
     <>
-      {/* {console.log(uid.uid)} */}
       <Header />
       <section className="wrapper">
         <section className="container">
@@ -28,19 +22,15 @@ const Profile = () => {
             wallet={user.wallet}
             profile_url={user.profile_url}
           />
-          <div className="profile-column">
-            <ViewProfile />
-            <ProfileMenu
-              username={user.username}
-              uid={user._id}
-              wallet={user.wallet}
-              userid={uid.uid}
-            />
-          </div>
+          <Self_NFT_Showcase
+            username={user.username}
+            wallet={user.wallet}
+            profile_url={user.profile_url}
+          />
         </section>
       </section>
     </>
   );
 };
 
-export default Profile;
+export default Showcase;

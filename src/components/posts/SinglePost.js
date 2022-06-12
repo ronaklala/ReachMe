@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from '../Header';
 import Sidebar from '../Sidebar';
 import '../sass/sidebar.scss';
 import ShowSinglePost from './ShowSinglePost';
-import Comment from './../Comment';
-import Comments from './../Comments/Comments'
 
 const SinglePost = () => {
   const [user, setUser] = useState({});
@@ -29,11 +27,10 @@ const SinglePost = () => {
             username={user.username}
             wallet={user.wallet}
             profile_url={user.profile_url}
+            uid={user._id}
           />
         </section>
       </section>
-      <Comments />
-      <Comment />
     </>
   );
 };

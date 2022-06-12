@@ -288,3 +288,6 @@ code {
     max-width: 100%;
   }
 }
+
+@tailwind components;
+@tailwind utilities;

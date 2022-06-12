@@ -1,0 +1,39 @@
+@import '../sass/globals.scss';
+
+greyscale {
+    color: rgb(143, 143, 143);
+    font-size: 14px;
+}
+
+.comments {
+    height: auto;
+    width: 100%;
+}
+
+.comments-display {
+    height: 250px;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+
+    ul {
+        list-style: none;
+        margin-left: -40px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        li {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            flex-direction: column;
+
+            .user-col {
+                display: flex;
+                flex-direction: row;
+                gap: 15px;
+            }
+        }
+    }
+}

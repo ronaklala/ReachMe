@@ -1,16 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Avatar } from '@mui/material';
+import {Avatar} from '@mui/material';
 import axios from 'axios';
 import moment from 'moment';
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { SyncLoader } from 'react-spinners';
-import { css } from '@emotion/react';
+import React, {useEffect, useState} from 'react';
+import {useParams} from 'react-router-dom';
+import {SyncLoader} from 'react-spinners';
+import {css} from '@emotion/react';
+import Comment from '../Comment';
+import Comments from './../Comments/Comments';
 
 const ShowSinglePost = (props) => {
   const postid = useParams();
   const [loading, setLoading] = useState(true);
   const [post, setPost] = useState({});
+  const [user_data, setUser_data] = useState({});
 
   const override = css`
     display: block;
@@ -24,8 +27,10 @@ const ShowSinglePost = (props) => {
       .get('http://localhost:5001/p-self/' + postid.postid)
       .then((res) => {
         if (res.status === 201) {
-          setPost(res.data);
+          setPost(res.data[0]);
+          setUser_data(res.data[1]);
           setLoading(false);
+          console.log(res);
         }
       })
       .catch((err) => {
@@ -72,15 +77,35 @@ const ShowSinglePost = (props) => {
             )}
 
             <div className="post-info">
-              <span>{post.tag}</span>
-              <span>{post.caption}</span>
               <a href={'/' + post.wallet}>
-                <div className="user">
-                  <Avatar src={props.profile_url}></Avatar>
-                  <span>{props.wallet}</span>
-                </div>
+                {user_data.map((user, index) => (
+                  <>
+                    <div className="user">
+                      <Avatar src={user.profile_url}></Avatar>
+                      <span>{post.wallet}</span>
+                    </div>
+                  </>
+                ))}
               </a>
-              <span>{moment(post.createdAt).format('LLL')}</span>
+              <greyscale>Posted {moment(post.createdAt).fromNow()}</greyscale>
+              {post.likes.length === 0 ? (
+                <>
+                  <greyscale>No Likes Till Now on this Post</greyscale>
+                </>
+              ) : (
+                <>
+                  <greyscale>{post.likes.length} likes on this post</greyscale>
+                </>
+              )}
+              <text style={{fontSize: '18px'}}>{post.tag}</text>
+              <text>{post.caption}</text>
+              <Comment
+                username={props.username}
+                wallet={props.wallet}
+                profile_url={props.profile_url}
+                uid={props.uid}
+              />
+              <Comments />
             </div>
           </section>
         </>
