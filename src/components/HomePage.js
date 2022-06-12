@@ -62,9 +62,17 @@ const HomePage = (props) => {
 
   const today = new Date();
 
+  //Getting Posts from backend and storing in Posts State
+  const getPosts = async () => {
+    await axios.get('http://localhost:5001/').then((res) => {
+      setPosts(res.data.doc);
+      setLoading(false);
+    });
+  };
+
   useEffect(() => {
-    const web3 = Moralis.enableWeb3();
     getPosts();
+    const web3 = Moralis.enableWeb3();
     setTime(today.getHours());
     if (sessionStorage.getItem('user') !== null) {
       setUser(JSON.parse(sessionStorage.getItem('user')));
@@ -72,15 +80,6 @@ const HomePage = (props) => {
       setUser();
     }
   }, []);
-
-  //Getting Posts from backend and storing in Posts State
-  const getPosts = async () => {
-    await axios.get('http://localhost:5001/').then((res) => {
-      setPosts(res.data.doc);
-      console.log(res);
-      setLoading(false);
-    });
-  };
 
   //Handling the tip by User and storing it in Backend
   const handleTip = (wallet, id) => {
@@ -112,12 +111,10 @@ const HomePage = (props) => {
             progress: undefined,
           });
           setTimeout(() => {
-            console.log(transactionDetails);
             axios.post('http://localhost:5001/user_tip', transactionDetails);
           }, 5000);
         })
         .catch((err) => {
-          console.log(err.code);
           if (err.code === 'INSUFFICIENT_FUNDS') {
             toast.error('Oops Not Enough Funds', {
               position: 'top-center',
@@ -183,9 +180,7 @@ const HomePage = (props) => {
         $('#like' + id).hide();
         $('#unlike' + id).show();
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   };
 
   //function for UNLIKING a post
@@ -208,9 +203,7 @@ const HomePage = (props) => {
         $('#like' + id).show();
         $('#unlike' + id).hide();
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   };
 
   return (
@@ -271,108 +264,180 @@ const HomePage = (props) => {
                 ) : (
                   <>
                     <section className="posts-section">
-                      {posts.map((post, index) => (
-                        <>
-                          <div
-                            className={'post ' + post._id}
-                            id={post._id}
-                            key={index}>
-                            <div className="user-info">
-                              {post.user_details.map((user) => (
-                                <Avatar
-                                  alt="Profile Image"
-                                  src={user.profile_url}
-                                  sx={{width: 26, height: 26}}
-                                  key={user._id}
-                                />
-                              ))}
-
-                              <a
-                                style={{color: '#fff'}}
-                                href={`/${post.wallet}`}>
-                                <b>
-                                  {post.username}
-                                  <greyscale>
-                                    posted {moment(post.createdAt).fromNow()}
-                                  </greyscale>
-                                </b>
-                              </a>
-                            </div>
-                            <div className="user-caption">
-                              <span
-                                dangerouslySetInnerHTML={{
-                                  __html: urlify(post.caption),
-                                }}></span>
-                            </div>
-                            {post.image === '' ? (
-                              <></>
-                            ) : (
-                              <>
-                                <a href={`/post/${post._id}`}>
-                                  {' '}
-                                  <img
-                                    alt="Post Image"
-                                    src={post.image}
-                                    className="post-image"
+                      {posts.map((post, index) =>
+                        post.token_name !== undefined ? (
+                          <>
+                            <div
+                              className={'post ' + post._id}
+                              id={post._id}
+                              key={index}>
+                              <div className="user-info">
+                                {post.user_details.map((user) => (
+                                  <Avatar
+                                    alt="Profile Image"
+                                    src={user.profile_url}
+                                    sx={{width: 26, height: 26}}
+                                    key={user._id}
                                   />
+                                ))}
+
+                                <a
+                                  style={{color: '#fff'}}
+                                  href={`/${post.wallet}`}>
+                                  <b>
+                                    {post.username}
+                                    <greyscale>
+                                      Minted {moment(post.createdAt).fromNow()}
+                                    </greyscale>
+                                  </b>
                                 </a>
-                              </>
-                            )}
-
-                            <div className="buttons">
-                              {post.likes.includes(user._id)
-                                ? isLiked(post._id)
-                                : isunLiked(post._id)}
-
-                              <button
-                                id={'unlike' + post._id}
-                                type="submit"
-                                style={{display: 'none'}}
-                                onClick={() => {
-                                  unlikePost(post._id);
-                                }}>
-                                <FavoriteIcon />
-                              </button>
-
-                              <button
-                                id={'like' + post._id}
-                                type="submit"
-                                onClick={() => {
-                                  likePost(post._id);
-                                }}>
-                                <FavoriteBorderIcon />
-                              </button>
-                              {post.username === user.username ? (
+                              </div>
+                              <div className="user-caption">
+                                <span
+                                  dangerouslySetInnerHTML={{
+                                    __html: urlify(post.description),
+                                  }}></span>
+                              </div>
+                              {post.image === '' ? (
                                 <></>
                               ) : (
                                 <>
-                                  <button
-                                    onClick={handleTip(post.wallet, post._id)}>
-                                    Tip 0.005 &nbsp;
-                                    <Icon icon="mdi:ethereum" />
-                                  </button>
+                                  <a href={`/post/${post._id}`}>
+                                    {' '}
+                                    <img
+                                      alt="Post Image"
+                                      src={post.image}
+                                      className="post-image"
+                                    />
+                                  </a>
                                 </>
                               )}
-                            </div>
 
-                            <div className="comment-section">
-                              {post.likes.length > 0 ? (
-                                <>
-                                  <span class={'likes' + post._id}>
-                                    {post.likes.length}
-                                  </span>
-                                  Likes
-                                </>
+                              <div className="buttons">
+                                {post.username === user.username ? (
+                                  <></>
+                                ) : (
+                                  <>
+                                    <button
+                                      onClick={handleTip(
+                                        post.wallet,
+                                        post._id
+                                      )}>
+                                      Tip 0.005 &nbsp;
+                                      <Icon icon="mdi:ethereum" />
+                                    </button>
+                                  </>
+                                )}
+                              </div>
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            <div
+                              className={'post ' + post._id}
+                              id={post._id}
+                              key={index}>
+                              <div className="user-info">
+                                {post.user_details.map((user) => (
+                                  <Avatar
+                                    alt="Profile Image"
+                                    src={user.profile_url}
+                                    sx={{width: 26, height: 26}}
+                                    key={user._id}
+                                  />
+                                ))}
+
+                                <a
+                                  style={{color: '#fff'}}
+                                  href={`/${post.wallet}`}>
+                                  <b>
+                                    {post.username}
+                                    <greyscale>
+                                      posted {moment(post.createdAt).fromNow()}
+                                    </greyscale>
+                                  </b>
+                                </a>
+                              </div>
+                              <div className="user-caption">
+                                <span
+                                  dangerouslySetInnerHTML={{
+                                    __html: urlify(post.caption),
+                                  }}></span>
+                              </div>
+                              {post.image === '' ? (
+                                <></>
                               ) : (
                                 <>
-                                  <span class={'likes' + post._id}>0</span>likes
+                                  <a href={`/post/${post._id}`}>
+                                    {' '}
+                                    <img
+                                      alt="Post Image"
+                                      src={post.image}
+                                      className="post-image"
+                                    />
+                                  </a>
                                 </>
                               )}
-                              <span>View All Comments</span>
+
+                              <div className="buttons">
+                                {post.likes.includes(user._id)
+                                  ? isLiked(post._id)
+                                  : isunLiked(post._id)}
+
+                                <button
+                                  id={'unlike' + post._id}
+                                  type="submit"
+                                  style={{display: 'none'}}
+                                  onClick={() => {
+                                    unlikePost(post._id);
+                                  }}>
+                                  <FavoriteIcon />
+                                </button>
+
+                                <button
+                                  id={'like' + post._id}
+                                  type="submit"
+                                  onClick={() => {
+                                    likePost(post._id);
+                                  }}>
+                                  <FavoriteBorderIcon />
+                                </button>
+                                {post.username === user.username ? (
+                                  <></>
+                                ) : (
+                                  <>
+                                    <button
+                                      onClick={handleTip(
+                                        post.wallet,
+                                        post._id
+                                      )}>
+                                      Tip 0.005 &nbsp;
+                                      <Icon icon="mdi:ethereum" />
+                                    </button>
+                                  </>
+                                )}
+                              </div>
+
+                              <div className="comment-section">
+                                {post.likes.length > 0 ? (
+                                  <>
+                                    <span class={'likes' + post._id}>
+                                      {post.likes.length}
+                                    </span>
+                                    Likes
+                                  </>
+                                ) : (
+                                  <>
+                                    <span class={'likes' + post._id}>0</span>
+                                    likes
+                                  </>
+                                )}
+                                <span>View All Comments</span>
+                              </div>
                             </div>
-                          </div>
-                        </>
-                      ))}
+                          </>
+                        )
+                      )}
                     </section>
                   </>
                 )}
