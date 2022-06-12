@@ -1,28 +1,38 @@
+
+import React, {useEffect, useState} from 'react';
 import './sass/header.scss';
 import SendIcon from '@mui/icons-material/Send';
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {useNavigate} from 'react-router-dom';
-import {useEffect} from 'react';
 import {MenuRounded, Search} from '@mui/icons-material';
 import {Avatar} from '@mui/material';
+// import { search } from '../backend/queries/transaction';
 
 const Header = () => {
   const navigate = useNavigate();
   const user = JSON.parse(sessionStorage.getItem('user'));
-
+  const [user1, setuser] = useState([]);
+  var[search, onsearch] = useState([])
   useEffect(() => {
     if (user === null) {
       navigate('/login');
     }
+    
   }, []);
-
+  
+  
   const Logout = () => {
     sessionStorage.removeItem('user');
+    
     window.location.href = '/';
   };
+  // function onsearch2() {
+  //   navigate(`/search${serach}`);
+  // }
   return (
     <>
+      
       <section className="header">
         <nav>
           <a href="/">
@@ -32,11 +42,14 @@ const Header = () => {
             <input
               type="search"
               name="search"
-              placeholder="Share Token With, View"
+              onChange={(e) => onsearch(e.target.value)}
+              placeholder="Search User"
             />
-            <button>
+            <a href={'/search/'+ search}>
+            <button >
               <Search />
             </button>
+            </a>
           </div>
 
           <menu>
@@ -80,6 +93,7 @@ const Header = () => {
           <MenuRounded className="menu-icon" />
         </nav>
       </section>
+
     </>
   );
 };

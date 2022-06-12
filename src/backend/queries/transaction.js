@@ -2,6 +2,7 @@ const express = require('express');
 const {default: mongoose} = require('mongoose');
 const AddNFT = require('../schemas/AddNft');
 const commentSchema = require('../schemas/commentSchema');
+const Post = require('../schemas/postSchema');
 const Transaction = require('../schemas/TransactionSchema');
 const User = require('../schemas/userSchema');
 const router = express.Router();
@@ -13,6 +14,44 @@ router.post('/user_tip', (req, res) => {
     .save()
     .then((res) => {})
     .catch((err) => {});
+});
+
+//For liking a post
+router.put('/likes', (req, res) => {
+  Post.findByIdAndUpdate(
+    req.body.post_id,
+    {
+      $push: {likes: req.body.uid},
+    },
+    {
+      new: true, //for new updated record
+    }
+  ).exec((err, result) => {
+    if (err) {
+      return res.status(422).json({error: err});
+    } else {
+      res.json(result);
+    }
+  });
+});
+
+//for unliking a post
+router.put('/unlikes', (req, res) => {
+  Post.findByIdAndUpdate(
+    req.body.post_id,
+    {
+      $pull: {likes: req.body.uid},
+    },
+    {
+      new: true, //for new updated record
+    }
+  ).exec((err, result) => {
+    if (err) {
+      return res.status(422).json({error: err});
+    } else {
+      res.json(result);
+    }
+  });
 });
 
 //Showing NFTS to the marketplace section

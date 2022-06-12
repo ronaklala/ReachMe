@@ -16,8 +16,9 @@ import {MoralisProvider} from 'react-moralis';
 import AddNftpage from './components/MarketPlace/AddNftpage';
 import MarketPlace from './components/MarketPlace/MarketPlace';
 import Showcase from './components/posts/Showcase';
-import Transcation from './components/Users/Transcation';
 import Comment from './components/Comment';
+import Transcation from './components/Profile/Transcation';
+import UserSearch from './components/posts/UserSearch';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -33,6 +34,8 @@ root.render(
           <Route path="/create-post" element={<CreatePost />} />
           <Route path="/MarketPlace" element={<MarketPlace />} />
           <Route path="/create-Nft" element={<AddNftpage />} />
+          <Route path="/search/:search" element={<UserSearch />} />
+
           <Route path="/posts/:uid" element={<ViewPosts />} />
           <Route path="/:uid" element={<Profile />} />
           <Route path="/post/:postid" element={<SinglePost />} />
