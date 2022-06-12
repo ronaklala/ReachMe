@@ -14,6 +14,8 @@ const AddNFT = (props) => {
   const navigate = useNavigate();
   const [file, setFile] = useState();
   const {Moralis, isAuthenticated} = useMoralis();
+  const [button, setButton] = useState(false);
+
   const override = css`
     display: block;
     margin: 0 auto;
@@ -89,11 +91,12 @@ const AddNFT = (props) => {
         method: 'POST',
         body: data,
       }
-    ).then((r) => r.json());
+    ).then((r) => {});
 
     post.image = dataFile.secure_url;
     setLoading(false);
     setFile(dataFile.secure_url);
+    setButton(true);
   };
 
   //Handling the Input Data
@@ -220,7 +223,13 @@ const AddNFT = (props) => {
                 <></>
               )}
             </div>
-            <input type="submit" onClick={handleSubmit} />
+            {button === true ? (
+              <>
+                <input type="submit" onClick={handleSubmit} />
+              </>
+            ) : (
+              <></>
+            )}
           </form>
         </div>
       </section>

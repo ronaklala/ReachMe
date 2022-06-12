@@ -1,11 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React, {useState, useEffect} from 'react';
-import './comment.css';
 import axios from 'axios';
 import {toast} from 'react-toastify';
 import {useParams} from 'react-router-dom';
+import './sass/comments.scss';
+import $ from 'jquery';
 
-const Comment = () => {
+const Comment = (props) => {
+  console.log(props);
   const postid = useParams();
   let axiosConfig = {
     headers: {
@@ -38,10 +40,12 @@ const Comment = () => {
       .post('http://localhost:5001/add-comment', comment, axiosConfig)
       .then((res) => {
         console.log(res.status);
-        if (res.status == 201) {
+        if (res.status == 200) {
           toast.success('Comment Added Successfully', {
             toastId: 1234 + 111,
           });
+          $('.comment').val('');
+          window.location.reload();
         }
       })
       .catch((err) => {
@@ -56,23 +60,17 @@ const Comment = () => {
   return (
     <>
       <div>
-        <div className="row">
+        <div>
           <div>
             <div>
               <div className="d-flex flex-column border py-3 my-3">
-                <p className="author ps-3 ms-3 text-light">LEAVE A COMMENT</p>
-                <form action="POST" className="p-3" onSubmit={handleSubmit}>
-                  {/* <div class="form-group py-3">
-                    <label
-                      className="pb-1 text-light"
-                      for="exampleFormControlTextarea1">
-                      Comment
-                    </label>
-                    <textarea
-                      class="form-control"
-                      id="exampleFormControlTextarea1"
-                      rows="3"
-                      onChange={(e) => setContent(e.target.value)}></textarea>
+                <form action="POST" onSubmit={handleSubmit}>
+                  <div class="form-group py-3">
+                    <input
+                      type="text"
+                      class="comment"
+                      onChange={(e) => setContent(e.target.value)}
+                    />
                   </div>
 
                   <button
@@ -80,7 +78,7 @@ const Comment = () => {
                     className="btn combtn rounded"
                     style={{fontWeight: 'bold'}}>
                     Post Comment
-                  </button> */}
+                  </button>
                 </form>
               </div>
             </div>

@@ -3,3 +3,50 @@ $button: #080BA0;
 $bg: #2F2934;
 $font2: 'Open Sans',
 sans-serif;
+
+.greyscale {
+    color: rgb(143, 143, 143);
+    font-size: 14px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.comment {
+    height: 35px;
+    width: 100%;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    border: 1px solid #fff;
+    padding-left: 5px;
+}
+
+
+
+.combtn {
+    height: 35px;
+    width: 150px;
+    background-color: $button;
+    border: none;
+    font-family: $font2;
+    color: #fff;
+}

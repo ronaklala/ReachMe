@@ -47,15 +47,16 @@ router.get('/posts/:uid', async (req, res) => {
 });
 
 router.get('/transcation/:uid', async (req, res) => {
-  const to = req.params.uid;
-  const user_posts = await Transaction.find({to: to}).then((doc) => {
-    if (!doc) {
-      res.status(404).json({message: 'No transcation Found'});
-    } else {
-      res.status(203).json({doc});
-      console.log('hello :::::::::', res.json({doc}));
-    }
-  });
+  const user_id = req.params.uid;
+  const user_transaction = await Transaction.find({userId: user_id})
+    .sort({createdAt: -1})
+    .then((doc) => {
+      if (!doc) {
+        res.status(404).json({message: 'No transcation Found'});
+      } else {
+        res.status(203).json({doc});
+      }
+    });
 });
 
 //Showings Users of App
@@ -184,6 +185,20 @@ router.post('/add-comment', async (req, res) => {
   } catch (err) {
     return res.status(500).json({msg: err.message});
   }
+});
+
+//Show users Self-NFTS
+router.get('/Self-NFT/:uid', async (req, res) => {
+  const userid = req.params.uid;
+  const selfnfts = AddNFT.find({wallet: userid})
+    .sort({createdAt: -1})
+    .then((doc) => {
+      if (!doc) {
+        res.status(500);
+      } else {
+        res.json(doc);
+      }
+    });
 });
 
 module.exports = router;

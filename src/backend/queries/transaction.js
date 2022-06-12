@@ -1,6 +1,9 @@
 const express = require('express');
+const {default: mongoose} = require('mongoose');
 const AddNFT = require('../schemas/AddNft');
+const commentSchema = require('../schemas/commentSchema');
 const Transaction = require('../schemas/TransactionSchema');
+const User = require('../schemas/userSchema');
 const router = express.Router();
 
 router.post('/user_tip', (req, res) => {
@@ -30,6 +33,29 @@ router.get('/MarketPlace', (req, res) => {
     })
     .catch((err) => {
       res.status(500);
+    });
+});
+
+//Get Comments for a Post
+router.get('/get-comments/:postid', (req, res) => {
+  const postid = mongoose.Types.ObjectId(req.params.postid);
+  const comment = commentSchema
+    .aggregate([
+      {
+        $match: {postId: postid},
+      },
+      {
+        $lookup: {
+          from: 'users',
+          localField: 'user',
+          foreignField: '_id',
+          as: 'user_details',
+        },
+      },
+    ])
+    .sort({createdAt: -1})
+    .exec(function (err, result) {
+      res.json(result);
     });
 });
 

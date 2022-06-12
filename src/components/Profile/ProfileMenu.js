@@ -11,13 +11,13 @@ const ProfileMenu = (props) => {
   return (
     <>
       <ul>
-        <a href={'/' + props.uid}>
+        <a href={'/' + props.userid}>
           <li>Profile</li>
         </a>
-        <a href={'/showcase-nft/' + props.wallet}>
+        <a href={'/showcase-nft/' + props.userid}>
           <li>NFTS Minted</li>
         </a>
-        <a href={'/posts/' + props.uid}>
+        <a href={'/posts/' + props.userid}>
           <li>Posts</li>
         </a>
         <a href={'/followers/' + props.uid}>

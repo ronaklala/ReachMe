@@ -27,6 +27,7 @@ const SinglePost = () => {
             username={user.username}
             wallet={user.wallet}
             profile_url={user.profile_url}
+            uid={user._id}
           />
         </section>
       </section>

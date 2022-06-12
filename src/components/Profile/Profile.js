@@ -32,8 +32,9 @@ const Profile = () => {
             <ViewProfile />
             <ProfileMenu
               username={user.username}
-              uid={uid.uid}
+              uid={user._id}
               wallet={user.wallet}
+              userid={uid.uid}
             />
           </div>
         </section>

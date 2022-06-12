@@ -10,7 +10,7 @@ import {toast} from 'react-toastify';
 import moment from 'moment';
 
 const HomePage = (props) => {
-  const {Moralis, isAuthenticated} = useMoralis();
+  const {Moralis, isAuthenticated, authenticate} = useMoralis();
 
   function urlify(text) {
     var urlRegex = /(https?:\/\/[^\s]+)/g;
@@ -106,15 +106,28 @@ const HomePage = (props) => {
           }, 5000);
         })
         .catch((err) => {
-          toast.error('User Denied Transaction', {
-            position: 'top-center',
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
+          console.log(err.code);
+          if (err.code === 'INSUFFICIENT_FUNDS') {
+            toast.error('Oops Not Enough Funds', {
+              position: 'top-center',
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          } else {
+            toast.error('User Denied Transaction', {
+              position: 'top-center',
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          }
         });
     };
   };
@@ -177,73 +190,74 @@ const HomePage = (props) => {
                 ) : (
                   <>
                     <section className="posts-section">
-                      {posts.map((post, index) =>
-                        post.username !== user.username ? (
-                          <>
-                            <div
-                              className={'post ' + post._id}
-                              id={post._id}
-                              key={index}>
-                              <div className="user-info">
-                                {post.user_details.map((user) => (
-                                  <Avatar
-                                    alt="Profile Image"
-                                    src={user.profile_url}
-                                    sx={{width: 26, height: 26}}
-                                    key={user._id}
-                                  />
-                                ))}
+                      {posts.map((post, index) => (
+                        <>
+                          <div
+                            className={'post ' + post._id}
+                            id={post._id}
+                            key={index}>
+                            <div className="user-info">
+                              {post.user_details.map((user) => (
+                                <Avatar
+                                  alt="Profile Image"
+                                  src={user.profile_url}
+                                  sx={{width: 26, height: 26}}
+                                  key={user._id}
+                                />
+                              ))}
 
-                                <a
-                                  style={{color: '#fff'}}
-                                  href={`/${post.wallet}`}>
-                                  <b>
-                                    {post.username}
-                                    <greyscale>
-                                      posted on{' '}
-                                      {moment(post.createdAt).format('LLL')}
-                                    </greyscale>
-                                  </b>
+                              <a
+                                style={{color: '#fff'}}
+                                href={`/${post.wallet}`}>
+                                <b>
+                                  {post.username}
+                                  <greyscale>
+                                    posted {moment(post.createdAt).fromNow()}
+                                  </greyscale>
+                                </b>
+                              </a>
+                            </div>
+                            <div className="user-caption">
+                              <span
+                                dangerouslySetInnerHTML={{
+                                  __html: urlify(post.caption),
+                                }}></span>
+                            </div>
+                            {post.image === '' ? (
+                              <></>
+                            ) : (
+                              <>
+                                <a href={`/post/${post._id}`}>
+                                  {' '}
+                                  <img
+                                    alt="Post Image"
+                                    src={post.image}
+                                    className="post-image"
+                                  />
                                 </a>
-                              </div>
-                              <div className="user-caption">
-                                <span
-                                  dangerouslySetInnerHTML={{
-                                    __html: urlify(post.caption),
-                                  }}></span>
-                              </div>
-                              {post.image === '' ? (
+                              </>
+                            )}
+
+                            <div className="buttons">
+                              <button>Like</button>
+                              {post.username === user.username ? (
                                 <></>
                               ) : (
                                 <>
-                                  <a href={`/post/${post._id}`}>
-                                    {' '}
-                                    <img
-                                      alt="Post Image"
-                                      src={post.image}
-                                      className="post-image"
-                                    />
-                                  </a>
+                                  <button
+                                    onClick={handleTip(post.wallet, post._id)}>
+                                    Tip 0.05 &nbsp;
+                                    <Icon icon="mdi:ethereum" />
+                                  </button>
                                 </>
                               )}
-
-                              <div className="buttons">
-                                <button>Like</button>
-                                <button
-                                  onClick={handleTip(post.wallet, post._id)}>
-                                  Tip 0.05 &nbsp;
-                                  <Icon icon="mdi:ethereum" />
-                                </button>
-                              </div>
-                              <div className="comment-section">
-                                <span>View All Comments</span>
-                              </div>
                             </div>
-                          </>
-                        ) : (
-                          <></>
-                        )
-                      )}
+                            <div className="comment-section">
+                              <span>View All Comments</span>
+                            </div>
+                          </div>
+                        </>
+                      ))}
                     </section>
 
                     {/* <ul>

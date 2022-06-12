@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import './products.scss';
 import LocalMallIcon from '@mui/icons-material/LocalMall';
-import {Icon} from '@iconify/react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import moment from 'moment';
 
 const Market = (props) => {
   const [nfts, setNfts] = useState([]);
@@ -19,7 +19,7 @@ const Market = (props) => {
     <>
       <section className="products">
         <Link to="/create-nft">
-          <button className="add-nft">Add You NFT Now</button>
+          <button className="add-nft">Mint Your own NFT Now</button>
         </Link>
         <ul>
           {nfts.map((nft, index) =>
@@ -60,6 +60,9 @@ const Market = (props) => {
                       View On Rarible
                     </button>
                   </a>
+                  <span className="greyscale">
+                    Minted {moment(nft.createdAt).fromNow()}
+                  </span>
                 </li>
               </>
             )

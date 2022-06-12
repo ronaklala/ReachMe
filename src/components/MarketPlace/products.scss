@@ -2,13 +2,16 @@
 
 
 .products {
-    height: 500px;
+    height: auto;
     width: 75vw;
     max-width: 1500px;
     flex-direction: column;
     display: flex;
     justify-content: flex-start;
     padding: 10px;
+
+    /* width */
+
 
     .add-nft {
         height: 35px;
@@ -34,7 +37,7 @@
             height: auto;
             width: auto;
             max-width: 300px;
-            max-height: 300px;
+            max-height: 350px;
             background-color: transparent;
             display: flex;
             flex-direction: column;
@@ -123,7 +126,7 @@
                 max-height: 400px;
 
                 img {
-                    max-height: 250px;
+                    max-height: 220px;
                     max-width: 300px;
                 }
             }

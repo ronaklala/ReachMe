@@ -6,7 +6,7 @@ import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import {SyncLoader} from 'react-spinners';
 import {css} from '@emotion/react';
-import Comment from './../Comment';
+import Comment from '../Comment';
 import Comments from './../Comments/Comments';
 
 const ShowSinglePost = (props) => {
@@ -97,12 +97,16 @@ const ShowSinglePost = (props) => {
                   </>
                 ))}
               </a>
-              <span>{post.tag}</span>
-              <span className="caption">{post.caption}</span>
+              <text style={{fontSize: '18px'}}>{post.tag}</text>
+              <text>{post.caption}</text>
+              <Comment
+                username={props.username}
+                wallet={props.wallet}
+                profile_url={props.profile_url}
+                uid={props.uid}
+              />
+              <Comments />
             </div>
-
-            {/* <Comments />
-            <Comment /> */}
           </section>
         </>
       )}

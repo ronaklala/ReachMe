@@ -60,7 +60,7 @@ const Login = () => {
       setWallet({wallet: account});
     };
     ConnectWallet();
-  }, []);
+  }, ['']);
 
   //Login Function
   const LoginUser = () => {

@@ -13,11 +13,11 @@ import Profile from './components/Profile/Profile';
 import SinglePost from './components/posts/SinglePost';
 import Users from './components/Users/Users';
 import {MoralisProvider} from 'react-moralis';
-import Comment from './components/Comment';
 import AddNftpage from './components/MarketPlace/AddNftpage';
 import MarketPlace from './components/MarketPlace/MarketPlace';
 import Showcase from './components/posts/Showcase';
-import Transcation from './components/Profile/Transcation';
+import Transcation from './components/Users/Transcation';
+import Comment from './components/Comment';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
