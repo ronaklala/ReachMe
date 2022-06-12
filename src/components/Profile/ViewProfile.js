@@ -16,7 +16,7 @@ const ViewProfile = () => {
   useEffect(() => {
     const getUserData = () => {
       axios
-        .get('/' + wallet.uid)
+        .get('http://localhost:5001/' + wallet.uid)
         .then((res) => {
           setuser(res.data.users[0]);
           setFile(res.data.users[0].profile_url);

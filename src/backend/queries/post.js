@@ -63,6 +63,7 @@ router.get('/users', (req, res) => {
   const usersData = User.find()
     .then((doc) => {
       if (!doc) {
+        
       } else {
         res.json(doc);
       }
@@ -72,6 +73,36 @@ router.get('/users', (req, res) => {
     });
 });
 
+router.get('/search', (req, res) => {
+  // const search = req.params.search;
+  const usersData = User.find()
+    .then((doc) => {
+      if (!doc) {
+        res.status(404).json({message: 'No transcation Found'});
+      } else {
+        // const data=doc.filter((item) =>item.username.toLowerCase().includes(search.toLowerCase()))
+        res.json(doc);
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({error: 'No Data Found'});
+    });
+});
+
+
+router.get('/posts', async (req, res) => {
+const posts = await Post.find().then((doc) => {
+  if (!doc) {
+    res.status(404).json({message: 'No Posts Found'});
+  }
+  else {
+    res.json(doc);
+  }
+
+}).catch((err) => {
+  res.status(500).json({error: 'No Data Found'});
+});
+})
 //home page post
 router.get('/', async (req, res) => {
   const posts = Post.aggregate([
