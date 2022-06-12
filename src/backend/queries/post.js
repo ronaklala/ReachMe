@@ -22,6 +22,8 @@ router.post('/create-post', (req, res) => {
     });
 });
 
+
+
 router.post('/MarketPlace', (req, res) => {
   const {image, token_name, wallet, username, description} = req.body;
   const post = new AddNFT({image, wallet, username, token_name, description});
@@ -216,5 +218,8 @@ router.post('/add-comment', async (req, res) => {
     return res.status(500).json({msg: err.message});
   }
 });
+
+
+
 
 module.exports = router;
