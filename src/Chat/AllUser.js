@@ -25,7 +25,11 @@ const AllUser = ({user1, user, selectUser, chat}) => {
         onClick={() => selectUser(user)}>
         <div className="user_info">
           <div className="user_detail">
-            <img src={userIm} alt="avatar" className="avatar" />
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+              alt="avatar"
+              className="avatar"
+            />
             <h4>{user.name}</h4>
             {data?.from !== user1 && data?.unread && (
               <small className="unread">New</small>
@@ -34,7 +38,7 @@ const AllUser = ({user1, user, selectUser, chat}) => {
         </div>
         {data && (
           <p className="truncate">
-            <strong>{data.from === user1 ? 'Me:' : null}</strong>
+            <strong>{data.from === user1 ? 'Me:' : 'New:'}</strong>
             {data.text}
           </p>
         )}

@@ -53,7 +53,7 @@ body {
                 list-style: none;
                 display: flex;
                 flex-direction: column;
-                gap: 20px;
+                gap: 30px;
                 margin-left: -20px;
 
                 li {
@@ -190,7 +190,6 @@ body {
 
         .posts-section {
             height: auto;
-            width: 55vw;
             max-width: 1500px;
             display: flex;
             flex-direction: column;

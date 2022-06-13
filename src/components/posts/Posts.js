@@ -4,6 +4,8 @@ import {useParams} from 'react-router-dom';
 import '../sass/sidebar.scss';
 import {css} from '@emotion/react';
 import {SyncLoader} from 'react-spinners';
+import {Delete} from '@mui/icons-material';
+import ArchiveIcon from '@mui/icons-material/Archive';
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
@@ -14,10 +16,17 @@ const Posts = () => {
     border-color: red;
   `;
 
+  const [user, setUser] = useState({});
+
   let [loading, setLoading] = useState(true);
 
   const wallet = useParams();
   useEffect(() => {
+    if (sessionStorage.getItem('user') !== null) {
+      setUser(JSON.parse(sessionStorage.getItem('user')));
+    } else {
+      setUser();
+    }
     getPosts();
   }, []);
   const getPosts = async () => {
@@ -52,10 +61,7 @@ const Posts = () => {
             <div className="post-parent">
               {posts.length === 0 ? (
                 <>
-                  <h1>No Posts Found For Your Wallet</h1>
-                  <a href="/create-post">
-                    <button>Create One Now</button>
-                  </a>
+                  <h1>No Posts Found</h1>
                 </>
               ) : (
                 <>
@@ -66,6 +72,30 @@ const Posts = () => {
                           <div className="post">
                             <img src={post.image} alt={post.image} />
                             <h3>{post.tag}</h3>
+                            {post.username === user.username ? (
+                              <>
+                                <section className="showcase">
+                                  <button
+                                    style={{
+                                      backgroundColor: '#f00',
+                                      width: '50px',
+                                    }}>
+                                    <Delete />
+                                  </button>
+                                  &nbsp;&nbsp;&nbsp;
+                                  {/* {Archive Posts Function To come from here} */}
+                                  {/* <button
+                                    style={{
+                                      backgroundColor: 'blue',
+                                      width: '50px',
+                                    }}>
+                                    <ArchiveIcon />
+                                  </button> */}
+                                </section>
+                              </>
+                            ) : (
+                              <></>
+                            )}
                           </div>
                         </li>
                       </a>

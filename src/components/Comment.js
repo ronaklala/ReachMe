@@ -72,7 +72,7 @@ const Comment = (props) => {
               onChange={(e) => setContent(e.target.value)}
             />
           </div>
-
+          <br />
           <button
             type="submit"
             className="btn combtn rounded"

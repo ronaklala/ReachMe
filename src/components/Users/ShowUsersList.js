@@ -41,11 +41,6 @@ const ShowUsersList = (props) => {
       });
   };
 
-  //To generate Random background Color
-  const generateColor = () => {
-    const color = '#' + Math.random().toString(16).substr(-6);
-    return color;
-  };
   const getPosts = async () => {
     await axios.get('http://localhost:5001/').then((res) => {
       setLoading(false);
@@ -94,7 +89,7 @@ const ShowUsersList = (props) => {
                             <div className="user">
                               <div
                                 className="user-profile"
-                                style={{backgroundColor: generateColor()}}>
+                                style={{backgroundColor: '#6d71e3'}}>
                                 {user.profile_url === null ? (
                                   <>
                                     <img
@@ -118,10 +113,10 @@ const ShowUsersList = (props) => {
                                   <span>
                                     {post_count(user.username, (count = 0))}
                                     <br />
-                                    Posts
+                                    Posts + NFTs
                                   </span>
                                   <span>
-                                    32
+                                    {user.followers.length}
                                     <br />
                                     Followers
                                   </span>

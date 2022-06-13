@@ -29,7 +29,7 @@ const Profile = () => {
             profile_url={user.profile_url}
           />
           <div className="profile-column">
-            <ViewProfile />
+            <ViewProfile username={user.username} uid={user._id} />
             <ProfileMenu
               username={user.username}
               uid={user._id}

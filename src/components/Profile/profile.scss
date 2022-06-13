@@ -50,6 +50,19 @@ sans-serif;
         font-size: 18px;
         justify-content: center;
         word-wrap: break-word;
+
+        button {
+            background-color: $button;
+            width: 150px;
+            padding: 10px;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            border: none;
+            border-radius: 5px;
+        }
     }
 }
 

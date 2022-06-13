@@ -78,12 +78,15 @@ const Chat = () => {
     const id =
       user.wallet > user2 ? `${user.wallet + user2}` : `${user2 + user.wallet}`;
 
-    await addDoc(collection(db, 'messages', id, 'chat'), {
-      text,
-      from: user.wallet,
-      to: user2,
-      createdAt: Timestamp.fromDate(new Date()),
-    });
+    if (text === '') {
+    } else {
+      await addDoc(collection(db, 'messages', id, 'chat'), {
+        text,
+        from: user.wallet,
+        to: user2,
+        createdAt: Timestamp.fromDate(new Date()),
+      });
+    }
 
     await setDoc(doc(db, 'lastMsg', id), {
       text,

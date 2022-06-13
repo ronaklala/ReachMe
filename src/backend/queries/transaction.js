@@ -5,6 +5,7 @@ const commentSchema = require('../schemas/commentSchema');
 const Post = require('../schemas/postSchema');
 const Transaction = require('../schemas/TransactionSchema');
 const router = express.Router();
+const User = require('../schemas/userSchema');
 
 //Saving the tip of user in backend
 router.post('/user_tip', (req, res) => {
@@ -96,6 +97,46 @@ router.get('/get-comments/:postid', (req, res) => {
     .exec(function (err, result) {
       res.json(result);
     });
+});
+
+router.post('/followUser/:uid/:fid', (req, res) => {
+  const uid = req.params.uid;
+  const fid = req.params.fid;
+  const user_follower = User.findByIdAndUpdate(
+    uid,
+    {
+      $push: {followers: fid},
+    },
+    {
+      new: true, //for new updated record
+    }
+  ).exec((err, result) => {
+    if (err) {
+      return res.status(422).json({error: err});
+    } else {
+      res.json(result);
+    }
+  });
+});
+
+router.post('/unfollowUser/:uid/:fid', (req, res) => {
+  const uid = req.params.uid;
+  const fid = req.params.fid;
+  const user_follower = User.findByIdAndUpdate(
+    uid,
+    {
+      $pull: {followers: fid},
+    },
+    {
+      new: true, //for new updated record
+    }
+  ).exec((err, result) => {
+    if (err) {
+      return res.status(422).json({error: err});
+    } else {
+      res.json(result);
+    }
+  });
 });
 
 module.exports = router;

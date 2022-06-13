@@ -111,8 +111,9 @@ const HomePage = (props) => {
             progress: undefined,
           });
           setTimeout(() => {
+            console.log(transactionDetails);
             axios.post('http://localhost:5001/user_tip', transactionDetails);
-          }, 5000);
+          }, 3000);
         })
         .catch((err) => {
           if (err.code === 'INSUFFICIENT_FUNDS') {
@@ -252,195 +253,200 @@ const HomePage = (props) => {
           </>
         ) : (
           <>
-            <div className="grid-container">
-              <div className="grid post-parent">
-                {posts.length == 0 ? (
-                  <>
-                    <h1>No Posts Found For Your Wallet</h1>
-                    <a href="/create-post">
-                      <button>Create One Now</button>
-                    </a>
-                  </>
-                ) : (
-                  <>
-                    <section className="posts-section">
-                      {posts.map((post, index) =>
-                        post.token_name !== undefined ? (
-                          <>
-                            <div
-                              className={'post ' + post._id}
-                              id={post._id}
-                              key={index}>
-                              <div className="user-info">
-                                {post.user_details.map((user) => (
+            {posts.length == 0 ? (
+              <>
+                <h1>No Posts Found For Your Wallet</h1>
+                <a href="/create-post">
+                  <button>Create One Now</button>
+                </a>
+              </>
+            ) : (
+              <>
+                <section className="posts-section">
+                  {posts.map((post, index) =>
+                    post.token_name !== undefined ? (
+                      <>
+                        <div
+                          className={'post ' + post._id}
+                          id={post._id}
+                          key={index}>
+                          <div className="user-info">
+                            {post.user_details.map((user) =>
+                              user.profile_url === null ? (
+                                <>
+                                  <Avatar
+                                    alt="Profile Image"
+                                    src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                                    sx={{width: 26, height: 26}}
+                                    key={user._id}
+                                  />
+                                </>
+                              ) : (
+                                <>
                                   <Avatar
                                     alt="Profile Image"
                                     src={user.profile_url}
                                     sx={{width: 26, height: 26}}
                                     key={user._id}
                                   />
-                                ))}
+                                </>
+                              )
+                            )}
 
-                                <a style={{color: '#fff'}} href={'#'}>
-                                  <b>
-                                    {post.username}
-                                    <greyscale>
-                                      Minted {moment(post.createdAt).fromNow()}
-                                    </greyscale>
-                                  </b>
-                                </a>
-                              </div>
-                              <div className="user-caption">
-                                <span
-                                  dangerouslySetInnerHTML={{
-                                    __html: urlify(post.description),
-                                  }}></span>
-                              </div>
-                              {post.image === '' ? (
-                                <></>
+                            <a style={{color: '#fff'}} href={'/' + post.wallet}>
+                              <b>
+                                {post.username}
+                                <greyscale>
+                                  Minted {moment(post.createdAt).fromNow()}
+                                </greyscale>
+                              </b>
+                            </a>
+                          </div>
+                          <div className="user-caption">
+                            <span
+                              dangerouslySetInnerHTML={{
+                                __html: urlify(post.description),
+                              }}></span>
+                          </div>
+                          {post.image === '' ? (
+                            <></>
+                          ) : (
+                            <>
+                              <a href={'#'}>
+                                {' '}
+                                <img
+                                  alt="Post Image"
+                                  src={post.image}
+                                  className="post-image"
+                                />
+                              </a>
+                            </>
+                          )}
+
+                          <div className="buttons">
+                            {post.username === user.username ? <></> : <></>}
+                          </div>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div
+                          className={'post ' + post._id}
+                          id={post._id}
+                          key={index}>
+                          <div className="user-info">
+                            {post.user_details.map((user) =>
+                              user.profile_url === null ? (
+                                <>
+                                  <Avatar
+                                    alt="Profile Image"
+                                    src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                                    sx={{width: 26, height: 26}}
+                                    key={user._id}
+                                  />
+                                </>
                               ) : (
                                 <>
-                                  <a href={`#`}>
-                                    {' '}
-                                    <img
-                                      alt="Post Image"
-                                      src={post.image}
-                                      className="post-image"
-                                    />
-                                  </a>
-                                </>
-                              )}
-
-                              <div className="buttons">
-                                {post.username === user.username ? (
-                                  <></>
-                                ) : (
-                                  <>
-                                    <button
-                                      onClick={handleTip(
-                                        post.wallet,
-                                        post._id
-                                      )}>
-                                      Tip 0.005 &nbsp;
-                                      <Icon icon="mdi:ethereum" />
-                                    </button>
-                                  </>
-                                )}
-                              </div>
-                            </div>
-                          </>
-                        ) : (
-                          <>
-                            <div
-                              className={'post ' + post._id}
-                              id={post._id}
-                              key={index}>
-                              <div className="user-info">
-                                {post.user_details.map((user) => (
                                   <Avatar
                                     alt="Profile Image"
                                     src={user.profile_url}
                                     sx={{width: 26, height: 26}}
                                     key={user._id}
                                   />
-                                ))}
-
-                                <a
-                                  style={{color: '#fff'}}
-                                  href={`/${post.wallet}`}>
-                                  <b>
-                                    {post.username}
-                                    <greyscale>
-                                      posted {moment(post.createdAt).fromNow()}
-                                    </greyscale>
-                                  </b>
-                                </a>
-                              </div>
-                              <div className="user-caption">
-                                <span
-                                  dangerouslySetInnerHTML={{
-                                    __html: urlify(post.caption),
-                                  }}></span>
-                              </div>
-                              {post.image === '' ? (
-                                <></>
-                              ) : (
-                                <>
-                                  <a href={`/post/${post._id}`}>
-                                    {' '}
-                                    <img
-                                      alt="Post Image"
-                                      src={post.image}
-                                      className="post-image"
-                                    />
-                                  </a>
                                 </>
-                              )}
+                              )
+                            )}
 
-                              <div className="buttons">
-                                {post.likes.includes(user._id)
-                                  ? isLiked(post._id)
-                                  : isunLiked(post._id)}
+                            <a style={{color: '#fff'}} href={`/${post.wallet}`}>
+                              <b>
+                                {post.username}
+                                <greyscale>
+                                  posted {moment(post.createdAt).fromNow()}
+                                </greyscale>
+                              </b>
+                            </a>
+                          </div>
+                          <div className="user-caption">
+                            <span
+                              dangerouslySetInnerHTML={{
+                                __html: urlify(post.caption),
+                              }}></span>
+                          </div>
+                          {post.image === '' ? (
+                            <></>
+                          ) : (
+                            <>
+                              <a href={`/post/${post._id}`}>
+                                {' '}
+                                <img
+                                  alt="Post Image"
+                                  src={post.image}
+                                  className="post-image"
+                                />
+                              </a>
+                            </>
+                          )}
 
+                          <div className="buttons">
+                            {post.likes.includes(user._id)
+                              ? isLiked(post._id)
+                              : isunLiked(post._id)}
+
+                            <button
+                              id={'unlike' + post._id}
+                              type="submit"
+                              style={{display: 'none'}}
+                              onClick={() => {
+                                unlikePost(post._id);
+                              }}>
+                              <FavoriteIcon />
+                            </button>
+
+                            <button
+                              id={'like' + post._id}
+                              type="submit"
+                              onClick={() => {
+                                likePost(post._id);
+                              }}>
+                              <FavoriteBorderIcon />
+                            </button>
+                            {post.username === user.username ? (
+                              <></>
+                            ) : (
+                              <>
                                 <button
-                                  id={'unlike' + post._id}
-                                  type="submit"
-                                  style={{display: 'none'}}
-                                  onClick={() => {
-                                    unlikePost(post._id);
-                                  }}>
-                                  <FavoriteIcon />
+                                  onClick={handleTip(post.wallet, post._id)}>
+                                  Tip 0.005 &nbsp;
+                                  <Icon icon="mdi:ethereum" />
                                 </button>
+                              </>
+                            )}
+                          </div>
 
-                                <button
-                                  id={'like' + post._id}
-                                  type="submit"
-                                  onClick={() => {
-                                    likePost(post._id);
-                                  }}>
-                                  <FavoriteBorderIcon />
-                                </button>
-                                {post.username === user.username ? (
-                                  <></>
-                                ) : (
-                                  <>
-                                    <button
-                                      onClick={handleTip(
-                                        post.wallet,
-                                        post._id
-                                      )}>
-                                      Tip 0.005 &nbsp;
-                                      <Icon icon="mdi:ethereum" />
-                                    </button>
-                                  </>
-                                )}
-                              </div>
-
-                              <div className="comment-section">
-                                {post.likes.length > 0 ? (
-                                  <>
-                                    <span class={'likes' + post._id}>
-                                      {post.likes.length}
-                                    </span>
-                                    Likes
-                                  </>
-                                ) : (
-                                  <>
-                                    <span class={'likes' + post._id}>0</span>
-                                    likes
-                                  </>
-                                )}
-                                <span>View All Comments</span>
-                              </div>
-                            </div>
-                          </>
-                        )
-                      )}
-                    </section>
-                  </>
-                )}
-              </div>
-            </div>
+                          <div className="comment-section">
+                            {post.likes.length > 0 ? (
+                              <>
+                                <span class={'likes' + post._id}>
+                                  {post.likes.length}
+                                </span>
+                                Likes
+                              </>
+                            ) : (
+                              <>
+                                <span class={'likes' + post._id}>0</span>
+                                likes
+                              </>
+                            )}
+                            <span>{post.comment.length} Comments</span>
+                            <span>Save</span>
+                          </div>
+                        </div>
+                      </>
+                    )
+                  )}
+                </section>
+              </>
+            )}
           </>
         )}
       </div>
