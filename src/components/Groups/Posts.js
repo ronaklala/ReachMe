@@ -19,7 +19,7 @@ const Posts = () => {
 
   return (
     <>
-      <section className="posts">
+      <section className="posts-group">
         <ul>
           {posts.length === 0 ? (
             <>

@@ -18,7 +18,7 @@ const ViewProfile = (props) => {
     border-color: red;
   `;
 
-  const [user, setuser] = useState({});
+  const [user, setuser] = useState([]);
   const [count, setPostCount] = useState();
   const [file, setFile] = useState();
   const [loading, setLoading] = useState(true);
@@ -59,13 +59,11 @@ const ViewProfile = (props) => {
       }
     ).then((r) => r.json());
     setFile(dataFile.secure_url);
-
     PostUserPic(dataFile.secure_url);
   };
-
   const PostUserPic = async (url) => {
     const photo = {
-      wallet: user.wallet,
+      wallet: user[0].wallet,
       url: url,
     };
     await axios

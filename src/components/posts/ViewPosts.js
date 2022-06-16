@@ -24,7 +24,9 @@ const ViewPosts = () => {
             wallet={user.wallet}
             profile_url={user.profile_url}
           />
-          <Posts />
+          <Posts 
+          wallet={user.wallet}
+          />
         </section>
       </section>
     </>
