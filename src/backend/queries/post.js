@@ -36,6 +36,22 @@ router.delete('/deletepost/:postId', (req, res) => {
     });
 });
 
+//Delete a Comment
+router.delete('/delete-comment/:postid', (req, res) => {
+  Comment.findOne({postId: req.params.postid})
+    .deleteOne()
+    .then(() => {
+      res.status(201).json({message: 'Comment Deleted Successfully'});
+    })
+    .catch(() => {
+      res
+        .status(500)
+        .json({message: 'Internal Server Error cannot delete Comment'});
+    });
+});
+
+
+
 //Adding a NFT Minted Data in Backend
 router.post('/MarketPlace', (req, res) => {
   const {image, token_name, wallet, username, description} = req.body;

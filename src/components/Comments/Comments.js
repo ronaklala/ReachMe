@@ -4,12 +4,20 @@ import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import './Comments.scss';
 import moment from 'moment';
-
+import {Delete} from '@mui/icons-material';
 // import { format } from 'timeago.js';
 
 const Comments = () => {
   const postid = useParams();
-
+  const [user, setUser] = useState({});
+  useEffect(() => {
+    if (sessionStorage.getItem('user') !== null) {
+      setUser(JSON.parse(sessionStorage.getItem('user')));
+      
+    } else {
+      setUser();
+    }
+  }, []);
   const [comments, setComments] = useState([]);
 
   const getComments = async () => {
@@ -20,12 +28,21 @@ const Comments = () => {
         console.log(comments);
       });
   };
-
+  const deletePost=async(postid)=>{
+    
+    await axios.delete('http://localhost:5001/delete-comment/' + postid).then((res) => {
+      window.location.reload();
+    })
+      // window.location.reload();
+    
+  };
   useEffect(() => {
     getComments();
   }, []);
 
   return (
+    <>
+    {console.log(user)}
     <div className="container">
       <div className="comments">
         <section className="comments-display">
@@ -65,7 +82,22 @@ const Comments = () => {
                             </>
                           ))}
                         </div>
+                        <div style={{display:"flex",flexDirection: "row",justifyContent: "space-between"}}> 
                         <text>{comment.content}</text>
+                          { user._id==comment.user ?(<button
+                                  type="submit"
+                                  style={{
+                                    backgroundColor: '#f00',
+                                    width: '50px',
+                                    // display: 'flex',
+                                  }}
+                                  onClick={() => {
+                                    deletePost(comment.postId);
+                                  }}
+                                  >
+                                  <Delete />
+                                </button>):<></>}
+                                </div>
                       </li>
                       <Divider style={{backgroundColor: '#fff'}} />
                     </>
@@ -77,6 +109,7 @@ const Comments = () => {
         </section>
       </div>
     </div>
+    </>
   );
 };
 
