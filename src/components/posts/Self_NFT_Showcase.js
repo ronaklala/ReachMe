@@ -33,8 +33,6 @@ const Self_NFT_Showcase = (props) => {
                     <li key={nft._id}>
                       <div className="user-info"></div>
                       <img src={nft.image} alt="Nft Image" />
-
-                      <div className="buttons">{nft.description}</div>
                       <span className="greyscale">
                         Minted {moment(nft.createdAt).fromNow()}
                       </span>

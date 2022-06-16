@@ -86,21 +86,7 @@ const Login = () => {
           }
         })
         .catch((error) => {
-          if (error.response.status === 500) {
-            toast.error(
-              'No Id is Registered With This Wallet Address! Please Register First',
-              {
-                toastId: 123 + 3,
-                position: 'top-center',
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-              }
-            );
-          }
+          toast.error(error.message);
         });
     }
   };

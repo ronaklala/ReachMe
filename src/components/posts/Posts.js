@@ -5,7 +5,6 @@ import '../sass/sidebar.scss';
 import {css} from '@emotion/react';
 import {SyncLoader} from 'react-spinners';
 import {Delete} from '@mui/icons-material';
-import ArchiveIcon from '@mui/icons-material/Archive';
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);

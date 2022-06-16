@@ -5,7 +5,7 @@ import './profile.scss';
 import {toast} from 'react-toastify';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
-import {SyncLoader} from 'react-spinners';
+import {PuffLoader, SyncLoader} from 'react-spinners';
 import {css} from '@emotion/react';
 import $ from 'jquery';
 
@@ -22,6 +22,7 @@ const ViewProfile = (props) => {
   const [count, setPostCount] = useState();
   const [file, setFile] = useState();
   const [loading, setLoading] = useState(true);
+  const [btnloading, setbtnLoading] = useState(true);
 
   const wallet = useParams();
 
@@ -33,7 +34,6 @@ const ViewProfile = (props) => {
           setuser(res.data.users);
           setFile(res.data.users[0].profile_url);
           setPostCount(res.data.numbers);
-          console.log(file);
           setLoading(false);
         })
         .catch((err) => {
@@ -71,7 +71,6 @@ const ViewProfile = (props) => {
     await axios
       .post('http://localhost:5001/user_pic', photo)
       .then((res) => {
-        console.log('Data sent');
         if (res.status === 200) {
           toast.success(
             'Profile Photo Set Successfully, Login Again to see Changes everywhere',
@@ -89,12 +88,22 @@ const ViewProfile = (props) => {
   const ifFollowed = (id) => {
     $('#follow' + id).hide();
     $('#unfollow' + id).show();
+    setbtnLoading(false);
   };
 
   const isUnfollowed = (id) => {
     $('#follow' + id).show();
     $('#unfollow' + id).hide();
+    setbtnLoading(false);
   };
+
+  function newFunction(users) {
+    setTimeout(() => {
+      users.followers.includes(props.uid)
+        ? ifFollowed(users._id)
+        : isUnfollowed(users._id);
+    }, 2000);
+  }
 
   const follow = (id) => {
     axios
@@ -102,8 +111,9 @@ const ViewProfile = (props) => {
       .then((res) => {
         var el = parseInt($('#count').text());
         $('#count').text(el + 1);
-        $('#follow' + id).hide();
-        $('#unfollow' + id).show();
+        setTimeout(() => {
+          ifFollowed(id);
+        }, 2000);
       });
   };
 
@@ -113,8 +123,9 @@ const ViewProfile = (props) => {
       .then((res) => {
         var el = parseInt($('#count').text());
         $('#count').text(el - 1);
-        $('#follow' + id).show();
-        $('#unfollow' + id).hide();
+        setTimeout(() => {
+          isUnfollowed(id);
+        }, 2000);
       });
   };
 
@@ -141,14 +152,21 @@ const ViewProfile = (props) => {
           <section className="profile">
             <div className="profile-image">
               <label htmlFor="btn-upload">
-                <input
-                  id="btn-upload"
-                  name="btn-upload"
-                  style={{display: 'none'}}
-                  type="file"
-                  accept="image/*"
-                  onChange={handleChange}
-                />
+                {user[0].wallet === props.wallet ? (
+                  <>
+                    <input
+                      id="btn-upload"
+                      name="btn-upload"
+                      style={{display: 'none'}}
+                      type="file"
+                      accept="image/*"
+                      onChange={handleChange}
+                    />
+                  </>
+                ) : (
+                  <></>
+                )}
+
                 {file === null ? (
                   <img
                     src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
@@ -183,25 +201,33 @@ const ViewProfile = (props) => {
                   <></>
                 ) : (
                   <>
-                    {users.followers.includes(props.uid)
-                      ? ifFollowed(users._id)
-                      : isUnfollowed(users._id)}
+                    {newFunction(users)}
+                    {btnloading === true ? (
+                      <>
+                        <PuffLoader color="red" css={override} size={30} />
+                      </>
+                    ) : (
+                      <></>
+                    )}
                     <button
                       onClick={() => {
                         follow(users._id);
                       }}
-                      id={'follow' + users._id}
                       style={{display: 'none'}}
+                      id={'follow' + users._id}
                       type="submit">
                       <PersonAddIcon />
+                      Follow
                     </button>
                     <button
                       onClick={() => {
                         unFollow(users._id);
                       }}
+                      style={{display: 'none'}}
                       id={'unfollow' + users._id}
                       type="submit">
                       <PersonRemoveIcon />
+                      UnFollow
                     </button>
                   </>
                 )}

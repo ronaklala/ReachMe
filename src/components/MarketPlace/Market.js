@@ -46,8 +46,6 @@ const Market = (props) => {
                     ))}
                   </div>
                   <img src={nft.image} alt="Nft Image" />
-
-                  <div className="buttons">{nft.description}</div>
                   <a
                     target="_blank"
                     href={

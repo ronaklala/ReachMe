@@ -23,7 +23,6 @@ const UserSearch = () => {
       .get('http://localhost:5001/search')
       .then((res) => {
         setuser(res.data);
-
         onsearch1(
           res.data.filter((user) =>
             user.username
