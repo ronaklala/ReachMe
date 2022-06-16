@@ -33,6 +33,7 @@ const Profile = () => {
               username={user.username}
               uid={user._id}
               wallet={user.wallet}
+              userid={uid.uid}
             />
             <ProfileMenu
               username={user.username}
