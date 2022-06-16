@@ -22,6 +22,18 @@ router.post('/create-post', (req, res) => {
     });
 });
 
+//Deleting a Post
+router.delete('/deletepost/:postId',(req,res) =>{
+  Post.findOne({_id:req.params.postId})
+  .deleteOne()
+  .then(()=>{
+    res.status(201).json({message: 'Post Deleted Successfully'});
+  })
+  .catch(() => {
+    res.status(500).json({message: 'Internal Server Error cannot delete postc'});
+  });
+})
+
 //Adding a NFT Minted Data in Backend
 router.post('/MarketPlace', (req, res) => {
   const {image, token_name, wallet, username, description} = req.body;

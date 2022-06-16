@@ -5,9 +5,11 @@ import '../sass/sidebar.scss';
 import {css} from '@emotion/react';
 import {SyncLoader} from 'react-spinners';
 import {Delete} from '@mui/icons-material';
+import {toast} from 'react-toastify';
+import {useNavigate} from 'react-router-dom';
 import ArchiveIcon from '@mui/icons-material/Archive';
 
-const Posts = () => {
+const Posts = (props) => {
   const [posts, setPosts] = useState([]);
 
   const override = css`
@@ -15,7 +17,7 @@ const Posts = () => {
     margin: 0 auto;
     border-color: red;
   `;
-
+  
   const [user, setUser] = useState({});
 
   let [loading, setLoading] = useState(true);
@@ -36,6 +38,50 @@ const Posts = () => {
       console.log(posts);
     });
   };
+
+  let axiosConfig = {
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8',
+      'Access-Control-Allow-Origin': '*',
+    },
+  };
+  const navigate = useNavigate();
+  //Function to delete a post
+  const deletePost = async (postId) =>{
+    await axios.delete(`/deletepost/${postId}`,axiosConfig)
+    .then((res)=>{
+      console.log(res.status);
+          if (res.status === 201) {
+            toast.success('Post Deleted Successfully', {
+              toastId: 1234 + 111,
+              position: 'top-center',
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+            setTimeout(() => {
+              navigate('/posts/' + props.wallet);
+            }, 2000);
+          }      
+    })
+    .catch((err) => {
+      if (err.response.status === 500) {
+        toast.error('Internal Server Error', {
+          toastId: 111 + 123,
+          position: 'top-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+    });
+  }
 
   return (
     <>
@@ -79,7 +125,7 @@ const Posts = () => {
                                     style={{
                                       backgroundColor: '#f00',
                                       width: '50px',
-                                    }}>
+                                    }} onClick={()=>{deletePost(post._id)}}>
                                     <Delete />
                                   </button>
                                   &nbsp;&nbsp;&nbsp;
