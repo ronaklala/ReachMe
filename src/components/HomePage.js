@@ -14,7 +14,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const HomePage = (props) => {
   const {Moralis, isAuthenticated, authenticate} = useMoralis();
-
+  const [saveposts, setsavePosts] = useState({});
   //Function for if a post has link in it, it will make it redirectable
   function urlify(text) {
     var urlRegex = /(https?:\/\/[^\s]+)/g;
@@ -59,6 +59,7 @@ const HomePage = (props) => {
   const [time, setTime] = useState({});
   let [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
+  const [getsavepost, getsavePosts] = useState([]);
 
   const today = new Date();
 
@@ -69,9 +70,32 @@ const HomePage = (props) => {
       setLoading(false);
     });
   };
+  
+  const getSavePosts = async () => {
+    await axios.get('http://localhost:5001/savepost').then((res) => {
+      getsavePosts(res.data.doc);
+      
+    });
+  };
+
+//to save post
+  const save=async(e,postid,username,userid)=>{
+    e.preventDefault();
+    // setsavePosts({id,username,user_id});
+    console.log(postid,username,userid)
+    let text="Do you want to save this post?";
+    
+    if(window.confirm(text)==true){
+    await axios.post('http://localhost:5001/save',{postid,username,userid},axiosConfig).then((res) => {
+      console.log(res);
+      window.location.reload();
+    });
+  }
+  }
 
   useEffect(() => {
     getPosts();
+    getSavePosts();
     const web3 = Moralis.enableWeb3();
     setTime(today.getHours());
     if (sessionStorage.getItem('user') !== null) {
@@ -209,6 +233,7 @@ const HomePage = (props) => {
 
   return (
     <>
+    {/* {console.log(getsavepost[0].postid)} */}
       <div>
         <section className="home">
           <div className="greetings">
@@ -438,7 +463,14 @@ const HomePage = (props) => {
                               </>
                             )}
                             <span>{post.comment.length} Comments</span>
-                            <span>Save</span>
+                            { ( getsavepost.filter(e=> e.username==user.username && e.postid==post._id).length > 0)
+                            // {getsavepost[ind].postid!=(post._id)  && getsavepost[ind].username!=(post.username)
+                              ? (<button style={{background:"none",outline:"none",color:"#fefe",border:"none"}} disabled>Saved</button>) :
+                              (
+                                <button style={{background:"none",outline:"none",color:"#fff",border:"none"}} onClick={(event)=> save(event,post._id,user.username,user._id)}><span >Save</span></button>)
+                              
+}
+ 
                           </div>
                         </div>
                       </>
