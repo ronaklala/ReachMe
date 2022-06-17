@@ -177,6 +177,7 @@ const ViewProfile = (props) => {
               </label>
             </div>
             {user.map((users) => (
+              
               <div className="profile-info">
                 <span>{users.username}</span>
                 <span>{users.wallet}</span>
@@ -229,7 +230,10 @@ const ViewProfile = (props) => {
                     </button>
                   </>
                 )}
+
               </div>
+      
+      
             ))}
           </section>
         </>

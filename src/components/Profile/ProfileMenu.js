@@ -1,4 +1,6 @@
-import React from 'react';
+import {useParams} from 'react-router-dom';
+import axios from 'axios';
+import React, {useEffect, useState} from 'react';
 import './profile.scss';
 import {Button} from '@mui/material';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
@@ -8,8 +10,12 @@ import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import {Divider} from '@mui/material';
 
 const ProfileMenu = (props) => {
+  const [user, setUser] = useState([]);
+  
+  console.log(props.userid);
   return (
     <>
+    {console.log(props.wallet)}
       <ul>
         <a href={'/' + props.userid}>
           <li>Profile</li>
@@ -23,11 +29,18 @@ const ProfileMenu = (props) => {
         <a href={'/followers/' + props.uid}>
           <li>Followers</li>
         </a>
-
-        <a href={'/transcation/' + props.uid}>
-          <li>Transactions</li>
-        </a>
+        
+        
+ {         props.wallet==props.userid ? (
+            <></>
+            ): (  <a href={'/transcation/' + props.uid}>
+            <li>Transactions</li>
+          </a>)
+}
       </ul>
+      <br/>
+      <br/>
+      <br/>
       <Divider />
       <center>
         <h2>View Profile Also At</h2>
