@@ -79,14 +79,14 @@ const HomePage = (props) => {
   };
 
 //to save post
-  const save=async(e,postid,username,userid)=>{
+  const save=async(e,postid,username,userid,image)=>{
     e.preventDefault();
     // setsavePosts({id,username,user_id});
     console.log(postid,username,userid)
     let text="Do you want to save this post?";
     
     if(window.confirm(text)==true){
-    await axios.post('http://localhost:5001/save',{postid,username,userid},axiosConfig).then((res) => {
+    await axios.post('http://localhost:5001/save',{postid,username,userid,image},axiosConfig).then((res) => {
       console.log(res);
       window.location.reload();
     });
@@ -467,7 +467,7 @@ const HomePage = (props) => {
                             // {getsavepost[ind].postid!=(post._id)  && getsavepost[ind].username!=(post.username)
                               ? (<button style={{background:"none",outline:"none",color:"#fefe",border:"none"}} disabled>Saved</button>) :
                               (
-                                <button style={{background:"none",outline:"none",color:"#fff",border:"none"}} onClick={(event)=> save(event,post._id,user.username,user._id)}><span >Save</span></button>)
+                                <button style={{background:"none",outline:"none",color:"#fff",border:"none"}} onClick={(event)=> save(event,post._id,user.username,user._id,post.image)}><span >Save</span></button>)
                               
 }
  

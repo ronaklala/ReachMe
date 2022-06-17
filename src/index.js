@@ -25,6 +25,7 @@ import Create_Group from './components/Groups/Create_Group';
 import SingleGroup from './components/Groups/SingleGroup';
 import SingleGroupMemberList from './components/Groups/SingleGroupMemberList';
 import GroupPosts from './components/Groups/GroupPosts';
+import Saved_post from './components/Saved/Saved_post';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -42,7 +43,8 @@ root.render(
           <Route path="/MarketPlace" element={<MarketPlace />} />
           <Route path="/create-Nft" element={<AddNftpage />} />
           <Route path="/search/:search" element={<UserSearch />} />
-
+          <Route path="/saved-post/:username" element={<Saved_post />} />
+          
           <Route path="/posts/:uid" element={<ViewPosts />} />
           <Route path="/:uid" element={<Profile />} />
           <Route path="/post/:postid" element={<SinglePost />} />

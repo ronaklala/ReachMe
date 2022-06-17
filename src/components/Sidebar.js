@@ -57,7 +57,7 @@ const Sidebar = (props) => {
             </li>
 
             <li>
-              <a href="#">
+              <a href={"/saved-post/"+props.username}>
                 <SaveAltIcon />
                 Saved
               </a>

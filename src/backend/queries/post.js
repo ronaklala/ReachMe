@@ -69,8 +69,8 @@ router.post('/MarketPlace', (req, res) => {
 
 router.post('/save', (req, res) => {
   console.log(req.body);
-  const {postid,username,userid} = req.body;
-  const post = new SavePost({postid,username,userid});
+  const {postid,username,userid,image} = req.body;
+  const post = new SavePost({postid,username,userid,image});
   post
     .save()
     .then(() => {
@@ -121,6 +121,36 @@ router.get('/transcation/:uid', async (req, res) => {
       }
     });
 });
+
+//Getting user saved post
+router.get('/saved-post/:username', async (req, res) => {
+  const username = req.params.username;
+  const user_transaction = await SavePost.find({username: username})
+    .sort({createdAt: -1})
+    .then((doc) => {
+      if (!doc) {
+        res.status(404).json({message: 'No Saved post Found'});
+      } else {
+        console.log({doc});
+        res.status(203).json({doc});
+      }
+    });
+});
+//delete saved post
+
+router.delete('/delete-savedpost/:postid', (req, res) => {
+  SavePost.findOne({postid: req.params.postid})
+    .deleteOne()
+    .then(() => {
+      res.status(201).json({message: 'Saved Post Deleted Successfully'});
+    })
+    .catch(() => {
+      res
+        .status(500)
+        .json({message: 'Internal Server Error cannot delete Saved Post'});
+    });
+});
+
 
 //Showings Users of App
 router.get('/users', (req, res) => {
