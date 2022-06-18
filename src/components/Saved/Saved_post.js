@@ -6,7 +6,7 @@ import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import Header from '../Header';
 import Sidebar from '../Sidebar';
-import { toast } from 'react-toastify';
+import {toast} from 'react-toastify';
 
 const Saved_post = () => {
   const override = css`
@@ -25,39 +25,35 @@ const Saved_post = () => {
     }
   }, []);
   const [savepost, setsavePosts] = useState([]);
-  
-  
+
+  const uname = useParams();
+
   const getPosts = async () => {
-    await axios.get('http://localhost:5001/saved-post/' + username.username).then((res) => {
-      
-    setsavePosts(res.data.doc);
-    // console.log(res.data.doc);
-    setLoading(false);
+    await axios.get('' + uname.username).then((res) => {
+      setsavePosts(res.data.doc);
+      setLoading(false);
     });
   };
   useEffect(() => {
-    
     getPosts();
   }, []);
   const deletePost = async (postid) => {
-    await axios
-      .delete(`/delete-savedpost/${postid}`)
-      .then((res) => {
-        
-        toast.success('saved Post Deleted Successfully', {
-          toastId: 1234 + 111,
-          position: 'top-center',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-        });
-        window.location.reload();
+    await axios.delete(`/delete-savedpost/${postid}`).then((res) => {
+      toast.success('saved Post Deleted Successfully', {
+        toastId: 1234 + 111,
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
       });
-  }
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+    });
+  };
   return (
     <>
-    {console.log(savepost)}
-    <Header />
+      <Header />
       <section className="wrapper">
         <section className="container">
           <Sidebar
@@ -66,82 +62,88 @@ const Saved_post = () => {
             profile_url={user.profile_url}
           />
 
-{loading === true ? (
-        <>
-          <div className="spinner">
-            <center>
-              <br />
-              <SyncLoader
-                color="#ffffff"
-                loading={loading}
-                css={override}
-                size={50}
-              />
-              <br />
-              <h2>Loading Posts......</h2>
-            </center>
-          </div>
-        </>
-      ) : (
-        <> 
-
-          <section className="posts">
-            <div className="post-parent">
-            {(savepost.filter(e=> e.username!=user.username).length > 0)  ? (
-                <>
-                  <h1>No Saved Posts Found</h1>
-                </>
-              ):(
-          <ul>
-                    {savepost.map((post, id) => (
-                      <li key={post.postid} id={post.postid}>
-                        <div className="post">
-                          <a href={'/post/' + post.postid}>
-                            <img src={post.image} alt={post.image} />
-                          </a>
-                          {/* <h3>{post.tag}</h3> */}
-                          {post.username === user.username ? (
-                            <>
-                              <section className="showcase">
-                                <button
-                                  type="submit"
-                                  style={{
-                                    backgroundColor: '#f00',
-                                    width: '50px',
-                                  }}
-                                  onClick={() => {
-                                    deletePost(post.postid);
-                                  }}>
-                                  <Delete />
-                                </button>
-                                &nbsp;&nbsp;&nbsp;
-                                {/* {Archive savepost Function To come from here} */}
-                                {/* <button
-                                    style={{
-                                      backgroundColor: 'blue',
-                                      width: '50px',
-                                    }}>
-                                    <ArchiveIcon />
-                                  </button> */}
-                              </section>
-                            </>
-                          ) : (
-                            <></>
-                          )}
-                        </div>
-                      </li>
-                    ))}
-                  </ul>)}
-                  </div>
-                  </section>
-                  </>
+          {loading === true ? (
+            <>
+              <div className="spinner">
+                <center>
+                  <br />
+                  <SyncLoader
+                    color="#ffffff"
+                    loading={loading}
+                    css={override}
+                    size={50}
+                  />
+                  <br />
+                  <h2>Loading Posts......</h2>
+                </center>
+              </div>
+            </>
+          ) : (
+            <>
+              <section className="posts">
+                <div className="post-parent">
+                  {uname.username !== user.username ? (
+                    <>{(window.location.href = '/error')}</>
+                  ) : (
+                    <>
+                      {savepost.length === 0 ? (
+                        <>
+                          <h1>No Saved Posts Found</h1>
+                        </>
+                      ) : (
+                        <>
+                          <ul>
+                            {savepost.map((post, id) => (
+                              <li key={post.postid} id={post.postid}>
+                                <div className="post">
+                                  <a href={'/post/' + post.postid}>
+                                    <img src={post.image} alt={post.image} />
+                                  </a>
+                                  {/* <h3>{post.tag}</h3> */}
+                                  {post.username === user.username ? (
+                                    <>
+                                      <section className="showcase">
+                                        <button
+                                          type="submit"
+                                          style={{
+                                            backgroundColor: '#f00',
+                                            width: '50px',
+                                          }}
+                                          onClick={() => {
+                                            deletePost(post.postid);
+                                          }}>
+                                          <Delete />
+                                        </button>
+                                        &nbsp;&nbsp;&nbsp;
+                                        {/* {Archive savepost Function To come from here} */}
+                                        {/* <button
+                   style={{
+                     backgroundColor: 'blue',
+                     width: '50px',
+                   }}>
+                   <ArchiveIcon />
+                 </button> */}
+                                      </section>
+                                    </>
+                                  ) : (
+                                    <></>
+                                  )}
+                                </div>
+                              </li>
+                            ))}
+                          </ul>
+                        </>
+                      )}
+                    </>
                   )}
-            </section>
+                </div>
+              </section>
+            </>
+          )}
+        </section>
       </section>
-      
-      
     </>
-  )
-}
+  );
+};
 
-export default Saved_post
+export default Saved_post;

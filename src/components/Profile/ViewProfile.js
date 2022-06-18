@@ -74,6 +74,13 @@ const ViewProfile = (props) => {
             'Profile Photo Set Successfully, Login Again to see Changes everywhere',
             {
               toastId: 123 + 3,
+              position: 'top-center',
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
             }
           );
         }
@@ -177,7 +184,6 @@ const ViewProfile = (props) => {
               </label>
             </div>
             {user.map((users) => (
-              
               <div className="profile-info">
                 <span>{users.username}</span>
                 <span>{users.wallet}</span>
@@ -230,10 +236,7 @@ const ViewProfile = (props) => {
                     </button>
                   </>
                 )}
-
               </div>
-      
-      
             ))}
           </section>
         </>

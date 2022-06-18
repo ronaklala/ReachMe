@@ -3,6 +3,7 @@ import Header from '../Header';
 import Sidebar from '../Sidebar';
 import '../sass/sidebar.scss';
 import CreatePostForm from './CreatePostForm';
+import MobileMenu from '../MobileMenu';
 
 const CreatePost = () => {
   const [user, setUser] = useState({});
@@ -23,6 +24,7 @@ const CreatePost = () => {
             wallet={user.wallet}
             profile_url={user.profile_url}
           />
+          <MobileMenu />
           <CreatePostForm username={user.username} wallet={user.wallet} />
         </section>
       </section>

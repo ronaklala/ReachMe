@@ -201,11 +201,11 @@
     ul {
         display: flex;
         flex-direction: column;
-        width: 65%;
+        width: 100%;
         align-items: center;
         gap: 15px;
         list-style: none;
-
+        margin-left: -40px;
 
         li {
             height: auto;

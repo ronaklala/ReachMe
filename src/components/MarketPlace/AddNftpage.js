@@ -4,11 +4,10 @@ import Sidebar from '../Sidebar';
 import '../sass/sidebar.scss';
 
 import AddNFT from './AddNFT';
-
-
+import MobileMenu from '../MobileMenu';
 
 const AddNftpage = () => {
-    const [user, setUser] = useState({});
+  const [user, setUser] = useState({});
   useEffect(() => {
     if (sessionStorage.getItem('user') !== null) {
       setUser(JSON.parse(sessionStorage.getItem('user')));
@@ -18,7 +17,7 @@ const AddNftpage = () => {
   }, []);
   return (
     <>
-    <Header />
+      <Header />
       <section className="wrapper">
         <section className="container">
           <Sidebar
@@ -26,11 +25,12 @@ const AddNftpage = () => {
             wallet={user.wallet}
             profile_url={user.profile_url}
           />
+          <MobileMenu />
           <AddNFT username={user.username} wallet={user.wallet} />
         </section>
       </section>
     </>
-  )
-}
+  );
+};
 
-export default AddNftpage
+export default AddNftpage;

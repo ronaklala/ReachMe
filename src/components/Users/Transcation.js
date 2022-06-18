@@ -6,6 +6,7 @@ import Header from '../Header';
 import Sidebar from '../Sidebar';
 import './users.scss';
 import moment from 'moment';
+import MobileMenu from '../MobileMenu';
 
 const Transcation = () => {
   let [loading, setLoading] = useState(true);
@@ -47,6 +48,7 @@ const Transcation = () => {
             wallet={user.wallet}
             profile_url={user.profile_url}
           />
+          <MobileMenu />
           <section className="products">
             {trans.length == 0 ? (
               <>

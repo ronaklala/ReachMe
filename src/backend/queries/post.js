@@ -51,8 +51,6 @@ router.delete('/delete-comment/:postid', (req, res) => {
     });
 });
 
-
-
 //Adding a NFT Minted Data in Backend
 router.post('/MarketPlace', (req, res) => {
   const {image, token_name, wallet, username, description} = req.body;
@@ -68,9 +66,8 @@ router.post('/MarketPlace', (req, res) => {
 });
 
 router.post('/save', (req, res) => {
-  console.log(req.body);
-  const {postid,username,userid,image} = req.body;
-  const post = new SavePost({postid,username,userid,image});
+  const {postid, username, userid, image} = req.body;
+  const post = new SavePost({postid, username, userid, image});
   post
     .save()
     .then(() => {
@@ -80,9 +77,6 @@ router.post('/save', (req, res) => {
       res.status(500).json({message: 'Internal Server Error'});
     });
 });
-
-
-
 
 //Getting Posts for a particular User
 router.get('/posts/:uid', async (req, res) => {
@@ -107,7 +101,6 @@ router.get('/savepost', async (req, res) => {
   });
 });
 
-
 //Getting Transactions for a particular User
 router.get('/transcation/:uid', async (req, res) => {
   const user_id = req.params.uid;
@@ -131,7 +124,6 @@ router.get('/saved-post/:username', async (req, res) => {
       if (!doc) {
         res.status(404).json({message: 'No Saved post Found'});
       } else {
-        console.log({doc});
         res.status(203).json({doc});
       }
     });
@@ -150,7 +142,6 @@ router.delete('/delete-savedpost/:postid', (req, res) => {
         .json({message: 'Internal Server Error cannot delete Saved Post'});
     });
 });
-
 
 //Showings Users of App
 router.get('/users', (req, res) => {

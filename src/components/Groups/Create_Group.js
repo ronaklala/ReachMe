@@ -7,6 +7,7 @@ import Sidebar from '../Sidebar';
 import $ from 'jquery';
 import axios from 'axios';
 import {toast} from 'react-toastify';
+import MobileMenu from '../MobileMenu';
 
 const Create_Group = () => {
   const [file, setFile] = useState();
@@ -43,12 +44,28 @@ const Create_Group = () => {
     group.wallet = user.wallet;
     group.uid = user._id;
     if (group.name === '' || group.description === '') {
-      toast.error('Please Fill the Whole Form');
+      toast.error('Please Fill the Whole Form', {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     } else {
       axios
         .post('http://localhost:5001/create_group', group)
         .then((res) => {
-          toast.success('Group Created Successfully');
+          toast.success('Group Created Successfully', {
+            position: 'top-center',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
           window.location.href = '/groups';
         })
         .catch({});
@@ -95,6 +112,7 @@ const Create_Group = () => {
             wallet={user.wallet}
             profile_url={user.profile_url}
           />
+          <MobileMenu />
           <section className="home">
             <div className="post">
               <form>

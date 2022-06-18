@@ -44,7 +44,7 @@ root.render(
           <Route path="/create-Nft" element={<AddNftpage />} />
           <Route path="/search/:search" element={<UserSearch />} />
           <Route path="/saved-post/:username" element={<Saved_post />} />
-          
+
           <Route path="/posts/:uid" element={<ViewPosts />} />
           <Route path="/:uid" element={<Profile />} />
           <Route path="/post/:postid" element={<SinglePost />} />

@@ -5,6 +5,7 @@ import React, {useEffect, useState} from 'react';
 import {SyncLoader} from 'react-spinners';
 import Header from '../Header';
 import Sidebar from '../Sidebar';
+import MobileMenu from '../MobileMenu';
 const UserSearch = () => {
   var count;
   const search = useParams();
@@ -73,6 +74,7 @@ const UserSearch = () => {
             wallet={user1.wallet}
             profile_url={user1.profile_url}
           />
+          <MobileMenu />
           {loading == true ? (
             <>
               <center>

@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Header from '../Header';
+import MobileMenu from '../MobileMenu';
 import '../sass/sidebar.scss';
 import Sidebar from '../Sidebar';
 import Posts from './Posts';
@@ -24,9 +25,8 @@ const ViewPosts = () => {
             wallet={user.wallet}
             profile_url={user.profile_url}
           />
-          <Posts 
-          wallet={user.wallet}
-          />
+          <MobileMenu />
+          <Posts wallet={user.wallet} />
         </section>
       </section>
     </>

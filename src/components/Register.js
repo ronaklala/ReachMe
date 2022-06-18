@@ -1,11 +1,11 @@
 /* eslint-disable eqeqeq */
 import axios from 'axios';
-import React, { useState } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
+import React, {useState} from 'react';
+import {toast, ToastContainer} from 'react-toastify';
 import './sass/main.scss';
-import { Link, useNavigate } from 'react-router-dom';
-import { TextField } from '@mui/material';
-import { db } from "../firebase";
+import {Link, useNavigate} from 'react-router-dom';
+import {TextField} from '@mui/material';
+import {db} from '../firebase';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -28,12 +28,12 @@ const Register = () => {
   const data = {
     id: user.wallet,
     email: user.email,
-    name: user.username
+    name: user.username,
   };
 
   //Handling Inputs
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const {name, value} = e.target;
     setUser((event) => {
       return {
         ...event,
@@ -100,7 +100,7 @@ const Register = () => {
   /* Wallet Connection */
   const ConnectWallet = () => {
     if (window.ethereum) {
-      window.ethereum.request({ method: 'eth_requestAccounts' }).then((res) => {
+      window.ethereum.request({method: 'eth_requestAccounts'}).then((res) => {
         accountChangeHandler(res[0]);
       });
     } else {
@@ -122,6 +122,13 @@ const Register = () => {
     user.wallet = account;
     toast.success(account + 'Successfully Connected', {
       toastId: customId,
+      position: 'top-center',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
     });
     console.log(user);
   };

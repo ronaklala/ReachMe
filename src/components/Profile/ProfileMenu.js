@@ -10,12 +10,9 @@ import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import {Divider} from '@mui/material';
 
 const ProfileMenu = (props) => {
-  const [user, setUser] = useState([]);
-  
   console.log(props.userid);
   return (
     <>
-    {console.log(props.wallet)}
       <ul>
         <a href={'/' + props.userid}>
           <li>Profile</li>
@@ -29,18 +26,18 @@ const ProfileMenu = (props) => {
         <a href={'/followers/' + props.uid}>
           <li>Followers</li>
         </a>
-        
-        
- {         props.wallet==props.userid ? (
-            <></>
-            ): (  <a href={'/transcation/' + props.uid}>
+
+        {props.wallet == props.userid ? (
+          <></>
+        ) : (
+          <a href={'/transcation/' + props.uid}>
             <li>Transactions</li>
-          </a>)
-}
+          </a>
+        )}
       </ul>
-      <br/>
-      <br/>
-      <br/>
+      <br />
+      <br />
+      <br />
       <Divider />
       <center>
         <h2>View Profile Also At</h2>
