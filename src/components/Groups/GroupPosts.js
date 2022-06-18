@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import Header from '../Header';
+import MobileMenu from '../MobileMenu';
 import Sidebar from '../Sidebar';
 import CreatePostGroup from './CreatePostGroup';
 import Posts from './Posts';
@@ -37,6 +38,7 @@ const GroupPosts = () => {
             wallet={user.wallet}
             profile_url={user.profile_url}
           />
+          <MobileMenu />
           <section
             className="groupPosts"
             style={{display: 'flex', flexDirection: 'column'}}>

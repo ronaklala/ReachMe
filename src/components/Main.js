@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Sidebar from './Sidebar';
 import './sass/sidebar.scss';
 import HomePage from './HomePage';
+import MobileMenu from './MobileMenu';
 
 const Main = () => {
   const [user, setUser] = useState({});
@@ -21,6 +22,7 @@ const Main = () => {
             wallet={user.wallet}
             profile_url={user.profile_url}
           />
+          <MobileMenu />
           <HomePage
             username={user.username}
             wallet={user.wallet}

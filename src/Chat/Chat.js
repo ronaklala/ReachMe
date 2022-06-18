@@ -18,6 +18,7 @@ import {
 import Message from './Message';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
+import MobileMenu from '../components/MobileMenu';
 
 const Chat = () => {
   const [users, setUsers] = useState([]);
@@ -109,6 +110,7 @@ const Chat = () => {
             wallet={user.wallet}
             profile_url={user.profile_url}
           />
+          <MobileMenu />
           <div className="home_container">
             <div className="users_container">
               {users.map((user) => (

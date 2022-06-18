@@ -80,6 +80,13 @@ const AddNFT = (props) => {
 
     toast.success('NFT Minting Started', {
       toastId: 12345 + 65,
+      position: 'top-center',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
     });
 
     $('#image-text').hide();

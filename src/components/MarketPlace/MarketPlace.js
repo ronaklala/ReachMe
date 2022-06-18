@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Header from '../Header';
+import MobileMenu from '../MobileMenu';
 import Sidebar from '../Sidebar';
 import AddNFT from './AddNFT';
 import Market from './Market';
@@ -24,6 +25,7 @@ const MarketPlace = () => {
             wallet={user.wallet}
             profile_url={user.profile_url}
           />
+          <MobileMenu />
           <Market
             username={user.username}
             wallet={user.wallet}

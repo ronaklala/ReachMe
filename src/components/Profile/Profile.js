@@ -4,6 +4,7 @@ import Sidebar from '../Sidebar';
 import {useParams} from 'react-router-dom';
 import ProfileMenu from './ProfileMenu';
 import ViewProfile from './ViewProfile';
+import MobileMenu from '../MobileMenu';
 
 const Profile = () => {
   const [user, setUser] = useState({});
@@ -28,6 +29,7 @@ const Profile = () => {
             wallet={user.wallet}
             profile_url={user.profile_url}
           />
+          <MobileMenu />
           <div className="profile-column">
             <ViewProfile
               username={user.username}

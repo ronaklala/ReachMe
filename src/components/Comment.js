@@ -46,6 +46,13 @@ const Comment = (props) => {
           if (res.status == 200) {
             toast.success('Comment Added Successfully', {
               toastId: 1234 + 111,
+              position: 'top-center',
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
             });
             $('.comment').val('');
             window.location.reload();
@@ -56,6 +63,13 @@ const Comment = (props) => {
             console.log(err.message);
             toast.error('Internal Server Error', {
               toastId: 111 + 123,
+              position: 'top-center',
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
             });
           }
         });

@@ -9,6 +9,7 @@ import Sidebar from '../Sidebar';
 import moment from 'moment';
 import './groups.scss';
 import $ from 'jquery';
+import MobileMenu from '../MobileMenu';
 
 const SingleGroup = () => {
   const [group, setGroupData] = useState({});
@@ -94,6 +95,7 @@ const SingleGroup = () => {
             wallet={user.wallet}
             profile_url={user.profile_url}
           />
+          <MobileMenu />
           {loading === true ? (
             <>
               <div className="spinner">

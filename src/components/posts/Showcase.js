@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Header from '../Header';
+import MobileMenu from '../MobileMenu';
 import Sidebar from '../Sidebar';
 import Self_NFT_Showcase from './Self_NFT_Showcase';
 
@@ -22,6 +23,7 @@ const Showcase = () => {
             wallet={user.wallet}
             profile_url={user.profile_url}
           />
+          <MobileMenu />
           <Self_NFT_Showcase
             username={user.username}
             wallet={user.wallet}

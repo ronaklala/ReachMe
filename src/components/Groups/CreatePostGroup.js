@@ -65,14 +65,16 @@ const CreatePostGroup = (props) => {
     axios
       .post('http://localhost:5001/group/' + gid.gid + '/createGroupPost', post)
       .then((res) => {
-        toast.success('Post Created Successfully, Please Refresh To View');
-        setPost({
-          caption: '',
-          image: '',
-          uid: '',
-          wallet: '',
+        toast.success('Post Created Successfully, Please Refresh To View', {
+          position: 'top-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
         });
-        setFile('');
+        window.location.reload();
       });
   };
   return (

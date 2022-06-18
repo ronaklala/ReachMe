@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Header from '../Header';
+import MobileMenu from '../MobileMenu';
 import Sidebar from '../Sidebar';
 import GroupList from './GroupList';
 
@@ -22,6 +23,7 @@ const Groups = () => {
             wallet={user.wallet}
             profile_url={user.profile_url}
           />
+          <MobileMenu />
           <GroupList
             username={user.username}
             wallet={user.wallet}

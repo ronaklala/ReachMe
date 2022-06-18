@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Header from '../Header';
+import MobileMenu from '../MobileMenu';
 import '../sass/sidebar.scss';
 import Sidebar from '../Sidebar';
 import ShowUsersList from './ShowUsersList';
@@ -23,6 +24,7 @@ const Users = () => {
             wallet={user.wallet}
             profile_url={user.profile_url}
           />
+          <MobileMenu />
           <ShowUsersList
             username={user.username}
             wallet={user.wallet}

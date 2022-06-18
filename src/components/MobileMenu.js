@@ -1,21 +1,42 @@
 import React from 'react';
-import './sass/sidebar.scss';
 import PeopleIcon from '@mui/icons-material/People';
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import GroupsIcon from '@mui/icons-material/Groups';
-import {Avatar} from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
+import {Avatar} from '@mui/material';
+import {useEffect, useState} from 'react';
+import img from './images/close.png';
+import $ from 'jquery';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
-const Sidebar = (props) => {
+const MobileMenu = () => {
+  const [user, setUser] = useState({});
+  useEffect(() => {
+    if (sessionStorage.getItem('user') !== null) {
+      setUser(JSON.parse(sessionStorage.getItem('user')));
+    } else {
+      setUser();
+    }
+  });
+
+  const Logout = () => {
+    sessionStorage.removeItem('user');
+
+    window.location.href = '/';
+  };
+
+  function hideMenu() {
+    $('.m-menu').fadeOut();
+  }
   return (
     <>
-      <section className="sidebar">
+      <section className="m-menu">
         <nav>
           <ul>
             <li>
-              <a href={'/' + props.wallet}>
-                {props.profile_url === null ? (
+              <a href={'/' + user.wallet}>
+                {user.profile_url === null ? (
                   <>
                     <Avatar
                       alt="Profile Image"
@@ -27,13 +48,13 @@ const Sidebar = (props) => {
                   <>
                     <Avatar
                       alt="Remy Sharp"
-                      src={props.profile_url}
+                      src={user.profile_url}
                       sx={{width: 26, height: 26}}
                     />
                   </>
                 )}
 
-                {props.username}
+                {user.username}
               </a>
             </li>
 
@@ -68,11 +89,28 @@ const Sidebar = (props) => {
                 Messages
               </a>
             </li>
+            <li>
+              <a
+                href="#"
+                onClick={() => {
+                  Logout();
+                }}>
+                <ExitToAppIcon />
+                Logout
+              </a>
+            </li>
           </ul>
+          <img
+            src={img}
+            id="close-img"
+            onClick={() => {
+              hideMenu();
+            }}
+          />
         </nav>
       </section>
     </>
   );
 };
 
-export default Sidebar;
+export default MobileMenu;

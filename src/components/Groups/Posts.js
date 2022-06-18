@@ -77,11 +77,14 @@ const Posts = () => {
                             />
                           </>
                         )}
-                        <span>{user.username}</span>
-                        <span>{post.caption}</span>
+                        <span>
+                          {user.username}{' '}
+                          <greyscale>says this about the post,</greyscale>
+                        </span>
                       </>
                     ))}
                   </div>
+                  <span>{post.caption}</span>
                   <div className="likes"></div>
                 </li>
               ))}

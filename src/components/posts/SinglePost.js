@@ -3,6 +3,7 @@ import Header from '../Header';
 import Sidebar from '../Sidebar';
 import '../sass/sidebar.scss';
 import ShowSinglePost from './ShowSinglePost';
+import MobileMenu from '../MobileMenu';
 
 const SinglePost = () => {
   const [user, setUser] = useState({});
@@ -23,6 +24,7 @@ const SinglePost = () => {
             wallet={user.wallet}
             profile_url={user.profile_url}
           />
+          <MobileMenu />
           <ShowSinglePost
             username={user.username}
             wallet={user.wallet}

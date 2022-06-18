@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Header from '../Header';
+import MobileMenu from '../MobileMenu';
 import Sidebar from '../Sidebar';
 import MembersList from './MembersList';
 
@@ -22,6 +23,7 @@ const SingleGroupMemberList = () => {
             wallet={user.wallet}
             profile_url={user.profile_url}
           />
+          <MobileMenu />
           <MembersList />
         </section>
       </section>
