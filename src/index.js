@@ -25,57 +25,47 @@ import Create_Group from './components/Groups/Create_Group';
 import SingleGroup from './components/Groups/SingleGroup';
 import SingleGroupMemberList from './components/Groups/SingleGroupMemberList';
 import GroupPosts from './components/Groups/GroupPosts';
-import PeopleIcon from '@mui/icons-material/People';
-import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
-import GroupsIcon from '@mui/icons-material/Groups';
-import SendIcon from '@mui/icons-material/Send';
-import SaveAltIcon from '@mui/icons-material/SaveAlt';
-import {Avatar} from '@mui/material';
-import {useEffect, useState} from 'react';
-import img from '../src/components/images/close.png';
-import $ from 'jquery';
+import Saved_post from './components/Saved/Saved_post';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
 root.render(
-  <>
-    <React.StrictMode>
-      <BrowserRouter>
-        <MoralisProvider
-          appId="ni9S72pX5K7PJen1TcnEDizQaDnMQxf7zgAmDnOh"
-          serverUrl="https://ya7rkwykqzkd.usemoralis.com:2053/server">
-          <Routes>
-            <Route path="/" element={<App />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/Register" element={<Register />} />
-            <Route path="/comment" element={<Comment />} />
-            <Route path="/create-post" element={<CreatePost />} />
-            <Route path="/MarketPlace" element={<MarketPlace />} />
-            <Route path="/create-Nft" element={<AddNftpage />} />
-            <Route path="/search/:search" element={<UserSearch />} />
+  <React.StrictMode>
+    <BrowserRouter>
+      <MoralisProvider
+        appId="ni9S72pX5K7PJen1TcnEDizQaDnMQxf7zgAmDnOh"
+        serverUrl="https://ya7rkwykqzkd.usemoralis.com:2053/server">
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/Register" element={<Register />} />
+          <Route path="/comment" element={<Comment />} />
+          <Route path="/create-post" element={<CreatePost />} />
+          <Route path="/MarketPlace" element={<MarketPlace />} />
+          <Route path="/create-Nft" element={<AddNftpage />} />
+          <Route path="/search/:search" element={<UserSearch />} />
+          <Route path="/saved-post/:username" element={<Saved_post />} />
 
-            <Route path="/posts/:uid" element={<ViewPosts />} />
-            <Route path="/:uid" element={<Profile />} />
-            <Route path="/post/:postid" element={<SinglePost />} />
-            <Route path="/users" element={<Users />} />
-            <Route path="/showcase-nft/:uid" element={<Showcase />} />
-            <Route path="/transcation/:uid" element={<Transcation />} />
-            <Route exact path="*" element={<Page404 msg="404" />} />
-            <Route exact path="/error" element={<Page404 msg="403" />} />
-            <Route exact path="/messages" element={<Chat />} />
-            <Route path="/groups" element={<Groups />} />
-            <Route path="/create-group" element={<Create_Group />} />
-            <Route path="/group/:gid" element={<SingleGroup />} />
-            <Route
-              path="/group/:gid/members"
-              element={<SingleGroupMemberList />}
-            />
-            <Route path="/group/:gid/posts" element={<GroupPosts />} />
-          </Routes>
-        </MoralisProvider>
-      </BrowserRouter>
-    </React.StrictMode>
-  </>
+          <Route path="/posts/:uid" element={<ViewPosts />} />
+          <Route path="/:uid" element={<Profile />} />
+          <Route path="/post/:postid" element={<SinglePost />} />
+          <Route path="/users" element={<Users />} />
+          <Route path="/showcase-nft/:uid" element={<Showcase />} />
+          <Route path="/transcation/:uid" element={<Transcation />} />
+          <Route exact path="*" element={<Page404 msg="404" />} />
+          <Route exact path="/error" element={<Page404 msg="403" />} />
+          <Route exact path="/messages" element={<Chat />} />
+          <Route path="/groups" element={<Groups />} />
+          <Route path="/create-group" element={<Create_Group />} />
+          <Route path="/group/:gid" element={<SingleGroup />} />
+          <Route
+            path="/group/:gid/members"
+            element={<SingleGroupMemberList />}
+          />
+          <Route path="/group/:gid/posts" element={<GroupPosts />} />
+        </Routes>
+      </MoralisProvider>
+    </BrowserRouter>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

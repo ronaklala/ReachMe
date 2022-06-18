@@ -19,6 +19,7 @@ import Message from './Message';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import MobileMenu from '../components/MobileMenu';
+import './chat.scss';
 
 const Chat = () => {
   const [users, setUsers] = useState([]);

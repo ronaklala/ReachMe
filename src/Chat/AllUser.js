@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect} from 'react';
-import userIm from './../assets/user.png';
 import {onSnapshot, doc} from 'firebase/firestore';
 import {db} from './../firebase';
 
@@ -48,7 +47,15 @@ const AllUser = ({user1, user, selectUser, chat}) => {
         className={`sm_container ${
           chat.name === user.name && 'selected_user'
         }`}>
-        <img src={userIm} alt="avatar" className="avatar sm_screen" />
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+          alt="avatar"
+          className="avatar sm_screen"
+        />
+
+        <span className="m-show" style={{display: 'none'}}>
+          {user.name}
+        </span>
       </div>
     </>
   );
