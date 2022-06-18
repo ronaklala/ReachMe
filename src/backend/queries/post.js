@@ -166,6 +166,21 @@ router.get('/users', (req, res) => {
     });
 });
 
+//get selected user
+router.get('/getusers/:wallet', async(req, res) => {
+  const userwallet = req.params.wallet;
+  const user_transaction = await User.find({wallet: userwallet})
+    .sort({createdAt: -1})
+    .then((doc) => {
+      if (!doc) {
+        res.status(404).json({message: 'No Saved post Found'});
+      } else {
+        console.log({doc});
+        res.status(203).json({doc});
+      }
+    });
+});
+
 //Function for search of users
 router.get('/search', (req, res) => {
   const usersData = User.find()

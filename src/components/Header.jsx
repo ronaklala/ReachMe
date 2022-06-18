@@ -1,4 +1,4 @@
-
+import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import './sass/header.scss';
 import SendIcon from '@mui/icons-material/Send';
@@ -20,6 +20,10 @@ const Header = () => {
     }
     
   }, []);
+  useEffect(() => {
+    getUsersData();
+    
+  }, []);
   
   
   const Logout = () => {
@@ -30,9 +34,23 @@ const Header = () => {
   // function onsearch2() {
   //   navigate(`/search${serach}`);
   // }
+
+  const [getuser, setusers] = useState([]);
+  const getUsersData = async () => {
+    await axios
+      .get('http://localhost:5001/getusers/'+user.wallet)
+      .then((res) => {
+        setusers(...res.data.doc);
+        
+        // console.log(res.data.doc)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <>
-      
+      {console.log(getuser)}
       <section className="header">
         <nav>
           <a href="/">
@@ -62,7 +80,7 @@ const Header = () => {
               {user !== null ? (
                 <a href={'/' + user.wallet}>
                   <li>
-                    {user.profile_url === null ? (
+                    {getuser.profile_url == null ? (
                       <>
                         <Avatar
                           alt="Remy Sharp"
@@ -70,11 +88,13 @@ const Header = () => {
                           sx={{width: 30, height: 30}}
                         />
                       </>
-                    ) : (
+                    ) 
+                    :
+                     (
                       <>
                         <Avatar
                           alt="Remy Sharp"
-                          src={user.profile_url}
+                          src={getuser.profile_url}
                           sx={{width: 30, height: 30}}
                         />
                       </>
