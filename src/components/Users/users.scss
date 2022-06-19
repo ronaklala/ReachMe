@@ -124,10 +124,54 @@
     }
 }
 
+.flex-colmn {
+    width: 70%;
+}
+
+.members {
+    width: 100%;
+
+    ul {
+        display: flex;
+        flex-direction: row;
+        margin-left: -40px;
+        width: 100%;
+
+        li {
+            width: auto;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+
+            .admin {
+                display: flex;
+                height: 100px;
+                width: auto;
+                gap: 15px;
+                color: #fff;
+
+                .user_info {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;
+                }
+
+            }
+        }
+    }
+}
+
 @media (min-width:250px) and (max-width:1024px) {
     .users {
         width: 90%;
         margin-left: 3vw;
         justify-content: center;
+    }
+
+    .members ul li,
+    .members ul {
+        width: 100vw !important;
+        gap: 15px !important;
     }
 }

@@ -258,4 +258,23 @@ router.get('/group/:gid/getPosts', (req, res) => {
     });
 });
 
+router.get('/followers/:uid', (req, res) => {
+  const uid = mongoose.Types.ObjectId(req.params.uid);
+  const user_followers = User.aggregate([
+    {
+      $match: {_id: uid},
+    },
+    {
+      $lookup: {
+        from: 'users',
+        localField: 'followers',
+        foreignField: '_id',
+        as: 'user_details',
+      },
+    },
+  ]).then((doc) => {
+    res.json(doc);
+  });
+});
+
 module.exports = router;

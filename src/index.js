@@ -26,6 +26,7 @@ import SingleGroup from './components/Groups/SingleGroup';
 import SingleGroupMemberList from './components/Groups/SingleGroupMemberList';
 import GroupPosts from './components/Groups/GroupPosts';
 import Saved_post from './components/Saved/Saved_post';
+import Followers from './components/Users/Followers';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -57,6 +58,7 @@ root.render(
           <Route path="/groups" element={<Groups />} />
           <Route path="/create-group" element={<Create_Group />} />
           <Route path="/group/:gid" element={<SingleGroup />} />
+          <Route path="/followers/:uid" element={<Followers />} />
           <Route
             path="/group/:gid/members"
             element={<SingleGroupMemberList />}

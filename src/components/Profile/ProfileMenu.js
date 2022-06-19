@@ -27,7 +27,7 @@ const ProfileMenu = (props) => {
           <li>Followers</li>
         </a>
 
-        {props.wallet == props.userid ? (
+        {props.wallet !== props.userid ? (
           <></>
         ) : (
           <a href={'/transcation/' + props.uid}>
