@@ -1,7 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import {Avatar} from '@mui/material';
+import { Avatar } from '@mui/material';
 import moment from 'moment';
 
 const Posts = () => {
@@ -38,14 +40,14 @@ const Posts = () => {
                           <>
                             <Avatar
                               src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                              sx={{width: 26, height: 26}}
+                              sx={{ width: 26, height: 26 }}
                             />
                           </>
                         ) : (
                           <>
                             <Avatar
                               src={user.profile_url}
-                              sx={{width: 26, height: 26}}
+                              sx={{ width: 26, height: 26 }}
                             />
                           </>
                         )}
@@ -66,14 +68,14 @@ const Posts = () => {
                           <>
                             <Avatar
                               src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                              sx={{width: 26, height: 26}}
+                              sx={{ width: 26, height: 26 }}
                             />
                           </>
                         ) : (
                           <>
                             <Avatar
                               src={user.profile_url}
-                              sx={{width: 26, height: 26}}
+                              sx={{ width: 26, height: 26 }}
                             />
                           </>
                         )}

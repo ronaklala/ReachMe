@@ -1,20 +1,24 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/img-redundant-alt */
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable eqeqeq */
+/* eslint-disable no-unused-vars */
 import axios from 'axios';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './sass/sidebar.scss';
-import {SyncLoader} from 'react-spinners';
-import {css} from '@emotion/react';
-import {Avatar} from '@mui/material';
-import {Icon} from '@iconify/react';
-import {useMoralis} from 'react-moralis';
-import {toast} from 'react-toastify';
+import { SyncLoader } from 'react-spinners';
+import { css } from '@emotion/react';
+import { Avatar } from '@mui/material';
+import { Icon } from '@iconify/react';
+import { useMoralis } from 'react-moralis';
+import { toast } from 'react-toastify';
 import moment from 'moment';
 import $ from 'jquery';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const HomePage = (props) => {
-  const {Moralis, isAuthenticated, authenticate} = useMoralis();
-  const [saveposts, setsavePosts] = useState({});
+  const { Moralis, isAuthenticated, authenticate } = useMoralis();
   //Function for if a post has link in it, it will make it redirectable
   function urlify(text) {
     var urlRegex = /(https?:\/\/[^\s]+)/g;
@@ -88,7 +92,7 @@ const HomePage = (props) => {
       await axios
         .post(
           'http://localhost:5001/save',
-          {postid, username, userid, image},
+          { postid, username, userid, image },
           axiosConfig
         )
         .then((res) => {
@@ -210,7 +214,7 @@ const HomePage = (props) => {
         $('#like' + id).hide();
         $('#unlike' + id).show();
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   //function for UNLIKING a post
@@ -233,7 +237,7 @@ const HomePage = (props) => {
         $('#like' + id).show();
         $('#unlike' + id).hide();
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (
@@ -307,7 +311,7 @@ const HomePage = (props) => {
                                   <Avatar
                                     alt="Profile Image"
                                     src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                                    sx={{width: 26, height: 26}}
+                                    sx={{ width: 26, height: 26 }}
                                     key={user._id}
                                   />
                                 </>
@@ -316,14 +320,14 @@ const HomePage = (props) => {
                                   <Avatar
                                     alt="Profile Image"
                                     src={user.profile_url}
-                                    sx={{width: 26, height: 26}}
+                                    sx={{ width: 26, height: 26 }}
                                     key={user._id}
                                   />
                                 </>
                               )
                             )}
 
-                            <a style={{color: '#fff'}} href={'/' + post.wallet}>
+                            <a style={{ color: '#fff' }} href={'/' + post.wallet}>
                               <b>
                                 {post.username}
                                 <greyscale>
@@ -371,7 +375,7 @@ const HomePage = (props) => {
                                   <Avatar
                                     alt="Profile Image"
                                     src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                                    sx={{width: 26, height: 26}}
+                                    sx={{ width: 26, height: 26 }}
                                     key={user._id}
                                   />
                                 </>
@@ -380,14 +384,14 @@ const HomePage = (props) => {
                                   <Avatar
                                     alt="Profile Image"
                                     src={user.profile_url}
-                                    sx={{width: 26, height: 26}}
+                                    sx={{ width: 26, height: 26 }}
                                     key={user._id}
                                   />
                                 </>
                               )
                             )}
 
-                            <a style={{color: '#fff'}} href={`/${post.wallet}`}>
+                            <a style={{ color: '#fff' }} href={`/${post.wallet}`}>
                               <b>
                                 {post.username}
                                 <greyscale>
@@ -425,7 +429,7 @@ const HomePage = (props) => {
                             <button
                               id={'unlike' + post._id}
                               type="submit"
-                              style={{display: 'none'}}
+                              style={{ display: 'none' }}
                               onClick={() => {
                                 unlikePost(post._id);
                               }}>

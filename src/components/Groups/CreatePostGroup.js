@@ -1,13 +1,14 @@
-import {PhotoCamera} from '@mui/icons-material';
-import {Button, TextField} from '@mui/material';
-import React, {useState} from 'react';
-import {SyncLoader} from 'react-spinners';
-import {css} from '@emotion/react';
+/* eslint-disable jsx-a11y/alt-text */
+import { PhotoCamera } from '@mui/icons-material';
+import { Button, TextField } from '@mui/material';
+import React, { useState } from 'react';
+import { SyncLoader } from 'react-spinners';
+import { css } from '@emotion/react';
 import '../posts/create-post.scss';
 import $ from 'jquery';
 import axios from 'axios';
-import {useParams} from 'react-router-dom';
-import {toast} from 'react-toastify';
+import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const CreatePostGroup = (props) => {
   const [post, setPost] = useState({
@@ -49,7 +50,7 @@ const CreatePostGroup = (props) => {
   };
 
   const handleInput = (e) => {
-    const {name, value} = e.target;
+    const { name, value } = e.target;
     setPost((event) => {
       return {
         ...event,
@@ -95,7 +96,7 @@ const CreatePostGroup = (props) => {
               <input
                 id="btn-upload"
                 name="btn-upload"
-                style={{display: 'none'}}
+                style={{ display: 'none' }}
                 type="file"
                 accept="image/*"
                 onChange={handleChange}

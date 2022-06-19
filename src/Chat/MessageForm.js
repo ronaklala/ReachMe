@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MessageForm = ({handleSubmit, text, setText}) => {
+const MessageForm = ({ handleSubmit, text, setText }) => {
   return (
     <form className="message_form" onSubmit={handleSubmit}>
       <input

@@ -1,6 +1,8 @@
-import React, {useEffect, useState} from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable jsx-a11y/img-redundant-alt */
+import React, { useEffect, useState } from 'react';
 import '../MarketPlace/products.scss';
-import {useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
 
@@ -21,7 +23,7 @@ const Self_NFT_Showcase = (props) => {
         <ul>
           {nfts.length === 0 ? (
             <>
-              <h1 style={{fontSize: '32px'}}>No NFTs Minted Till Now</h1>
+              <h1 style={{ fontSize: '32px' }}>No NFTs Minted Till Now</h1>
             </>
           ) : (
             <>

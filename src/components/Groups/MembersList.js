@@ -1,9 +1,11 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios';
-import React, {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
-import {css} from '@emotion/react';
-import {SyncLoader} from 'react-spinners';
-import {Avatar} from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { css } from '@emotion/react';
+import { SyncLoader } from 'react-spinners';
+import { Avatar } from '@mui/material';
 import moment from 'moment';
 import './groups.scss';
 
@@ -63,12 +65,12 @@ const MembersList = () => {
                     <Avatar
                       alt="Remy Sharp"
                       src="https://pbs.twimg.com/profile_images/857490466572443648/c05JqEgo_400x400.jpg"
-                      sx={{width: 175, height: 175}}
+                      sx={{ width: 175, height: 175 }}
                     />
                   </>
                 ) : (
                   <>
-                    <Avatar src={group.image} sx={{width: 175, height: 175}} />
+                    <Avatar src={group.image} sx={{ width: 175, height: 175 }} />
                   </>
                 )}
               </div>
@@ -118,7 +120,7 @@ const MembersList = () => {
                             <>
                               <Avatar
                                 src={user.profile_url}
-                                sx={{width: 100, height: 100}}
+                                sx={{ width: 100, height: 100 }}
                               />
                             </>
                           )}

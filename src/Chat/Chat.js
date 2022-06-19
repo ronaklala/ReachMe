@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useEffect, useState} from 'react';
-import {db} from '../firebase';
+import React, { useEffect, useState } from 'react';
+import { db } from '../firebase';
 import AllUser from './AllUser';
 import MessageForm from './MessageForm';
 import {
@@ -69,7 +69,7 @@ const Chat = () => {
 
     const docSnap = await getDoc(doc(db, 'lastMsg', id));
     if (docSnap.data() && docSnap.data().from !== user) {
-      await updateDoc(doc(db, 'lastMsg', id), {unread: false});
+      await updateDoc(doc(db, 'lastMsg', id), { unread: false });
     }
   };
 
@@ -133,8 +133,8 @@ const Chat = () => {
                   <div className="messages">
                     {msgs.length
                       ? msgs.map((msg, i) => (
-                          <Message key={i} msg={msg} user1={user1} />
-                        ))
+                        <Message key={i} msg={msg} user1={user1} />
+                      ))
                       : null}
                   </div>
                   <MessageForm

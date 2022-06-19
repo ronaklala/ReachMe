@@ -1,8 +1,9 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable no-unused-vars */
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import {toast} from 'react-toastify';
-import {useParams} from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { useParams } from 'react-router-dom';
 import './sass/comments.scss';
 import $ from 'jquery';
 
@@ -90,7 +91,7 @@ const Comment = (props) => {
           <button
             type="submit"
             className="btn combtn rounded"
-            style={{fontWeight: 'bold'}}>
+            style={{ fontWeight: 'bold' }}>
             Post Comment
           </button>
         </form>

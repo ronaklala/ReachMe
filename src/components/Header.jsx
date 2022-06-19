@@ -1,19 +1,19 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import './sass/header.scss';
 import SendIcon from '@mui/icons-material/Send';
-import {ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {useNavigate} from 'react-router-dom';
-import {MenuRounded, Search} from '@mui/icons-material';
-import {Avatar} from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { MenuRounded, Search } from '@mui/icons-material';
+import { Avatar } from '@mui/material';
 import $ from 'jquery';
 // import { search } from '../backend/queries/transaction';
 
 const Header = () => {
   const navigate = useNavigate();
   const user = JSON.parse(sessionStorage.getItem('user'));
-  const [user1, setuser] = useState([]);
   var [search, onsearch] = useState([]);
   useEffect(() => {
     if (user === null) {
@@ -86,7 +86,7 @@ const Header = () => {
                         <Avatar
                           alt="Remy Sharp"
                           src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                          sx={{width: 30, height: 30}}
+                          sx={{ width: 30, height: 30 }}
                         />
                       </>
                     ) : (
@@ -94,7 +94,7 @@ const Header = () => {
                         <Avatar
                           alt="Remy Sharp"
                           src={getuser.profile_url}
-                          sx={{width: 30, height: 30}}
+                          sx={{ width: 30, height: 30 }}
                         />
                       </>
                     )}

@@ -1,10 +1,12 @@
-import {Avatar, Divider} from '@mui/material';
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable eqeqeq */
+import { Avatar, Divider } from '@mui/material';
 import axios from 'axios';
-import React, {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import './Comments.scss';
 import moment from 'moment';
-import {Delete} from '@mui/icons-material';
+import { Delete } from '@mui/icons-material';
 // import { format } from 'timeago.js';
 
 const Comments = () => {
@@ -64,7 +66,7 @@ const Comments = () => {
                                     <Avatar
                                       alt="Profile Image"
                                       src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                                      sx={{width: 26, height: 26}}
+                                      sx={{ width: 26, height: 26 }}
                                     />
                                   </>
                                 ) : (
@@ -72,7 +74,7 @@ const Comments = () => {
                                     <Avatar
                                       alt="Profile Image"
                                       src={user.profile_url}
-                                      sx={{width: 26, height: 26}}
+                                      sx={{ width: 26, height: 26 }}
                                     />
                                   </>
                                 )}
@@ -112,7 +114,7 @@ const Comments = () => {
                             )}
                           </div>
                         </li>
-                        <Divider style={{backgroundColor: '#fff'}} />
+                        <Divider style={{ backgroundColor: '#fff' }} />
                       </>
                     ))}
                   </ul>

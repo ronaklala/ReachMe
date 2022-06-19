@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios';
-import React, {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Header from '../Header';
 import MobileMenu from '../MobileMenu';
 import Sidebar from '../Sidebar';
@@ -41,7 +42,7 @@ const GroupPosts = () => {
           <MobileMenu />
           <section
             className="groupPosts"
-            style={{display: 'flex', flexDirection: 'column'}}>
+            style={{ display: 'flex', flexDirection: 'column' }}>
             {loading === true ? (
               <>Loading Group Posts</>
             ) : (

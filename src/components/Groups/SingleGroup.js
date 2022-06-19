@@ -1,10 +1,12 @@
-import {Avatar} from '@mui/material';
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable jsx-a11y/alt-text */
+import { Avatar } from '@mui/material';
 import axios from 'axios';
-import React, {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Header from '../Header';
-import {css} from '@emotion/react';
-import {PuffLoader, SyncLoader} from 'react-spinners';
+import { css } from '@emotion/react';
+import { PuffLoader, SyncLoader } from 'react-spinners';
 import Sidebar from '../Sidebar';
 import moment from 'moment';
 import './groups.scss';
@@ -122,7 +124,7 @@ const SingleGroup = () => {
                         <Avatar
                           alt="Remy Sharp"
                           src="https://pbs.twimg.com/profile_images/857490466572443648/c05JqEgo_400x400.jpg"
-                          sx={{width: 175, height: 175}}
+                          sx={{ width: 175, height: 175 }}
                         />
                       </>
                     ) : (
@@ -130,7 +132,7 @@ const SingleGroup = () => {
                         <Avatar
                           alt="Remy Sharp"
                           src={group.image}
-                          sx={{width: 175, height: 175}}
+                          sx={{ width: 175, height: 175 }}
                         />
                       </>
                     )}
@@ -158,7 +160,7 @@ const SingleGroup = () => {
                           onClick={() => {
                             joinGroup(user._id, group._id);
                           }}
-                          style={{display: 'none'}}
+                          style={{ display: 'none' }}
                           id={'follow' + user._id}
                           type="submit">
                           Join Group
@@ -167,7 +169,7 @@ const SingleGroup = () => {
                           onClick={() => {
                             leaveGroup(user._id, group._id);
                           }}
-                          style={{display: 'none'}}
+                          style={{ display: 'none' }}
                           id={'unfollow' + user._id}
                           type="submit">
                           Leave Group

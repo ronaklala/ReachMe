@@ -1,9 +1,12 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable array-callback-return */
+/* eslint-disable no-unused-vars */
 import axios from 'axios';
-import React, {useEffect, useState} from 'react';
-import {SyncLoader} from 'react-spinners';
+import React, { useEffect, useState } from 'react';
+import { SyncLoader } from 'react-spinners';
 import './users.scss';
-import {css} from '@emotion/react';
-import {count} from '../../backend/schemas/userSchema';
+import { css } from '@emotion/react';
+import { count } from '../../backend/schemas/userSchema';
 
 const ShowUsersList = (props) => {
   const [users, setUsers] = useState({});
@@ -89,7 +92,7 @@ const ShowUsersList = (props) => {
                             <div className="user">
                               <div
                                 className="user-profile"
-                                style={{backgroundColor: '#6d71e3'}}>
+                                style={{ backgroundColor: '#6d71e3' }}>
                                 {user.profile_url === null ? (
                                   <>
                                     <img

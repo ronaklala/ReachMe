@@ -1,13 +1,12 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios';
-import React, {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import '../sass/sidebar.scss';
-import {css} from '@emotion/react';
-import {SyncLoader} from 'react-spinners';
-import {Delete} from '@mui/icons-material';
-import {toast} from 'react-toastify';
-import {useNavigate} from 'react-router-dom';
-import ArchiveIcon from '@mui/icons-material/Archive';
+import { css } from '@emotion/react';
+import { SyncLoader } from 'react-spinners';
+import { Delete } from '@mui/icons-material';
+import { toast } from 'react-toastify';
 
 const Posts = (props) => {
   const [posts, setPosts] = useState([]);
@@ -45,7 +44,6 @@ const Posts = (props) => {
       'Access-Control-Allow-Origin': '*',
     },
   };
-  const navigate = useNavigate();
 
   //Function to delete a post
   function deletePost(postId) {

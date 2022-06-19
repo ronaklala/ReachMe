@@ -1,7 +1,8 @@
-import {Avatar} from '@mui/material';
+/* eslint-disable jsx-a11y/alt-text */
+import { Avatar } from '@mui/material';
 import axios from 'axios';
-import React, {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Header from '../Header';
 import MobileMenu from '../MobileMenu';
 import Sidebar from '../Sidebar';
@@ -31,6 +32,7 @@ const Followers = () => {
     } else {
       setUser();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>
@@ -66,7 +68,7 @@ const Followers = () => {
                                 <>
                                   <Avatar
                                     src={follower.profile_url}
-                                    sx={{width: 100, height: 100}}
+                                    sx={{ width: 100, height: 100 }}
                                   />
                                 </>
                               )}
