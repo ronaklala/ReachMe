@@ -29,7 +29,7 @@ Tools and technologies that you learnt and used in the project.
 4. N - Node JS
 5. Firebase 
 6. Moralis
-7. Morlis Laziminting NFTs
+7. Rarible Laziminting NFTs
 
 ## Applications
 * Users can connect with the other users virtually and can communicate with them via chats.
