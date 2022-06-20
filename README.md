@@ -9,7 +9,7 @@
 * Om Jadhav - omjadhav963@gmail.com
 * Hasnain Sayyed - hasnainsayyed833@gmail.com
 
-##Note
+## Note
 * To mint an NFT you must switch to Rinkeby Test Network
 
 ## Description
