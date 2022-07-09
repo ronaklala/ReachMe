@@ -9,6 +9,8 @@
 * Om Jadhav - omjadhav963@gmail.com
 * Hasnain Sayyed - hasnainsayyed833@gmail.com
 
+## Note
+* To mint an NFT you must switch to Rinkeby Test Network
 
 ## Description
 
@@ -29,6 +31,7 @@ Tools and technologies that you learnt and used in the project.
 4. N - Node JS
 5. Firebase 
 6. Moralis
+7. Rarible Laziminting NFTs
 
 ## Applications
 * Users can connect with the other users virtually and can communicate with them via chats.
@@ -39,6 +42,7 @@ Tools and technologies that you learnt and used in the project.
 * One can search the user by entering his name. 
 
 ## Future scope
+Adding Group Chats for Groups and Updating Groups Description and Group Information and Making a Sale order from Minted NFT from our Platform, Adding an Ecommerce System where user can list and purchase items with cryptocurrency on Block Chain Platforms
 
 
 
