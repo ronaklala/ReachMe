@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/alt-text */
-import { Avatar } from '@mui/material';
+import {Avatar} from '@mui/material';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {useParams} from 'react-router-dom';
 import Header from '../Header';
 import MobileMenu from '../MobileMenu';
 import Sidebar from '../Sidebar';
@@ -68,7 +68,7 @@ const Followers = () => {
                                 <>
                                   <Avatar
                                     src={follower.profile_url}
-                                    sx={{ width: 100, height: 100 }}
+                                    sx={{width: 100, height: 100}}
                                   />
                                 </>
                               )}
@@ -78,7 +78,7 @@ const Followers = () => {
                                   style={{
                                     overflow: 'hidden',
                                     textOverflow: 'ellipsis',
-                                    width: '90%',
+                                    width: '80%',
                                   }}>
                                   {follower.wallet}
                                 </span>

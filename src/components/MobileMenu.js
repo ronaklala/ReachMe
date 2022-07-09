@@ -7,8 +7,8 @@ import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import GroupsIcon from '@mui/icons-material/Groups';
 import SendIcon from '@mui/icons-material/Send';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
-import { Avatar } from '@mui/material';
-import { useEffect, useState } from 'react';
+import {Avatar} from '@mui/material';
+import {useEffect, useState} from 'react';
 import img from './images/close.png';
 import $ from 'jquery';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
@@ -21,7 +21,7 @@ const MobileMenu = () => {
     } else {
       setUser();
     }
-  });
+  }, []);
 
   const Logout = () => {
     sessionStorage.removeItem('user');
@@ -44,7 +44,7 @@ const MobileMenu = () => {
                     <Avatar
                       alt="Profile Image"
                       src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                      sx={{ width: 26, height: 26 }}
+                      sx={{width: 26, height: 26}}
                     />
                   </>
                 ) : (
@@ -52,7 +52,7 @@ const MobileMenu = () => {
                     <Avatar
                       alt="Remy Sharp"
                       src={user.profile_url}
-                      sx={{ width: 26, height: 26 }}
+                      sx={{width: 26, height: 26}}
                     />
                   </>
                 )}

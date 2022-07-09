@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/alt-text */
-import { Avatar } from '@mui/material';
+import {Avatar} from '@mui/material';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {useParams} from 'react-router-dom';
 import Header from '../Header';
-import { css } from '@emotion/react';
-import { PuffLoader, SyncLoader } from 'react-spinners';
+import {css} from '@emotion/react';
+import {PuffLoader, SyncLoader} from 'react-spinners';
 import Sidebar from '../Sidebar';
 import moment from 'moment';
 import './groups.scss';
@@ -71,6 +71,7 @@ const SingleGroup = () => {
         $('#count').text(el + 1);
         setTimeout(() => {
           userJoined(id);
+          window.location.reload();
         }, 2000);
       });
   };
@@ -83,6 +84,7 @@ const SingleGroup = () => {
         $('#count').text(el - 1);
         setTimeout(() => {
           userLeft(uid);
+          window.location.reload();
         }, 2000);
       });
   };
@@ -124,7 +126,7 @@ const SingleGroup = () => {
                         <Avatar
                           alt="Remy Sharp"
                           src="https://pbs.twimg.com/profile_images/857490466572443648/c05JqEgo_400x400.jpg"
-                          sx={{ width: 175, height: 175 }}
+                          sx={{width: 175, height: 175}}
                         />
                       </>
                     ) : (
@@ -132,7 +134,7 @@ const SingleGroup = () => {
                         <Avatar
                           alt="Remy Sharp"
                           src={group.image}
-                          sx={{ width: 175, height: 175 }}
+                          sx={{width: 175, height: 175}}
                         />
                       </>
                     )}
@@ -144,7 +146,7 @@ const SingleGroup = () => {
                       <span id="count">{group.members.length}</span> Members
                     </span>
                     <span>{group.posts.length} Posts</span>
-                    {group.username === user.username ? (
+                    {group.wallet === user.wallet ? (
                       <></>
                     ) : (
                       <>
@@ -160,7 +162,7 @@ const SingleGroup = () => {
                           onClick={() => {
                             joinGroup(user._id, group._id);
                           }}
-                          style={{ display: 'none' }}
+                          style={{display: 'none'}}
                           id={'follow' + user._id}
                           type="submit">
                           Join Group
@@ -169,7 +171,7 @@ const SingleGroup = () => {
                           onClick={() => {
                             leaveGroup(user._id, group._id);
                           }}
-                          style={{ display: 'none' }}
+                          style={{display: 'none'}}
                           id={'unfollow' + user._id}
                           type="submit">
                           Leave Group
@@ -206,7 +208,7 @@ const SingleGroup = () => {
                   <h3>This Group was Created By </h3>
 
                   {group.user_details.map((userdata) =>
-                    userdata.username === group.username ? (
+                    userdata.wallet === group.wallet ? (
                       <>
                         <a href={'/' + userdata.wallet}>
                           <div className="admin">

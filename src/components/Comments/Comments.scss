@@ -8,6 +8,7 @@ greyscale {
 .comments {
     height: auto;
     width: 100%;
+    max-width: 1200px;
 }
 
 .comments-display {
@@ -35,5 +36,11 @@ greyscale {
                 gap: 15px;
             }
         }
+    }
+}
+
+@media (min-width:250px) and (max-width:1024px) {
+    .comments {
+        width: 90% !important;
     }
 }

@@ -63,8 +63,8 @@ router.get('/MarketPlace', (req, res) => {
     {
       $lookup: {
         from: 'users',
-        localField: 'username',
-        foreignField: 'username',
+        localField: 'wallet',
+        foreignField: 'wallet',
         as: 'user_details',
       },
     },
@@ -179,6 +179,7 @@ router.get('/group/:gid', (req, res) => {
   });
 });
 
+//Joinging a  Group
 router.post('/join_group/:uid/:gid', (req, res) => {
   const uid = mongoose.Types.ObjectId(req.params.uid);
   const gid = mongoose.Types.ObjectId(req.params.gid);
@@ -199,6 +200,7 @@ router.post('/join_group/:uid/:gid', (req, res) => {
   });
 });
 
+//Leaving a Group
 router.post('/leave_group/:uid/:gid', (req, res) => {
   const uid = mongoose.Types.ObjectId(req.params.uid);
   const gid = mongoose.Types.ObjectId(req.params.gid);
@@ -219,6 +221,7 @@ router.post('/leave_group/:uid/:gid', (req, res) => {
   });
 });
 
+//Getting Group Posts
 router.get('/group/:gid/posts', (req, res) => {
   const gid = mongoose.Types.ObjectId(req.params.gid);
   const group = Group.findById(gid).then((data) => {
@@ -226,19 +229,36 @@ router.get('/group/:gid/posts', (req, res) => {
   });
 });
 
+//Creating Group Post
 router.post('/group/:gid/createGroupPost', (req, res) => {
   const gid = mongoose.Types.ObjectId(req.params.gid);
   const {caption, image, uid, wallet} = req.body;
   const post = new GroupPost({caption, image, uid, wallet, gid});
   post.save().then((doc) => {
-    res.json(doc);
+    Group.findByIdAndUpdate(
+      gid,
+      {
+        $push: {posts: uid},
+      },
+      {
+        new: true, //for new updated record
+      }
+    ).exec((err, result) => {
+      if (err) {
+        return res.status(422).json({error: err});
+      } else {
+        res.json(doc);
+      }
+    });
   });
 });
 
+//Getting Group Posts With User Data
 router.get('/group/:gid/getPosts', (req, res) => {
+  const gid = mongoose.Types.ObjectId(req.params.gid);
   const groupPosts = GroupPost.aggregate([
     {
-      $match: {gid: req.params.gid},
+      $match: {gid: gid},
     },
     {
       $lookup: {
@@ -258,11 +278,12 @@ router.get('/group/:gid/getPosts', (req, res) => {
     });
 });
 
+//Getting User Followers with user Data
 router.get('/followers/:uid', (req, res) => {
-  const uid = mongoose.Types.ObjectId(req.params.uid);
+  const wallet = req.params.uid;
   const user_followers = User.aggregate([
     {
-      $match: {_id: uid},
+      $match: {wallet: wallet},
     },
     {
       $lookup: {
@@ -270,6 +291,71 @@ router.get('/followers/:uid', (req, res) => {
         localField: 'followers',
         foreignField: '_id',
         as: 'user_details',
+      },
+    },
+  ]).then((doc) => {
+    res.json(doc);
+  });
+});
+
+//Updating User Profile
+router.post('/updateProfile/:uid', (req, res) => {
+  const email = req.body.email;
+  const username = req.body.username;
+  const update_user = User.findOneAndUpdate(
+    {
+      wallet: req.params.uid,
+    },
+    {
+      email,
+      username,
+    }
+  ).then((doc) => {
+    res.status(200).json({message: 'updated'});
+  });
+});
+
+//Get Single NFT data
+router.get('/getsinglenft/:id', (req, res) => {
+  const id = mongoose.Types.ObjectId(req.params.id);
+  const singlenft = AddNFT.aggregate([
+    {
+      $match: {_id: id},
+    },
+    {
+      $lookup: {
+        from: 'users',
+        localField: 'wallet',
+        foreignField: 'wallet',
+        as: 'user_details',
+      },
+    },
+  ]).then((doc) => {
+    res.json(doc);
+  });
+});
+
+//Get single Group Post
+router.get('/gpost/:pid', (req, res) => {
+  const id = mongoose.Types.ObjectId(req.params.pid);
+  const singlepost = GroupPost.aggregate([
+    {
+      $match: {_id: id},
+    },
+    {
+      $lookup: {
+        from: 'users',
+        localField: 'wallet',
+        foreignField: 'wallet',
+        as: 'user_details',
+      },
+    },
+    {
+      $lookup: {
+        from: 'groups',
+        localField: 'gid',
+        foreignField: '_id',
+        as: 'group',
       },
     },
   ]).then((doc) => {

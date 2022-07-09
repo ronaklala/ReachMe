@@ -95,8 +95,8 @@ sans-serif;
             align-items: flex-start;
             gap: 20px;
             color: #fff;
-            flex-direction: column;
-            gap: 5px;
+            align-items: center;
+            gap: 15px;
 
             span {
                 width: 100%;
@@ -150,7 +150,8 @@ sans-serif;
     }
 
     .single-post .post-info {
-        max-width: 90% !important;
+        width: 100vw !important;
+        max-width: 90vw !important;
     }
 
 }

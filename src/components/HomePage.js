@@ -4,21 +4,21 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable no-unused-vars */
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import './sass/sidebar.scss';
-import { SyncLoader } from 'react-spinners';
-import { css } from '@emotion/react';
-import { Avatar } from '@mui/material';
-import { Icon } from '@iconify/react';
-import { useMoralis } from 'react-moralis';
-import { toast } from 'react-toastify';
+import {SyncLoader} from 'react-spinners';
+import {css} from '@emotion/react';
+import {Avatar} from '@mui/material';
+import {Icon} from '@iconify/react';
+import {useMoralis} from 'react-moralis';
+import {toast} from 'react-toastify';
 import moment from 'moment';
 import $ from 'jquery';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const HomePage = (props) => {
-  const { Moralis, isAuthenticated, authenticate } = useMoralis();
+  const {Moralis, isAuthenticated, authenticate} = useMoralis();
   //Function for if a post has link in it, it will make it redirectable
   function urlify(text) {
     var urlRegex = /(https?:\/\/[^\s]+)/g;
@@ -92,12 +92,14 @@ const HomePage = (props) => {
       await axios
         .post(
           'http://localhost:5001/save',
-          { postid, username, userid, image },
+          {postid, username, userid, image},
           axiosConfig
         )
         .then((res) => {
           console.log(res);
-          window.location.reload();
+          toast.success('Post Saved Successfully', {
+            toastId: 123,
+          });
         });
     }
   };
@@ -214,7 +216,7 @@ const HomePage = (props) => {
         $('#like' + id).hide();
         $('#unlike' + id).show();
       })
-      .catch((err) => { });
+      .catch((err) => {});
   };
 
   //function for UNLIKING a post
@@ -237,7 +239,7 @@ const HomePage = (props) => {
         $('#like' + id).show();
         $('#unlike' + id).hide();
       })
-      .catch((err) => { });
+      .catch((err) => {});
   };
 
   return (
@@ -311,30 +313,43 @@ const HomePage = (props) => {
                                   <Avatar
                                     alt="Profile Image"
                                     src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                                    sx={{ width: 26, height: 26 }}
+                                    sx={{width: 26, height: 26}}
                                     key={user._id}
                                   />
+                                  <a
+                                    style={{color: '#fff'}}
+                                    href={'/' + post.wallet}>
+                                    <b>
+                                      {user.username}
+                                      <greyscale>
+                                        Minted{' '}
+                                        {moment(post.createdAt).fromNow()}
+                                      </greyscale>
+                                    </b>
+                                  </a>
                                 </>
                               ) : (
                                 <>
                                   <Avatar
                                     alt="Profile Image"
                                     src={user.profile_url}
-                                    sx={{ width: 26, height: 26 }}
+                                    sx={{width: 26, height: 26}}
                                     key={user._id}
                                   />
+                                  <a
+                                    style={{color: '#fff'}}
+                                    href={'/' + post.wallet}>
+                                    <b>
+                                      {user.username}
+                                      <greyscale>
+                                        Minted{' '}
+                                        {moment(post.createdAt).fromNow()}
+                                      </greyscale>
+                                    </b>
+                                  </a>
                                 </>
                               )
                             )}
-
-                            <a style={{ color: '#fff' }} href={'/' + post.wallet}>
-                              <b>
-                                {post.username}
-                                <greyscale>
-                                  Minted {moment(post.createdAt).fromNow()}
-                                </greyscale>
-                              </b>
-                            </a>
                           </div>
                           <div className="user-caption">
                             <span
@@ -346,7 +361,7 @@ const HomePage = (props) => {
                             <></>
                           ) : (
                             <>
-                              <a href={'#'}>
+                              <a href={'/nft/' + post._id}>
                                 {' '}
                                 <img
                                   alt="Post Image"
@@ -375,7 +390,7 @@ const HomePage = (props) => {
                                   <Avatar
                                     alt="Profile Image"
                                     src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                                    sx={{ width: 26, height: 26 }}
+                                    sx={{width: 26, height: 26}}
                                     key={user._id}
                                   />
                                 </>
@@ -384,14 +399,14 @@ const HomePage = (props) => {
                                   <Avatar
                                     alt="Profile Image"
                                     src={user.profile_url}
-                                    sx={{ width: 26, height: 26 }}
+                                    sx={{width: 26, height: 26}}
                                     key={user._id}
                                   />
                                 </>
                               )
                             )}
 
-                            <a style={{ color: '#fff' }} href={`/${post.wallet}`}>
+                            <a style={{color: '#fff'}} href={`/${post.wallet}`}>
                               <b>
                                 {post.username}
                                 <greyscale>
@@ -429,7 +444,7 @@ const HomePage = (props) => {
                             <button
                               id={'unlike' + post._id}
                               type="submit"
-                              style={{ display: 'none' }}
+                              style={{display: 'none'}}
                               onClick={() => {
                                 unlikePost(post._id);
                               }}>
@@ -471,7 +486,19 @@ const HomePage = (props) => {
                                 likes
                               </>
                             )}
-                            <span>{post.comment.length} Comments</span>
+                            <a
+                              href={'/post/' + post._id + '/comments'}
+                              style={{color: '#fff'}}>
+                              {post.comment.length === 1 ? (
+                                <>
+                                  <span>{post.comment.length} Comment</span>
+                                </>
+                              ) : (
+                                <>
+                                  <span>{post.comment.length} Comments</span>
+                                </>
+                              )}
+                            </a>
                             {getsavepost.filter(
                               (e) =>
                                 e.username == user.username &&

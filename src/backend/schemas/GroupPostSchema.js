@@ -7,7 +7,7 @@ const GroupPostSchema = new mongoose.Schema(
     wallet: String,
     uid: String,
     image: String,
-    gid: String,
+    gid: ObjectId,
     likes: [
       {
         type: ObjectId,

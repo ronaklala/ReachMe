@@ -7,6 +7,7 @@ const Comment = require('./../schemas/commentSchema');
 const User = require('../schemas/userSchema');
 const Transaction = require('../schemas/TransactionSchema');
 const SavePost = require('../schemas/Save');
+const {default: mongoose} = require('mongoose');
 const router = express.Router();
 
 //Creating a Post
@@ -38,11 +39,27 @@ router.delete('/deletepost/:postId', (req, res) => {
 });
 
 //Delete a Comment
-router.delete('/delete-comment/:postid', (req, res) => {
-  Comment.findOne({postId: req.params.postid})
-    .deleteOne()
+router.delete('/delete-comment/:postid/:commentid', (req, res) => {
+  const cid = mongoose.Types.ObjectId(req.params.commentid);
+  console.log(cid);
+  Comment.findOne({_id: req.params.commentid})
+    .deleteOne({})
     .then(() => {
-      res.status(201).json({message: 'Comment Deleted Successfully'});
+      Post.findByIdAndUpdate(
+        req.params.postid,
+        {
+          $pull: {comment: cid},
+        },
+        {
+          new: true, //for new updated record
+        }
+      ).exec((err, result) => {
+        if (err) {
+          res.status(201).json({message: 'Comment Deleted Successfully'});
+        } else {
+          res.json(result);
+        }
+      });
     })
     .catch(() => {
       res
@@ -207,8 +224,8 @@ router.get('/', async (req, res) => {
     {
       $lookup: {
         from: 'users',
-        localField: 'username',
-        foreignField: 'username',
+        localField: 'wallet',
+        foreignField: 'wallet',
         as: 'user_details',
       },
     },
@@ -218,8 +235,8 @@ router.get('/', async (req, res) => {
       {
         $lookup: {
           from: 'users',
-          localField: 'username',
-          foreignField: 'username',
+          localField: 'wallet',
+          foreignField: 'wallet',
           as: 'user_details',
         },
       },
@@ -283,7 +300,7 @@ router.get('/p-self/:postid', (req, res) => {
   const post = req.params.postid;
   const postdata = Post.findById(post)
     .then((doc) => {
-      const userdata = User.find({username: doc.username}).then((doc2) => {
+      const userdata = User.find({wallet: doc.wallet}).then((doc2) => {
         if (!doc || !doc2) {
           res.status(404).json({message: 'Post Not Found'});
         } else {

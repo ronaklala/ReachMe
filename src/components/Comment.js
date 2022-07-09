@@ -1,9 +1,9 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import { toast } from 'react-toastify';
-import { useParams } from 'react-router-dom';
+import {toast} from 'react-toastify';
+import {useParams} from 'react-router-dom';
 import './sass/comments.scss';
 import $ from 'jquery';
 
@@ -43,7 +43,6 @@ const Comment = (props) => {
       await axios
         .post('http://localhost:5001/add-comment', comment, axiosConfig)
         .then((res) => {
-          console.log(res.status);
           if (res.status == 200) {
             toast.success('Comment Added Successfully', {
               toastId: 1234 + 111,
@@ -61,7 +60,6 @@ const Comment = (props) => {
         })
         .catch((err) => {
           if (err.response.status === 500) {
-            console.log(err.message);
             toast.error('Internal Server Error', {
               toastId: 111 + 123,
               position: 'top-center',
@@ -91,7 +89,7 @@ const Comment = (props) => {
           <button
             type="submit"
             className="btn combtn rounded"
-            style={{ fontWeight: 'bold' }}>
+            style={{fontWeight: 'bold'}}>
             Post Comment
           </button>
         </form>

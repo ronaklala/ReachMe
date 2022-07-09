@@ -82,7 +82,7 @@ const ShowSinglePost = (props) => {
                   <>
                     <div className="user">
                       <Avatar src={user.profile_url}></Avatar>
-                      <span>{post.wallet}</span>
+                      <span>{user.username}</span>
                     </div>
                   </>
                 ))}

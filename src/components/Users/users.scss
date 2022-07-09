@@ -1,4 +1,10 @@
 @import "../sass/globals.scss";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&family=Open+Sans&display=swap');
+@import '../sass/globals.scss';
+$font: 'Nanum Gothic',
+sans-serif;
+$font2: 'Open Sans',
+sans-serif;
 
 .users {
     width: 70%;
@@ -136,6 +142,8 @@
         flex-direction: row;
         margin-left: -40px;
         width: 100%;
+        flex-wrap: wrap;
+        gap: 15px;
 
         li {
             width: auto;
@@ -143,10 +151,12 @@
             text-overflow: ellipsis;
 
 
+
             .admin {
                 display: flex;
                 height: 100px;
                 width: auto;
+                max-width: 450px;
                 gap: 15px;
                 color: #fff;
 
@@ -162,6 +172,50 @@
     }
 }
 
+.update form {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 75vw;
+    background-color: #fff;
+    color: #000;
+    margin-top: 20px;
+    max-width: 1000px;
+
+    input {
+        font-family: $font;
+    }
+
+    input[type="submit"] {
+        height: 45px;
+        width: 100%;
+        background-color: $button;
+        color: #fff;
+    }
+
+    .btn-choose {
+        background-color: $button;
+    }
+
+    .image {
+        height: auto;
+        width: auto;
+        max-width: 250px;
+        max-height: 250px;
+        padding: 10px;
+
+        img {
+            height: auto;
+            width: auto;
+            max-height: 90%;
+            max-width: 90%;
+            border-radius: 5px;
+        }
+    }
+
+}
+
 @media (min-width:250px) and (max-width:1024px) {
     .users {
         width: 90%;
@@ -173,5 +227,9 @@
     .members ul {
         width: 100vw !important;
         gap: 15px !important;
+    }
+
+    .update form {
+        width: 95vw !important;
     }
 }

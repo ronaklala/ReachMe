@@ -1,13 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {useNavigate, useParams} from 'react-router-dom';
 import './profile.scss';
-import { toast } from 'react-toastify';
+import {toast} from 'react-toastify';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import PersonRemoveIcon from '@mui/icons-material/PersonRemove';
-import { PuffLoader, SyncLoader } from 'react-spinners';
-import { css } from '@emotion/react';
+import {PuffLoader, SyncLoader} from 'react-spinners';
+import {css} from '@emotion/react';
 import $ from 'jquery';
 
 const ViewProfile = (props) => {
@@ -163,7 +163,7 @@ const ViewProfile = (props) => {
                     <input
                       id="btn-upload"
                       name="btn-upload"
-                      style={{ display: 'none' }}
+                      style={{display: 'none'}}
                       type="file"
                       accept="image/*"
                       onChange={handleChange}
@@ -204,7 +204,11 @@ const ViewProfile = (props) => {
 
                 <span>Number of Posts :- {count}</span>
                 {users.username === props.username ? (
-                  <></>
+                  <>
+                    <a href={'/updateProfile/' + props.wallet}>
+                      <button>Update Profile</button>
+                    </a>
+                  </>
                 ) : (
                   <>
                     {newFunction(users)}
@@ -219,7 +223,7 @@ const ViewProfile = (props) => {
                       onClick={() => {
                         follow(users._id);
                       }}
-                      style={{ display: 'none' }}
+                      style={{display: 'none'}}
                       id={'follow' + users._id}
                       type="submit">
                       <PersonAddIcon />
@@ -229,7 +233,7 @@ const ViewProfile = (props) => {
                       onClick={() => {
                         unFollow(users._id);
                       }}
-                      style={{ display: 'none' }}
+                      style={{display: 'none'}}
                       id={'unfollow' + users._id}
                       type="submit">
                       <PersonRemoveIcon />

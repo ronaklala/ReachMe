@@ -1,22 +1,25 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/alt-text */
-import { PhotoCamera } from '@mui/icons-material';
-import { Button, TextField } from '@mui/material';
-import React, { useState, useEffect } from 'react';
+import {PhotoCamera} from '@mui/icons-material';
+import {Button, TextField} from '@mui/material';
+import React, {useState, useEffect} from 'react';
 import '../posts/create-post.scss';
 import $ from 'jquery';
 import axios from 'axios';
-import { toast, ToastContainer } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
-import { SyncLoader } from 'react-spinners';
-import { css } from '@emotion/react';
-import { useMoralis } from 'react-moralis';
+import {toast, ToastContainer} from 'react-toastify';
+import {useNavigate} from 'react-router-dom';
+import {SyncLoader} from 'react-spinners';
+import {css} from '@emotion/react';
+import {useMoralis} from 'react-moralis';
 
 const AddNFT = (props) => {
   const navigate = useNavigate();
   const [file, setFile] = useState();
-  const { Moralis, isAuthenticated } = useMoralis();
+  const {Moralis, isAuthenticated, isInitialized, isWeb3Enabled} = useMoralis();
   const [button, setButton] = useState(false);
+  const [chain, setChain] = useState();
+
+  const {authenticate} = useMoralis();
 
   const override = css`
     display: block;
@@ -33,7 +36,22 @@ const AddNFT = (props) => {
   };
 
   useEffect(() => {
+    window.ethereum.enable();
     const web3 = Moralis.enableWeb3();
+    console.log(isInitialized + ',' + isWeb3Enabled);
+
+    // checks if current chain matches with the one we need
+    const checkNetwork = async () => {
+      if (window.ethereum) {
+        const currentChainId = await window.ethereum.request({
+          method: 'eth_chainId',
+        });
+        setChain(currentChainId);
+      }
+    };
+
+    checkNetwork();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const [post, setPost] = useState({
@@ -70,48 +88,47 @@ const AddNFT = (props) => {
     console.log(metadataHash);
     await Moralis.Plugins.rarible
       .lazyMint({
-        chain: 'rinkeby',
+        chain: 'eth',
         userAddress: props.wallet,
         tokenType: 'ERC721',
         tokenUri: 'ipfs://' + metadataHash,
         supply: 100,
         royaltiesAmount: 50, // 0.05% royalty. Optional
       })
-      .then((res) => {
-        console.log(res);
+      .then(async (res) => {
+        toast.success('NFT Minting Started', {
+          toastId: 12345 + 65,
+          position: 'top-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        $('#image-text').hide();
+        setLoading(true);
+        const dataFile = await fetch(
+          'https://api.cloudinary.com/v1_1/ronaklala-games/image/upload',
+          {
+            method: 'POST',
+            body: data,
+          }
+        ).then((r) => r.json());
+
+        post.image = dataFile.secure_url;
+        setLoading(false);
+        setFile(dataFile.secure_url);
+        setButton(true);
+      })
+      .catch((err) => {
+        alert(err);
       });
-
-    toast.success('NFT Minting Started', {
-      toastId: 12345 + 65,
-      position: 'top-center',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
-
-    $('#image-text').hide();
-    setLoading(true);
-
-    const dataFile = await fetch(
-      'https://api.cloudinary.com/v1_1/ronaklala-games/image/upload',
-      {
-        method: 'POST',
-        body: data,
-      }
-    ).then((r) => r.json());
-
-    post.image = dataFile.secure_url;
-    setLoading(false);
-    setFile(dataFile.secure_url);
-    setButton(true);
   };
 
   //Handling the Input Data
   const handleInput = (e) => {
-    const { name, value } = e.target;
+    const {name, value} = e.target;
     setPost((event) => {
       return {
         ...event,
@@ -175,75 +192,88 @@ const AddNFT = (props) => {
   };
   return (
     <>
-      <section className="home">
-        <div className="post">
-          <form>
-            <center>
-              <h2>Add NFT {process.env.REACT_APP_NAME}</h2>
-            </center>
+      {chain !== '0x1' ? (
+        <>
+          <center>
+            <h1>
+              Please Change your Network to Etherium Mainnet and Refresh the
+              Page
+            </h1>
+          </center>
+        </>
+      ) : (
+        <>
+          <section className="home">
+            <div className="post">
+              <form>
+                <center>
+                  <h2>Add NFT {process.env.REACT_APP_NAME}</h2>
+                </center>
 
-            <TextField
-              variant="outlined"
-              inputMode="string"
-              label="Enter Token name"
-              fullWidth
-              onChange={handleInput}
-              defaultValue={post.token_name}
-              name="token_name"
-            />
-
-            <TextField
-              variant="outlined"
-              inputMode="string"
-              label="Enter Description"
-              fullWidth
-              onChange={handleInput}
-              defaultValue={post.description}
-              name="description"
-            />
-            <label htmlFor="btn-upload">
-              Upload Image:&nbsp;&nbsp;&nbsp;
-              <input
-                id="btn-upload"
-                name="btn-upload"
-                style={{ display: 'none' }}
-                type="file"
-                accept="image/*"
-                onChange={handleChange}
-              />
-              <Button
-                className="btn-choose"
-                variant="contained"
-                component="span"
-                endIcon={<PhotoCamera />}>
-                Choose Image
-              </Button>
-            </label>
-            <div className="image">
-              <span id="image-text">{'/* Image Goes Here */'}</span>
-              <img src={file} />
-              {loading === true ? (
-                <SyncLoader
-                  loading={loading}
-                  css={override}
-                  size={20}
-                  color={'#2F2934'}
+                <TextField
+                  variant="outlined"
+                  inputMode="string"
+                  label="Enter Token name"
+                  fullWidth
+                  onChange={handleInput}
+                  defaultValue={post.token_name}
+                  name="token_name"
                 />
-              ) : (
-                <></>
-              )}
+
+                <TextField
+                  variant="outlined"
+                  inputMode="string"
+                  label="Enter Description"
+                  fullWidth
+                  onChange={handleInput}
+                  defaultValue={post.description}
+                  name="description"
+                />
+                <label htmlFor="btn-upload">
+                  Upload Image:&nbsp;&nbsp;&nbsp;
+                  <input
+                    id="btn-upload"
+                    name="btn-upload"
+                    style={{display: 'none'}}
+                    type="file"
+                    accept="image/*"
+                    onChange={handleChange}
+                  />
+                  <Button
+                    className="btn-choose"
+                    variant="contained"
+                    component="span"
+                    endIcon={<PhotoCamera />}>
+                    Choose Image
+                  </Button>
+                </label>
+                <div className="image">
+                  <span id="image-text">{'/* Image Goes Here */'}</span>
+                  <img src={file} />
+                  {loading === true ? (
+                    <SyncLoader
+                      loading={loading}
+                      css={override}
+                      size={20}
+                      color={'#2F2934'}
+                    />
+                  ) : (
+                    <></>
+                  )}
+                </div>
+                {button === true ? (
+                  <>
+                    <input type="submit" onClick={handleSubmit} />
+                  </>
+                ) : (
+                  <></>
+                )}
+              </form>
             </div>
-            {button === true ? (
-              <>
-                <input type="submit" onClick={handleSubmit} />
-              </>
-            ) : (
-              <></>
-            )}
-          </form>
-        </div>
-      </section>
-      <ToastContainer />
+          </section>
+          <ToastContainer />
+        </>
+      )}
     </>
   );
 };

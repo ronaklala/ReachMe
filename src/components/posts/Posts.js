@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {useParams} from 'react-router-dom';
 import '../sass/sidebar.scss';
-import { css } from '@emotion/react';
-import { SyncLoader } from 'react-spinners';
-import { Delete } from '@mui/icons-material';
-import { toast } from 'react-toastify';
+import {css} from '@emotion/react';
+import {SyncLoader} from 'react-spinners';
+import {Delete} from '@mui/icons-material';
+import {toast} from 'react-toastify';
 
 const Posts = (props) => {
   const [posts, setPosts] = useState([]);
@@ -116,7 +116,7 @@ const Posts = (props) => {
                             <img src={post.image} alt={post.image} />
                           </a>
                           <h3>{post.tag}</h3>
-                          {post.username === user.username ? (
+                          {post.wallet === user.wallet ? (
                             <>
                               <section className="showcase">
                                 <button
