@@ -13,7 +13,7 @@ const FooterSection = () => {
             <b>{process.env.REACT_APP_NAME}</b>
             <ul>
               <a href="/about">
-                <li>About Us</li>
+                <li>About </li>
               </a>
               <a href="/contact">
                 <li>Contact Us</li>

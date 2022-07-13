@@ -50,11 +50,12 @@ root.render(
           <Route path="/create-post" element={<CreatePost />} />
           <Route path="/MarketPlace" element={<MarketPlace />} />
           <Route path="/create-Nft" element={<AddNftpage />} />
-          <Route path="/search/:search" element={<UserSearch />} />
-          <Route path="/saved-post/:username" element={<Saved_post />} />
 
+          <Route path="/saved-post/:username" element={<Saved_post />} />
+          <Route path="/search/" element={<UserSearch />} />
           <Route path="/posts/:uid" element={<ViewPosts />} />
           <Route path="/:uid" element={<Profile />} />
+          <Route path="/search/:search" element={<UserSearch />} />
           <Route path="/post/:postid" element={<SinglePost />} />
           <Route path="/users" element={<Users />} />
           <Route path="/showcase-nft/:uid" element={<Showcase />} />

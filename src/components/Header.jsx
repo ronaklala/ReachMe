@@ -9,10 +9,12 @@ import {useNavigate} from 'react-router-dom';
 import {MenuRounded, Search} from '@mui/icons-material';
 import {Avatar} from '@mui/material';
 import $ from 'jquery';
+import {useMoralis} from 'react-moralis';
 // import { search } from '../backend/queries/transaction';
 
 const Header = () => {
   const navigate = useNavigate();
+  const {Moralis} = useMoralis();
   const user = JSON.parse(sessionStorage.getItem('user'));
   var [search, onsearch] = useState([]);
   useEffect(() => {
@@ -24,7 +26,6 @@ const Header = () => {
 
   const Logout = () => {
     sessionStorage.removeItem('user');
-
     window.location.href = '/';
   };
   // function onsearch2() {

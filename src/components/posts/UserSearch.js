@@ -108,37 +108,32 @@ const UserSearch = () => {
                       flexWrap: 'wrap',
                     }}>
                     {Object.values(serach1).map((data) => (
-                      <a href={'/' + data.wallet}>
-                        <section className="profile" key={data._id}>
-                          <div className="profile-image">
-                            <label htmlFor="btn-upload">
-                              {data.profile_url === null ? (
-                                <img
-                                  src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                                  alt="profile_image"
-                                  id="user_image"
-                                />
-                              ) : (
-                                <img
-                                  src={data.profile_url}
-                                  alt="profile_image"
-                                  id="user_image"
-                                />
-                              )}
-                            </label>
-                          </div>
-                          <div className="profile-info">
-                            <span>{data.username}</span>
-                            <span>{data.wallet}</span>
-                            <span>User ID :- {data._id}</span>
-                            <span>Total Followers :- </span>
-                            <span>
-                              Number of Posts :-&nbsp;
-                              {post_count(data.username, (count = 0))}
-                            </span>
-                          </div>
-                        </section>
-                      </a>
+                      <section className="profile" key={data._id}>
+                        <div className="profile-image">
+                          <label htmlFor="btn-upload">
+                            {data.profile_url === null ? (
+                              <img
+                                src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                                alt="profile_image"
+                                id="user_image"
+                              />
+                            ) : (
+                              <img
+                                src={data.profile_url}
+                                alt="profile_image"
+                                id="user_image"
+                              />
+                            )}
+                          </label>
+                        </div>
+                        <div className="profile-info">
+                          <span>{data.username}</span>
+                          <span>{data.wallet}</span>
+                          <a href={'/' + data.wallet}>
+                            <button>View Profile</button>
+                          </a>
+                        </div>
+                      </section>
                     ))}
                   </div>
                 </>
