@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import {toast} from 'react-toastify';
+import FooterSection from '../FooterSection';
 import Header from '../Header';
 import MobileMenu from '../MobileMenu';
 import Sidebar from '../Sidebar';
@@ -87,6 +88,9 @@ const UpdateProfile = () => {
                         id="outlined-basic"
                         label="Username"
                         variant="outlined"
+                        InputLabelProps={{
+                          style: {color: 'white'},
+                        }}
                         onChange={handleInput}
                         defaultValue={user.username}
                         name="username"
@@ -95,6 +99,9 @@ const UpdateProfile = () => {
                         variant="outlined"
                         label="email"
                         fullWidth
+                        InputLabelProps={{
+                          style: {color: 'white'},
+                        }}
                         onChange={handleInput}
                         defaultValue={user.email}
                         name="email"
@@ -112,6 +119,7 @@ const UpdateProfile = () => {
               )}
             </section>
           </section>
+          <FooterSection />
         </>
       )}
     </>

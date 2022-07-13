@@ -4,6 +4,7 @@ import Sidebar from '../Sidebar';
 import '../sass/sidebar.scss';
 import ShowSinglePost from './ShowSinglePost';
 import MobileMenu from '../MobileMenu';
+import FooterSection from '../FooterSection';
 
 const SinglePost = () => {
   const [user, setUser] = useState({});
@@ -33,6 +34,7 @@ const SinglePost = () => {
           />
         </section>
       </section>
+      <FooterSection />
     </>
   );
 };

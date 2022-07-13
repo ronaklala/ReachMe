@@ -74,9 +74,7 @@ const SingleNFTSProduct = () => {
               <span>{nft.description}</span>
               <greyscale>Minted {moment(nft.createdAt).fromNow()}</greyscale>
               <a
-                href={
-                  'https://rinkeby.rarible.com/user/' + nft.wallet + '/owned'
-                }
+                href={'https://rarible.com/user/' + nft.wallet + '/owned'}
                 target="_blank"
                 rel="noreferrer">
                 <button>View On Rarible</button>

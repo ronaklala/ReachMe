@@ -5,6 +5,7 @@ import '../sass/sidebar.scss';
 
 import AddNFT from './AddNFT';
 import MobileMenu from '../MobileMenu';
+import FooterSection from '../FooterSection';
 
 const AddNftpage = () => {
   const [user, setUser] = useState({});
@@ -29,6 +30,7 @@ const AddNftpage = () => {
           <AddNFT username={user.username} wallet={user.wallet} />
         </section>
       </section>
+      <FooterSection />
     </>
   );
 };

@@ -35,31 +35,33 @@ const Login = () => {
   const [wallet, setWallet] = useState({});
 
   useEffect(() => {
-    login();
-    const ConnectWallet = () => {
-      if (window.ethereum) {
-        window.ethereum
-          .request({method: 'eth_requestAccounts'})
-          .then((res) => accountChangeHandler(res[0]));
-        console.log(wallet);
-      } else {
-        toast.error('install metamask extension!!', {
-          toastId: 127 + 7,
-          position: 'top-center',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      }
-    };
-    const accountChangeHandler = (account) => {
-      // Setting
-      setWallet({wallet: account});
-    };
-    ConnectWallet();
+    setTimeout(() => {
+      login();
+      const ConnectWallet = () => {
+        if (window.ethereum) {
+          window.ethereum
+            .request({method: 'eth_requestAccounts'})
+            .then((res) => accountChangeHandler(res[0]));
+          console.log(wallet);
+        } else {
+          toast.error('install metamask extension!!', {
+            toastId: 127 + 7,
+            position: 'top-center',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+      };
+      const accountChangeHandler = (account) => {
+        // Setting
+        setWallet({wallet: account});
+      };
+      ConnectWallet();
+    }, 1000);
   }, []);
 
   //Login Function
@@ -104,6 +106,12 @@ const Login = () => {
       <section className="login">
         <div className="form">
           <center>
+            <img
+              src="https://res.cloudinary.com/ronaklala-games/image/upload/v1657619895/posts/favicon_dfjgrb.png"
+              alt="logo img"
+              height={'150px'}
+              style={{borderRadius: '50%'}}
+            />
             <h1>Login Into {process.env.REACT_APP_NAME}</h1>
           </center>
           <label>Wallet Address</label>

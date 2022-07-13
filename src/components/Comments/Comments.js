@@ -95,7 +95,7 @@ const Comments = () => {
                               <button
                                 type="submit"
                                 style={{
-                                  backgroundColor: '#f00',
+                                  backgroundColor: 'transparent',
                                   width: '50px',
                                   display: 'flex',
                                   border: 'none',
@@ -113,7 +113,9 @@ const Comments = () => {
                             )}
                           </div>
                         </li>
-                        <Divider style={{backgroundColor: '#fff'}} />
+                        <Divider
+                          style={{backgroundColor: 'rgba(255,255,255,0.15)'}}
+                        />
                       </>
                     ))}
                   </ul>

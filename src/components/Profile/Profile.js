@@ -5,6 +5,7 @@ import {useParams} from 'react-router-dom';
 import ProfileMenu from './ProfileMenu';
 import ViewProfile from './ViewProfile';
 import MobileMenu from '../MobileMenu';
+import FooterSection from '../FooterSection';
 
 const Profile = () => {
   const [user, setUser] = useState({});
@@ -46,6 +47,7 @@ const Profile = () => {
           </div>
         </section>
       </section>
+      <FooterSection />
     </>
   );
 };

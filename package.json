@@ -18,15 +18,18 @@
     "express": "^4.18.1",
     "firebase": "^9.8.3",
     "i": "^0.3.7",
+    "install": "^0.13.0",
     "jquery": "^3.6.0",
     "moment": "^2.29.3",
     "mongodb": "^4.6.0",
     "mongoose": "^6.3.5",
     "moralis": "^1.8.0",
     "node-datetime": "^2.1.2",
+    "node-polyfill-webpack-plugin": "^2.0.0",
     "node-sessionstorage": "^1.0.0",
     "nodemon": "^2.0.16",
-    "npm": "^8.12.1",
+    "npm": "^8.13.2",
+    "os-browserify": "^0.3.0",
     "phosphor-react": "^1.4.1",
     "postcss": "^8.4.14",
     "react": "^18.1.0",
@@ -67,6 +70,7 @@
     ]
   },
   "devDependencies": {
-    "@iconify/react": "^3.2.2"
+    "@iconify/react": "^3.2.2",
+    "react-app-rewired": "^2.2.1"
   }
 }

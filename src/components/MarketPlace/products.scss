@@ -18,7 +18,7 @@
         width: 200px;
         padding: 10px;
         margin-left: 40px;
-        background-color: #285EDB;
+        background: rgba(255, 255, 255, 0.1);
         color: #fff;
         font-family: $font2;
         padding-bottom: 30px;
@@ -46,7 +46,8 @@
             gap: 15px;
             padding-bottom: 10px;
             padding: 15px;
-            background-color: rgba(255, 255, 255, 0.01);
+            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
 
             img {
                 height: auto;
@@ -89,14 +90,14 @@
             }
 
             button {
-                width: 180px;
+                width: 100%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 gap: 15px;
                 font-size: auto;
                 font-family: $font2;
-                background-color: $bg;
+                background-color: rgba(255, 255, 255, 0.1);
                 color: #fff;
                 padding: 10px;
                 border-radius: 5px;
@@ -138,14 +139,14 @@
         gap: 15px;
 
         button {
-            width: 180px;
+            width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 15px;
             font-size: auto;
             font-family: $font2;
-            background-color: $bg;
+            background-color: rgba(255, 255, 255, 0.1);
             color: #fff;
             padding: 10px;
             border-radius: 5px;

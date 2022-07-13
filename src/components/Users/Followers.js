@@ -3,6 +3,7 @@ import {Avatar} from '@mui/material';
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
+import FooterSection from '../FooterSection';
 import Header from '../Header';
 import MobileMenu from '../MobileMenu';
 import Sidebar from '../Sidebar';
@@ -95,6 +96,7 @@ const Followers = () => {
           )}
         </section>
       </section>
+      <FooterSection />
     </>
   );
 };

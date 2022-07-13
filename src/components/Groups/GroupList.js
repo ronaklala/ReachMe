@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import './groups.scss';
 
 const GroupList = () => {
@@ -28,7 +28,7 @@ const GroupList = () => {
                     <div className="user">
                       <div
                         className="user-profile"
-                        style={{ backgroundColor: '#6d71e3' }}>
+                        style={{backgroundColor: 'rgb(255,255,255,0.1)'}}>
                         {group.image === null ? (
                           <>
                             <img src="https://pbs.twimg.com/profile_images/857490466572443648/c05JqEgo_400x400.jpg" />

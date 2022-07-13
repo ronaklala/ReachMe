@@ -137,6 +137,12 @@ const Register = () => {
       <section className="login">
         <div className="form">
           <center>
+            <img
+              src="https://res.cloudinary.com/ronaklala-games/image/upload/v1657619895/posts/favicon_dfjgrb.png"
+              alt="logo img"
+              height={'150px'}
+              style={{borderRadius: '50%'}}
+            />
             <h1>Register Into {process.env.REACT_APP_NAME}</h1>
           </center>
           <label>Wallet Address</label>
@@ -144,6 +150,9 @@ const Register = () => {
           <TextField
             variant="outlined"
             label="Email"
+            InputLabelProps={{
+              style: {color: 'white'},
+            }}
             name="email"
             fullWidth
             defaultValue={user.email}
@@ -153,6 +162,9 @@ const Register = () => {
             variant="outlined"
             label="User / Display Name"
             name="username"
+            InputLabelProps={{
+              style: {color: 'white'},
+            }}
             fullWidth
             defaultValue={user.username}
             onChange={handleChange}
@@ -161,7 +173,7 @@ const Register = () => {
             Register
           </button>
           <span>
-            Already Registered? <Link to="/login">Login Now</Link>
+            Already Registered? <a href="/login">Login Now</a>
           </span>
         </div>
       </section>

@@ -12,6 +12,7 @@ import moment from 'moment';
 import './groups.scss';
 import $ from 'jquery';
 import MobileMenu from '../MobileMenu';
+import FooterSection from '../FooterSection';
 
 const SingleGroup = () => {
   const [group, setGroupData] = useState({});
@@ -249,6 +250,7 @@ const SingleGroup = () => {
           )}
         </section>
       </section>
+      <FooterSection />
     </>
   );
 };

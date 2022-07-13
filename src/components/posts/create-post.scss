@@ -10,10 +10,10 @@ sans-serif;
     .post {
         height: auto;
         width: 90%;
-        background-color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.15);
         border-radius: 15px;
         box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
-        color: #000;
+        color: #fff;
         font-family: $font2;
 
         form {
@@ -24,6 +24,7 @@ sans-serif;
 
             input {
                 font-family: $font;
+                color: #fff;
             }
 
             input[type="submit"] {
@@ -31,10 +32,13 @@ sans-serif;
                 width: 100%;
                 background-color: $button;
                 color: #fff;
+                border: none;
+                border-radius: 5px;
             }
 
             .btn-choose {
                 background-color: $button;
+
             }
 
             .image {
@@ -121,9 +125,10 @@ sans-serif;
     }
 }
 
-@media (min-width:250px) and (max-width:1200px) {
+@media (min-width:250px) and (max-width:1000px) {
     .home .post {
         width: 90vw;
+
     }
 
     .single-post {

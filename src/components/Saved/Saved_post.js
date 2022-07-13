@@ -1,14 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import { css } from '@emotion/react';
-import { SyncLoader } from 'react-spinners';
-import { Delete } from '@mui/icons-material';
-import { useParams } from 'react-router-dom';
+import {css} from '@emotion/react';
+import {SyncLoader} from 'react-spinners';
+import {Delete} from '@mui/icons-material';
+import {useParams} from 'react-router-dom';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from '../Header';
 import Sidebar from '../Sidebar';
-import { toast } from 'react-toastify';
+import {toast} from 'react-toastify';
+import FooterSection from '../FooterSection';
 
 const Saved_post = () => {
   const override = css`
@@ -144,6 +145,7 @@ const Saved_post = () => {
           )}
         </section>
       </section>
+      <FooterSection />
     </>
   );
 };

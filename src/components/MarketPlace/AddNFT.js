@@ -38,7 +38,6 @@ const AddNFT = (props) => {
   useEffect(() => {
     window.ethereum.enable();
     const web3 = Moralis.enableWeb3();
-    console.log(isInitialized + ',' + isWeb3Enabled);
 
     // checks if current chain matches with the one we need
     const checkNetwork = async () => {
@@ -207,13 +206,16 @@ const AddNFT = (props) => {
             <div className="post">
               <form>
                 <center>
-                  <h2>Add NFT {process.env.REACT_APP_NAME}</h2>
+                  <h2>Add NFT to {process.env.REACT_APP_NAME} & Rarible</h2>
                 </center>
 
                 <TextField
                   variant="outlined"
                   inputMode="string"
                   label="Enter Token name"
+                  InputLabelProps={{
+                    style: {color: 'white'},
+                  }}
                   fullWidth
                   onChange={handleInput}
                   defaultValue={post.token_name}
@@ -224,6 +226,9 @@ const AddNFT = (props) => {
                   variant="outlined"
                   inputMode="string"
                   label="Enter Description"
+                  InputLabelProps={{
+                    style: {color: 'white'},
+                  }}
                   fullWidth
                   onChange={handleInput}
                   defaultValue={post.description}

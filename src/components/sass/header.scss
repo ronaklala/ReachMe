@@ -17,7 +17,7 @@ a {
 .header {
     height: 80px;
     width: 100vw;
-    background-color: $bg;
+    background-color: rgb(25, 28, 31);
     display: flex;
     justify-content: center;
     -webkit-box-shadow: 0 10px 10px -10px #000000;
@@ -43,6 +43,10 @@ a {
             padding: 2px;
             display: flex;
             align-items: center;
+            background: transparent;
+            backdrop-filter: blur(20px);
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
 
             input {
                 height: 40px;
@@ -52,6 +56,13 @@ a {
                 border: none;
                 border-radius: 3px;
                 outline: none;
+                background: transparent;
+                border-width: 0px;
+                color: rgba(255, 255, 255, 0.8);
+            }
+
+            ::placeholder {
+                font-weight: bolder;
             }
 
             button {
@@ -61,6 +72,7 @@ a {
                 align-items: center;
                 background-color: transparent;
                 border: none;
+                color: #fff;
             }
         }
 

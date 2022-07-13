@@ -28,7 +28,6 @@ sans-serif;
         li {
             height: 350px;
             width: 300px;
-            background-color: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
             box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
             display: flex;
@@ -37,6 +36,8 @@ sans-serif;
             .user {
                 height: 100%;
                 width: 100%;
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                border-radius: 15px;
 
                 .user-profile {
                     height: 30%;
@@ -83,7 +84,7 @@ sans-serif;
 
                     button {
                         height: 35px;
-                        width: 180px;
+                        width: 100%;
                         background-color: $button;
                         color: #fff;
                         border: none;
@@ -178,13 +179,15 @@ sans-serif;
     flex-direction: column;
     gap: 15px;
     width: 75vw;
-    background-color: #fff;
-    color: #000;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 15px;
+    color: #fff;
     margin-top: 20px;
     max-width: 1000px;
 
     input {
         font-family: $font;
+        color: #fff;
     }
 
     input[type="submit"] {
@@ -192,6 +195,7 @@ sans-serif;
         width: 100%;
         background-color: $button;
         color: #fff;
+        border: none;
     }
 
     .btn-choose {
@@ -221,6 +225,10 @@ sans-serif;
         width: 90%;
         margin-left: 3vw;
         justify-content: center;
+    }
+
+    .users ul {
+        justify-content: center !important;
     }
 
     .members ul li,

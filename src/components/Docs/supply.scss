@@ -1,0 +1,27 @@
+@import '../sass/globals.scss';
+
+.about {
+    width: 60vw;
+    max-width: 1200px;
+
+    h1 {
+        font-weight: 800;
+        font-size: 36px;
+        margin-block-end: 0 !important;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        li {}
+    }
+}
+
+@media (min-width:250px) and (max-width:800px) {
+    .about {
+        padding: 5px;
+        width: 90vw;
+    }
+}

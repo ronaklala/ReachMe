@@ -1,14 +1,15 @@
 /* eslint-disable jsx-a11y/alt-text */
-import { PhotoCamera } from '@mui/icons-material';
-import { Button, css, TextField } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import { SyncLoader } from 'react-spinners';
+import {PhotoCamera} from '@mui/icons-material';
+import {Button, css, TextField} from '@mui/material';
+import React, {useEffect, useState} from 'react';
+import {SyncLoader} from 'react-spinners';
 import Header from '../Header';
 import Sidebar from '../Sidebar';
 import $ from 'jquery';
 import axios from 'axios';
-import { toast } from 'react-toastify';
+import {toast} from 'react-toastify';
 import MobileMenu from '../MobileMenu';
+import FooterSection from '../FooterSection';
 
 const Create_Group = () => {
   const [file, setFile] = useState();
@@ -94,7 +95,7 @@ const Create_Group = () => {
 
   //Handling the Input Data
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const {name, value} = e.target;
     setGroup((event) => {
       return {
         ...event,
@@ -124,6 +125,9 @@ const Create_Group = () => {
                 <TextField
                   id="outlined-basic"
                   label="Group Name"
+                  InputLabelProps={{
+                    style: {color: 'white'},
+                  }}
                   variant="outlined"
                   onChange={handleChange}
                   defaultValue={group.name}
@@ -132,6 +136,9 @@ const Create_Group = () => {
                 <TextField
                   variant="outlined"
                   label="Group Description"
+                  InputLabelProps={{
+                    style: {color: 'white'},
+                  }}
                   fullWidth
                   onChange={handleChange}
                   defaultValue={group.description}
@@ -142,7 +149,7 @@ const Create_Group = () => {
                   <input
                     id="btn-upload"
                     name="btn-upload"
-                    style={{ display: 'none' }}
+                    style={{display: 'none'}}
                     type="file"
                     accept="image/*"
                     onChange={handleFile}
@@ -175,6 +182,7 @@ const Create_Group = () => {
           </section>
         </section>
       </section>
+      <FooterSection />
     </>
   );
 };

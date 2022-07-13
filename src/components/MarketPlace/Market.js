@@ -53,9 +53,7 @@ const Market = (props) => {
                     <a
                       target="_blank"
                       href={
-                        'https://rinkeby.rarible.com/user/' +
-                        nft.wallet +
-                        '/owned'
+                        'https://rarible.com/user/' + nft.wallet + '/owned'
                       }>
                       <button>
                         <LocalMallIcon />

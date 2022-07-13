@@ -4,6 +4,7 @@ import Sidebar from '../Sidebar';
 import '../sass/sidebar.scss';
 import CreatePostForm from './CreatePostForm';
 import MobileMenu from '../MobileMenu';
+import FooterSection from '../FooterSection';
 
 const CreatePost = () => {
   const [user, setUser] = useState({});
@@ -28,6 +29,7 @@ const CreatePost = () => {
           <CreatePostForm username={user.username} wallet={user.wallet} />
         </section>
       </section>
+      <FooterSection />
     </>
   );
 };

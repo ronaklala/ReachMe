@@ -52,7 +52,13 @@ const Header = () => {
     <>
       <section className="header">
         <nav>
-          <a href="/">
+          <a
+            href="/"
+            style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
+            <img
+              src="https://res.cloudinary.com/ronaklala-games/image/upload/v1657619895/posts/favicon_dfjgrb.png"
+              height={'40px'}
+            />
             <h2>{process.env.REACT_APP_NAME}</h2>
           </a>
           <div className="search">

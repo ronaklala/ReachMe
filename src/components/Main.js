@@ -3,6 +3,7 @@ import Sidebar from './Sidebar';
 import './sass/sidebar.scss';
 import HomePage from './HomePage';
 import MobileMenu from './MobileMenu';
+import FooterSection from './FooterSection';
 
 const Main = () => {
   const [user, setUser] = useState({});
@@ -30,6 +31,7 @@ const Main = () => {
           />
         </section>
       </section>
+      <FooterSection />
     </>
   );
 };

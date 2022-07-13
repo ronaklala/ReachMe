@@ -2,14 +2,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable eqeqeq */
 /* eslint-disable no-unused-vars */
-import { css } from '@emotion/react';
-import { useParams } from 'react-router-dom';
+import {css} from '@emotion/react';
+import {useParams} from 'react-router-dom';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { SyncLoader } from 'react-spinners';
+import React, {useEffect, useState} from 'react';
+import {SyncLoader} from 'react-spinners';
 import Header from '../Header';
 import Sidebar from '../Sidebar';
 import MobileMenu from '../MobileMenu';
+import FooterSection from '../FooterSection';
 const UserSearch = () => {
   var count;
   const search = useParams();
@@ -96,7 +97,7 @@ const UserSearch = () => {
             <>
               {Object.keys(serach1).length == 0 ? (
                 <>
-                  <h1 style={{ color: '#fff' }}>No User Found</h1>
+                  <h1 style={{color: '#fff'}}>No User Found</h1>
                 </>
               ) : (
                 <>
@@ -107,35 +108,37 @@ const UserSearch = () => {
                       flexWrap: 'wrap',
                     }}>
                     {Object.values(serach1).map((data) => (
-                      <section className="profile" key={data._id}>
-                        <div className="profile-image">
-                          <label htmlFor="btn-upload">
-                            {data.profile_url === null ? (
-                              <img
-                                src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-                                alt="profile_image"
-                                id="user_image"
-                              />
-                            ) : (
-                              <img
-                                src={data.profile_url}
-                                alt="profile_image"
-                                id="user_image"
-                              />
-                            )}
-                          </label>
-                        </div>
-                        <div className="profile-info">
-                          <span>{data.username}</span>
-                          <span>{data.wallet}</span>
-                          <span>User ID :- {data._id}</span>
-                          <span>Total Followers :- </span>
-                          <span>
-                            Number of Posts :-&nbsp;
-                            {post_count(data.username, (count = 0))}
-                          </span>
-                        </div>
-                      </section>
+                      <a href={'/' + data.wallet}>
+                        <section className="profile" key={data._id}>
+                          <div className="profile-image">
+                            <label htmlFor="btn-upload">
+                              {data.profile_url === null ? (
+                                <img
+                                  src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                                  alt="profile_image"
+                                  id="user_image"
+                                />
+                              ) : (
+                                <img
+                                  src={data.profile_url}
+                                  alt="profile_image"
+                                  id="user_image"
+                                />
+                              )}
+                            </label>
+                          </div>
+                          <div className="profile-info">
+                            <span>{data.username}</span>
+                            <span>{data.wallet}</span>
+                            <span>User ID :- {data._id}</span>
+                            <span>Total Followers :- </span>
+                            <span>
+                              Number of Posts :-&nbsp;
+                              {post_count(data.username, (count = 0))}
+                            </span>
+                          </div>
+                        </section>
+                      </a>
                     ))}
                   </div>
                 </>
@@ -144,6 +147,7 @@ const UserSearch = () => {
           )}
         </section>
       </section>
+      <FooterSection />
     </>
   );
 };

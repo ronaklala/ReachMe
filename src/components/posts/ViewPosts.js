@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import FooterSection from '../FooterSection';
 import Header from '../Header';
 import MobileMenu from '../MobileMenu';
 import '../sass/sidebar.scss';
@@ -29,6 +30,7 @@ const ViewPosts = () => {
           <Posts wallet={user.wallet} />
         </section>
       </section>
+      <FooterSection />
     </>
   );
 };

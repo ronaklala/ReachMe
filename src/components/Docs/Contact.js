@@ -3,9 +3,8 @@ import FooterSection from '../FooterSection';
 import Header from '../Header';
 import MobileMenu from '../MobileMenu';
 import Sidebar from '../Sidebar';
-import GroupList from './GroupList';
 
-const Groups = () => {
+const Contact = () => {
   const [user, setUser] = useState({});
   useEffect(() => {
     if (sessionStorage.getItem('user') !== null) {
@@ -25,11 +24,7 @@ const Groups = () => {
             profile_url={user.profile_url}
           />
           <MobileMenu />
-          <GroupList
-            username={user.username}
-            wallet={user.wallet}
-            profile_url={user.profile_url}
-          />
+          <section className="contact"></section>
         </section>
       </section>
       <FooterSection />
@@ -37,4 +32,4 @@ const Groups = () => {
   );
 };
 
-export default Groups;
+export default Contact;
