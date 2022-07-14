@@ -27,6 +27,8 @@
     "node-datetime": "^2.1.2",
     "node-polyfill-webpack-plugin": "^2.0.0",
     "node-sessionstorage": "^1.0.0",
+    "nodemailer": "^6.7.7",
+    "nodemailer-express-handlebars": "^5.0.0",
     "nodemon": "^2.0.16",
     "npm": "^8.13.2",
     "os-browserify": "^0.3.0",

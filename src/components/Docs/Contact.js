@@ -6,6 +6,7 @@ import Sidebar from '../Sidebar';
 import './supply.scss';
 import {toast} from 'react-toastify';
 import {db} from '../../firebase';
+import axios from 'axios';
 
 const Contact = () => {
   const [user, setUser] = useState({});
@@ -42,18 +43,39 @@ const Contact = () => {
     ) {
       toast.error('Please fill the whole Form');
     } else {
-      contact.wallet = user.wallet;
-      db.collection('contact')
-        .add({contact})
-        .then((res) => {
-          toast.success('Message Sent Successfully');
-          setContact({
-            username: '',
-            email: '',
-            wallet: '',
-            message: '',
+      //Check Email Format
+      let re =
+        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+      //If email is valid then send mail and store data in backend
+      if (re.test(contact.email)) {
+        let axiosConfig = {
+          headers: {
+            'Content-Type': 'application/json;charset=UTF-8',
+            'Access-Control-Allow-Origin': '*',
+          },
+        };
+        contact.wallet = user.wallet;
+        db.collection('contact')
+          .add({contact})
+          .then((res) => {
+            axios
+              .post('http://localhost:5001/send-mail', contact, axiosConfig)
+              .then((res) => {
+                toast.success('Message Sent Successfully', {
+                  toastId: 123,
+                });
+                setContact({
+                  username: '',
+                  email: '',
+                  wallet: '',
+                  message: '',
+                });
+              });
           });
-        });
+      } else {
+        toast.error('Invalid Email Format');
+      }
     }
   };
 

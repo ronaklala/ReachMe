@@ -7,6 +7,7 @@ import Sidebar from '../Sidebar';
 import './supply.scss';
 
 const About = () => {
+  document.title = "About "+ process.env.REACT_APP_NAME;
   const app_name = process.env.REACT_APP_NAME;
   const [user, setUser] = useState({});
   useEffect(() => {

@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const User = require('./schemas/userSchema');
 var bodyParser = require('body-parser');
 var cors = require('cors');
-
+var nodemailer = require('nodemailer');
 const DB =
   'mongodb+srv://Warrior:Ronak3103@mydb.tgsvt.mongodb.net/social_media?retryWrites=true&w=majority';
 mongoose
@@ -20,8 +20,10 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //Create User Post
+
 app.use(require('./queries/transaction'));
 app.use(require('./queries/post'));
+app.use(require('./handlebars'));
 
 app.listen(port, console.log('Listening on Port 5001'));
 
@@ -59,3 +61,4 @@ app.post('/login', async (req, res) => {
     }
   );
 });
+
