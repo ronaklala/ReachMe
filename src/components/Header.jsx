@@ -20,7 +20,7 @@ const Header = () => {
   useEffect(() => {
     getUsersData();
     if (user === null) {
-      navigate('/login');
+      navigate('/register');
     }
   }, []);
 

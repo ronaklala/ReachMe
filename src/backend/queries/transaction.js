@@ -161,22 +161,26 @@ router.get('/groups', (req, res) => {
 
 //Get Single Group Data
 router.get('/group/:gid', (req, res) => {
-  const groupId = mongoose.Types.ObjectId(req.params.gid);
-  const group = Group.aggregate([
-    {
-      $match: {_id: groupId},
-    },
-    {
-      $lookup: {
-        from: 'users',
-        localField: 'members',
-        foreignField: '_id',
-        as: 'user_details',
+  try {
+    const groupId = mongoose.Types.ObjectId(req.params.gid);
+    const group = Group.aggregate([
+      {
+        $match: {_id: groupId},
       },
-    },
-  ]).then((data) => {
-    res.json(data);
-  });
+      {
+        $lookup: {
+          from: 'users',
+          localField: 'members',
+          foreignField: '_id',
+          as: 'user_details',
+        },
+      },
+    ]).then((data) => {
+      res.json(data);
+    });
+  } catch {
+    res.status(500).json({message: 'No Group Data Found'});
+  }
 });
 
 //Joinging a  Group

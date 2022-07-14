@@ -291,7 +291,15 @@ const HomePage = (props) => {
           <>
             {posts.length == 0 ? (
               <>
-                <h1>No Posts Found For Your Wallet</h1>
+                <center style={{width: '100%', marginTop: '20px'}}>
+                  <img
+                    src="https://res.cloudinary.com/ronaklala-games/image/upload/v1657799759/posts/Untitled_design_1_lfhe7e.gif"
+                    height={250}
+                  />
+                  <h1 style={{color: '#fff', fontSize: '36px'}}>
+                    No Posts Found
+                  </h1>
+                </center>
                 <a href="/create-post">
                   <button>Create One Now</button>
                 </a>

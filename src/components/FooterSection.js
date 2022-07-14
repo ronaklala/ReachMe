@@ -21,9 +21,6 @@ const FooterSection = () => {
               <a href="/docs">
                 <li>Documentation</li>
               </a>
-              <a href="/works">
-                <li>How {process.env.REACT_APP_NAME} Works</li>
-              </a>
             </ul>
           </div>
           <div>

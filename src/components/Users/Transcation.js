@@ -4,7 +4,6 @@
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
-import {useMoralisWeb3Api} from 'react-moralis';
 import Header from '../Header';
 import Sidebar from '../Sidebar';
 import './users.scss';
@@ -15,8 +14,6 @@ import FooterSection from '../FooterSection';
 const Transcation = () => {
   let [loading, setLoading] = useState(true);
   const [trans, settran] = useState([]);
-
-  const Web3Api = useMoralisWeb3Api();
 
   const wallet = useParams();
   useEffect(() => {
@@ -33,13 +30,16 @@ const Transcation = () => {
   }, []);
 
   const gettrans = async () => {
-    await axios
-      .get('http://localhost:5001/transcation/' + wallet.uid)
-      .then((res) => {
-        setLoading(false);
-        settran(res.data.doc);
-        console.log(trans);
-      });
+    if (wallet.uid !== user._id) {
+      window.location.href = '/error';
+    } else {
+      await axios
+        .get('http://localhost:5001/transcation/' + wallet.uid)
+        .then((res) => {
+          settran(res.data.doc);
+          setLoading(false);
+        });
+    }
   };
 
   return (

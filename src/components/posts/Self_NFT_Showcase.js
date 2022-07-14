@@ -23,7 +23,15 @@ const Self_NFT_Showcase = (props) => {
         <ul>
           {nfts.length === 0 ? (
             <>
-              <h1 style={{fontSize: '32px'}}>No NFTs Minted Till Now</h1>
+              <center style={{width: '100%', marginTop: '20px'}}>
+                <img
+                  src="https://res.cloudinary.com/ronaklala-games/image/upload/v1657799759/posts/Untitled_design_1_lfhe7e.gif"
+                  height={250}
+                />
+                <h1 style={{color: '#fff', fontSize: '36px'}}>
+                  No NFTs Minted Tll Now
+                </h1>
+              </center>
             </>
           ) : (
             <>

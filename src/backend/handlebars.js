@@ -25,7 +25,7 @@ router.post('/send-mail', (req, res) => {
 
   transporter.use('compile', hbs(handlebarOptions));
   var mailOptions = {
-    from: 'ReachME ADMIN',
+    from: 'JinX ADMIN',
     to: req.body.email,
     subject: 'Message Sent Successfully',
     template: 'email',
