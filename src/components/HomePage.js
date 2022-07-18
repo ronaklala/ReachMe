@@ -107,10 +107,8 @@ const HomePage = (props) => {
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      getPosts();
-      getSavePosts();
-    }, 3000);
+    getPosts();
+    getSavePosts();
     const web3 = Moralis.enableWeb3();
     setTime(today.getHours());
     if (sessionStorage.getItem('user') !== null) {
@@ -452,10 +450,14 @@ const HomePage = (props) => {
                           )}
 
                           <div className="buttons">
-                            {post.likes.includes(user._id)
-                              ? isLiked(post._id)
-                              : isunLiked(post._id)}
-
+                            <>
+                              {setTimeout(() => {
+                                post.likes.includes(user._id)
+                                  ? isLiked(post._id)
+                                  : isunLiked(post._id);
+                              }, 1000)}
+                              ;
+                            </>
                             <button
                               id={'unlike' + post._id}
                               type="submit"
