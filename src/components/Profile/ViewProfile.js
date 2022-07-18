@@ -221,28 +221,29 @@ const ViewProfile = (props) => {
                         <PuffLoader color="red" css={override} size={30} />
                       </>
                     ) : (
-                      <></>
+                      <>
+                        <button
+                          onClick={() => {
+                            follow(users._id);
+                          }}
+                          style={{display: 'none'}}
+                          id={'follow' + users._id}
+                          type="submit">
+                          <PersonAddIcon />
+                          Follow
+                        </button>
+                        <button
+                          onClick={() => {
+                            unFollow(users._id);
+                          }}
+                          style={{display: 'none'}}
+                          id={'unfollow' + users._id}
+                          type="submit">
+                          <PersonRemoveIcon />
+                          UnFollow
+                        </button>
+                      </>
                     )}
-                    <button
-                      onClick={() => {
-                        follow(users._id);
-                      }}
-                      style={{display: 'none'}}
-                      id={'follow' + users._id}
-                      type="submit">
-                      <PersonAddIcon />
-                      Follow
-                    </button>
-                    <button
-                      onClick={() => {
-                        unFollow(users._id);
-                      }}
-                      style={{display: 'none'}}
-                      id={'unfollow' + users._id}
-                      type="submit">
-                      <PersonRemoveIcon />
-                      UnFollow
-                    </button>
                   </>
                 )}
               </div>
