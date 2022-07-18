@@ -106,12 +106,14 @@ const Login = () => {
       <section className="login">
         <div className="form">
           <center>
-            <img
-              src="https://res.cloudinary.com/ronaklala-games/image/upload/v1657619895/posts/favicon_dfjgrb.png"
-              alt="logo img"
-              height={'150px'}
-              style={{borderRadius: '50%'}}
-            />
+            <LazyLoad>
+              <img
+                src="https://res.cloudinary.com/ronaklala-games/image/upload/v1657619895/posts/favicon_dfjgrb.png"
+                alt="logo img"
+                height={'150px'}
+                style={{borderRadius: '50%'}}
+              />
+            </LazyLoad>
             <h1>Login Into {process.env.REACT_APP_NAME}</h1>
           </center>
           <label>Wallet Address</label>

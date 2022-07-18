@@ -6,6 +6,7 @@ import './sass/main.scss';
 import {Link, useNavigate} from 'react-router-dom';
 import {TextField} from '@mui/material';
 import {db} from '../firebase';
+import LazyLoad from 'react-lazyload';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -137,12 +138,14 @@ const Register = () => {
       <section className="login">
         <div className="form">
           <center>
-            <img
-              src="https://res.cloudinary.com/ronaklala-games/image/upload/v1657619895/posts/favicon_dfjgrb.png"
-              alt="logo img"
-              height={'150px'}
-              style={{borderRadius: '50%'}}
-            />
+            <LazyLoad>
+              <img
+                src="https://res.cloudinary.com/ronaklala-games/image/upload/v1657619895/posts/favicon_dfjgrb.png"
+                alt="logo img"
+                height={'150px'}
+                style={{borderRadius: '50%'}}
+              />
+            </LazyLoad>
             <h1>Register Into {process.env.REACT_APP_NAME}</h1>
           </center>
           <label>Wallet Address</label>

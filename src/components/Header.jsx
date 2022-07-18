@@ -10,6 +10,7 @@ import {MenuRounded, Search} from '@mui/icons-material';
 import {Avatar} from '@mui/material';
 import $ from 'jquery';
 import {useMoralis} from 'react-moralis';
+import LazyLoad from 'react-lazyload';
 // import { search } from '../backend/queries/transaction';
 
 const Header = () => {
@@ -56,10 +57,13 @@ const Header = () => {
           <a
             href="/"
             style={{display: 'flex', alignItems: 'center', gap: '10px'}}>
-            <img
-              src="https://res.cloudinary.com/ronaklala-games/image/upload/v1657619895/posts/favicon_dfjgrb.png"
-              height={'40px'}
-            />
+            <LazyLoad>
+              <img
+                src="https://res.cloudinary.com/ronaklala-games/image/upload/v1657619895/posts/favicon_dfjgrb.png"
+                height={'40px'}
+                alt="logo"
+              />
+            </LazyLoad>
             <h2>{process.env.REACT_APP_NAME}</h2>
           </a>
           <div className="search">
