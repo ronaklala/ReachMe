@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 import {toast, ToastContainer} from 'react-toastify';
 import './sass/main.scss';
 import {useMoralis} from 'react-moralis';
+import LazyLoad from 'react-lazyload';
 
 const Login = () => {
   const {authenticate, isAuthenticated, user} = useMoralis();
