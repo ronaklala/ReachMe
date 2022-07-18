@@ -6,7 +6,6 @@ import React, {useEffect, useState} from 'react';
 import {SyncLoader} from 'react-spinners';
 import './users.scss';
 import {css} from '@emotion/react';
-import {count} from '../../backend/schemas/userSchema';
 
 const ShowUsersList = (props) => {
   const [users, setUsers] = useState({});
@@ -114,7 +113,7 @@ const ShowUsersList = (props) => {
                             <span>{user.wallet}</span>
                             <div className="counts">
                               <span>
-                                {post_count(user.username, (count = 0))}
+                                {post_count(user.username, 0)}
                                 <br />
                                 Posts + NFTs
                               </span>

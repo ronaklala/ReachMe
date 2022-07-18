@@ -36,8 +36,8 @@
         li {
             height: auto;
             width: auto;
-            max-width: 300px;
-            max-height: 350px;
+            max-width: 350px;
+            max-height: 550px;
             background-color: transparent;
             display: flex;
             flex-direction: column;
@@ -52,8 +52,8 @@
             img {
                 height: auto;
                 width: auto;
-                max-height: 150px;
-                max-width: 250px;
+                max-height: 350px;
+                max-width: 300px;
             }
 
             .user-info {
@@ -68,6 +68,7 @@
                     width: 200px;
                     text-overflow: ellipsis;
                 }
+
 
                 img {
                     height: 35px;

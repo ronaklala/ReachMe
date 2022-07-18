@@ -34,6 +34,8 @@ import SingleGroupPost from './components/Groups/SingleGroupPost';
 import ViewSinglePostComments from './components/Comments/ViewSinglePostComments';
 import About from './components/Docs/About';
 import Contact from './components/Docs/Contact';
+import BuyCrpto from './components/Crypto/BuyCrpto';
+import Docs from './components/Docs/Docs';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -77,10 +79,12 @@ root.render(
             path="/group/:gid/members"
             element={<SingleGroupMemberList />}
           />
+          <Route path="/buy-crypto" element={<BuyCrpto />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/group/:gid/posts" element={<GroupPosts />} />
           <Route path="/updateProfile/:uid" element={<UpdateProfile />} />
+          <Route path="/docs" element={<Docs />} />
         </Routes>
       </MoralisProvider>
     </BrowserRouter>

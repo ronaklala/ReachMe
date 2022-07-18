@@ -7,7 +7,7 @@ import Sidebar from '../Sidebar';
 import './supply.scss';
 
 const About = () => {
-  document.title = "About "+ process.env.REACT_APP_NAME;
+  document.title = 'About ' + process.env.REACT_APP_NAME;
   const app_name = process.env.REACT_APP_NAME;
   const [user, setUser] = useState({});
   useEffect(() => {
@@ -118,6 +118,8 @@ const About = () => {
               <li>Tipping Groups</li>
               <li>Able to Share Images and Videos on Messages</li>
               <li>Able to Post Videos</li>
+              <li>To Burn the Minted NFT from our End</li>
+              <li>List the NFT on sell while Minting it</li>
             </ul>
 
             <h1>What is a wallet? Why do I need one?</h1>

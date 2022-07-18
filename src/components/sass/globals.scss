@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@800&family=Open+Sans&display=swap');
-$button: rgba(255, 255, 255, 0.1);
+$button: #ffffff1a;
 $bg: rgb(25, 28, 31);
 $font2: 'Open Sans',
 sans-serif;
@@ -49,4 +49,24 @@ sans-serif;
     border: none;
     font-family: $font2;
     color: #fff;
+}
+
+.crypto {
+    width: 482px;
+}
+
+.crypto-center {
+    width: 60%;
+}
+
+@media (min-width:250px) and (max-width:800px) {
+    .crypto {
+        min-width: 300px;
+        width: auto;
+        max-width: 482px;
+    }
+
+    .crypto-center {
+        width: 100%;
+    }
 }

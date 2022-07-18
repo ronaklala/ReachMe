@@ -6,6 +6,7 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import {Avatar} from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 
 const Sidebar = (props) => {
   return (
@@ -56,7 +57,7 @@ const Sidebar = (props) => {
             </li>
 
             <li>
-              <a href={"/saved-post/"+props.username}>
+              <a href={'/saved-post/' + props.username}>
                 <SaveAltIcon />
                 Saved
               </a>
@@ -66,6 +67,12 @@ const Sidebar = (props) => {
               <a href="/messages">
                 <SendIcon />
                 Messages
+              </a>
+            </li>
+            <li>
+              <a href="/buy-crypto">
+                <ShoppingBagIcon />
+                Buy Crypto
               </a>
             </li>
           </ul>

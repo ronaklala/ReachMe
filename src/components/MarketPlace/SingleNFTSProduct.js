@@ -13,6 +13,7 @@ const SingleNFTSProduct = () => {
   useEffect(() => {
     getNftData();
   }, []);
+  document.title = nft.token_name + ' - JinX NFT';
 
   const getNftData = async () => {
     await axios

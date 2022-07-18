@@ -24,6 +24,8 @@ code {
   --color-5: #eb4034;
   --color-6: #333;
 }
-
+.widget-container {
+  width: 600px  !important;
+}
 
 

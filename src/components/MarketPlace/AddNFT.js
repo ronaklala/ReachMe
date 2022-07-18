@@ -275,6 +275,11 @@ const AddNFT = (props) => {
                 )}
               </form>
             </div>
+            <p>
+              Note * After Minting if you dont see your NFT in rarible account,
+              Try Waiting, BlockChain works in a smooth manner. It may take up
+              yo 4-5 Mins to show up
+            </p>
           </section>
           <ToastContainer />
         </>
