@@ -208,7 +208,7 @@ const AddNFT = (props) => {
         <>
           <section className="home">
             <div className="post">
-              <form>
+              {/* <form>
                 <center>
                   <h2>Add NFT to {process.env.REACT_APP_NAME} & Rarible</h2>
                 </center>
@@ -257,7 +257,7 @@ const AddNFT = (props) => {
                   </Button>
                 </label>
                 <div className="image">
-                  <span id="image-text">{'/* Image Goes Here */'}</span>
+                  <span id="image-text">** Image Goes Here **</span>
                   <img src={file} />
                   {loading === true ? (
                     <SyncLoader
@@ -277,8 +277,12 @@ const AddNFT = (props) => {
                 ) : (
                   <></>
                 )}
-              </form>
+              </form> */}
             </div>
+            <center>
+              Rarible is currently Down and wont be able to mint NFTs, we will
+              let you lazyMint NFTs once they are UP again
+            </center>
             <p>
               Note * After Minting if you dont see your NFT in rarible account,
               Try Waiting, BlockChain works in a smooth manner. It may take up
