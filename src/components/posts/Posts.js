@@ -31,11 +31,13 @@ const Posts = (props) => {
     getPosts();
   }, []);
   const getPosts = async () => {
-    await axios.get('http://localhost:5001/posts/' + wallet.uid).then((res) => {
-      setLoading(false);
-      setPosts(res.data.doc);
-      console.log(posts);
-    });
+    await axios
+      .get('https://jinx-social.herokuapp.com/posts/' + wallet.uid)
+      .then((res) => {
+        setLoading(false);
+        setPosts(res.data.doc);
+        console.log(posts);
+      });
   };
 
   let axiosConfig = {

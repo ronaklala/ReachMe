@@ -34,7 +34,7 @@ const Transcation = () => {
       window.location.href = '/error';
     } else {
       await axios
-        .get('http://localhost:5001/transcation/' + wallet.uid)
+        .get('https://jinx-social.herokuapp.com/transcation/' + wallet.uid)
         .then((res) => {
           settran(res.data.doc);
           setLoading(false);

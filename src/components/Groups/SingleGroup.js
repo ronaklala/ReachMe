@@ -22,7 +22,7 @@ const SingleGroup = () => {
 
   const getGroupData = () => {
     axios
-      .get('http://localhost:5001/group/' + gr.gid)
+      .get('https://jinx-social.herokuapp.com/group/' + gr.gid)
       .then((res) => {
         setGroupData(res.data[0]);
         setLoading(false);
@@ -72,7 +72,7 @@ const SingleGroup = () => {
 
   const joinGroup = (id, gid) => {
     axios
-      .post('http://localhost:5001/join_group/' + id + '/' + gid)
+      .post('https://jinx-social.herokuapp.com/join_group/' + id + '/' + gid)
       .then((res) => {
         var el = parseInt($('#count').text());
         $('#count').text(el + 1);
@@ -85,7 +85,7 @@ const SingleGroup = () => {
 
   const leaveGroup = (uid, gid) => {
     axios
-      .post('http://localhost:5001/leave_group/' + uid + '/' + gid)
+      .post('https://jinx-social.herokuapp.com/leave_group/' + uid + '/' + gid)
       .then((res) => {
         var el = parseInt($('#count').text());
         $('#count').text(el - 1);

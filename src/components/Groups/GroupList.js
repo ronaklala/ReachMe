@@ -7,7 +7,7 @@ const GroupList = () => {
   const [groups, setGroups] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5001/groups').then((res) => {
+    axios.get('https://jinx-social.herokuapp.com/groups').then((res) => {
       setGroups(res.data);
     });
   }, []);

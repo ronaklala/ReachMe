@@ -17,7 +17,7 @@ const SingleNFTSProduct = () => {
 
   const getNftData = async () => {
     await axios
-      .get('http://localhost:5001/getsinglenft/' + url.nftid)
+      .get('https://jinx-social.herokuapp.com/getsinglenft/' + url.nftid)
       .then((res) => {
         console.log(res.data[0]);
         setNft(res.data[0]);

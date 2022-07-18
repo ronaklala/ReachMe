@@ -23,7 +23,7 @@ const GroupPosts = () => {
     }
 
     axios
-      .get('http://localhost:5001/group/' + gid.gid + '/posts')
+      .get('https://jinx-social.herokuapp.com/group/' + gid.gid + '/posts')
       .then((res) => {
         setGroup(res.data);
         setLoading(false);

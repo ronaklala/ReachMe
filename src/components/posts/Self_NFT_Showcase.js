@@ -11,10 +11,12 @@ const Self_NFT_Showcase = (props) => {
   const userid = useParams();
 
   useEffect(() => {
-    axios.get('http://localhost:5001/Self-NFT/' + userid.uid).then((res) => {
-      setNfts(res.data);
-      console.log(res.data);
-    });
+    axios
+      .get('https://jinx-social.herokuapp.com/Self-NFT/' + userid.uid)
+      .then((res) => {
+        setNfts(res.data);
+        console.log(res.data);
+      });
   }, []);
 
   return (

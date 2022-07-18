@@ -68,7 +68,7 @@ const Login = () => {
   const LoginUser = () => {
     if (wallet !== '') {
       axios
-        .post('http://localhost:5001/login', wallet, axiosConfig)
+        .post('https://jinx-social.herokuapp.com/login', wallet, axiosConfig)
         .then((res) => {
           if (res.status === 200) {
             let data = res.data.doc;

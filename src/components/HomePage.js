@@ -69,16 +69,18 @@ const HomePage = (props) => {
 
   //Getting Posts from backend and storing in Posts State
   const getPosts = async () => {
-    await axios.get('http://localhost:5001/').then((res) => {
+    await axios.get('https://jinx-social.herokuapp.com/').then((res) => {
       setPosts(res.data.doc);
       setLoading(false);
     });
   };
 
   const getSavePosts = async () => {
-    await axios.get('http://localhost:5001/savepost').then((res) => {
-      getsavePosts(res.data.doc);
-    });
+    await axios
+      .get('https://jinx-social.herokuapp.com/savepost')
+      .then((res) => {
+        getsavePosts(res.data.doc);
+      });
   };
 
   //to save post
@@ -91,7 +93,7 @@ const HomePage = (props) => {
     if (window.confirm(text) == true) {
       await axios
         .post(
-          'http://localhost:5001/save',
+          'https://jinx-social.herokuapp.com/save',
           {postid, username, userid, image},
           axiosConfig
         )
@@ -147,7 +149,10 @@ const HomePage = (props) => {
           });
           setTimeout(() => {
             console.log(transactionDetails);
-            axios.post('http://localhost:5001/user_tip', transactionDetails);
+            axios.post(
+              'https://jinx-social.herokuapp.com/user_tip',
+              transactionDetails
+            );
           }, 3000);
         })
         .catch((err) => {
@@ -204,7 +209,7 @@ const HomePage = (props) => {
 
     await axios
       .put(
-        'http://localhost:5001/likes',
+        'https://jinx-social.herokuapp.com/likes',
         JSON.stringify(user_data),
         axiosConfig
       )
@@ -227,7 +232,7 @@ const HomePage = (props) => {
     };
     await axios
       .put(
-        'http://localhost:5001/unlikes',
+        'https://jinx-social.herokuapp.com/unlikes',
         JSON.stringify(user_data_),
         axiosConfig
       )

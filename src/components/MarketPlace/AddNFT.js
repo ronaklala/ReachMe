@@ -154,7 +154,11 @@ const AddNFT = (props) => {
       post.username = props.username;
       post.wallet = props.wallet;
       axios
-        .post('http://localhost:5001/MarketPlace', post, axiosConfig)
+        .post(
+          'https://jinx-social.herokuapp.com/MarketPlace',
+          post,
+          axiosConfig
+        )
         .then((res) => {
           console.log(res.status);
           if (res.status === 201) {

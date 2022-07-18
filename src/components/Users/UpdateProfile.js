@@ -46,7 +46,7 @@ const UpdateProfile = () => {
       userdata.wallet = uid.uid;
       axios
         .post(
-          'http://localhost:5001/updateProfile/' + userdata.wallet,
+          'https://jinx-social.herokuapp.com/updateProfile/' + userdata.wallet,
           userdata
         )
         .then((res) => {

@@ -64,7 +64,12 @@ const CreatePostGroup = (props) => {
     post.uid = props.uid;
     post.wallet = props.wallet;
     axios
-      .post('http://localhost:5001/group/' + gid.gid + '/createGroupPost', post)
+      .post(
+        'https://jinx-social.herokuapp.com/group/' +
+          gid.gid +
+          '/createGroupPost',
+        post
+      )
       .then((res) => {
         toast.success('Post Created Successfully, Please Refresh To View', {
           position: 'top-center',

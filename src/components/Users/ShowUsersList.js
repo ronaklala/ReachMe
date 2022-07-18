@@ -33,7 +33,7 @@ const ShowUsersList = (props) => {
   const [posts, setPosts] = useState([]);
   const getUsersData = async () => {
     await axios
-      .get('http://localhost:5001/users')
+      .get('https://jinx-social.herokuapp.com/users')
       .then((res) => {
         setUsers(res.data);
         setLoading(false);
@@ -44,7 +44,7 @@ const ShowUsersList = (props) => {
   };
 
   const getPosts = async () => {
-    await axios.get('http://localhost:5001/').then((res) => {
+    await axios.get('https://jinx-social.herokuapp.com/').then((res) => {
       setLoading(false);
       setPosts(res.data.doc);
       console.log(posts);

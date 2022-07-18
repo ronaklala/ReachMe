@@ -14,7 +14,7 @@ const SinglePost = (props) => {
 
   const getPost = async () => {
     await axios
-      .get('http://localhost:5001/gpost/' + url.pid)
+      .get('https://jinx-social.herokuapp.com/gpost/' + url.pid)
       .then((res) => {
         setPost(res.data[0]);
         setLoading(false);

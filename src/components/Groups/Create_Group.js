@@ -57,7 +57,7 @@ const Create_Group = () => {
       });
     } else {
       axios
-        .post('http://localhost:5001/create_group', group)
+        .post('https://jinx-social.herokuapp.com/create_group', group)
         .then((res) => {
           toast.success('Group Created Successfully', {
             position: 'top-center',

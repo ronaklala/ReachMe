@@ -41,7 +41,11 @@ const Comment = (props) => {
       });
     } else {
       await axios
-        .post('http://localhost:5001/add-comment', comment, axiosConfig)
+        .post(
+          'https://jinx-social.herokuapp.com/add-comment',
+          comment,
+          axiosConfig
+        )
         .then((res) => {
           if (res.status == 200) {
             toast.success('Comment Added Successfully', {

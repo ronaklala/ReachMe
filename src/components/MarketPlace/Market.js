@@ -12,7 +12,7 @@ const Market = (props) => {
   const [nfts, setNfts] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5001/MarketPlace').then((res) => {
+    axios.get('https://jinx-social.herokuapp.com/MarketPlace').then((res) => {
       setNfts(res.data);
       console.log(res.data);
     });

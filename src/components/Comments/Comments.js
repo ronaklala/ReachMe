@@ -24,7 +24,7 @@ const Comments = () => {
 
   const getComments = async () => {
     await axios
-      .get('http://localhost:5001/get-comments/' + postid.postid)
+      .get('https://jinx-social.herokuapp.com/get-comments/' + postid.postid)
       .then((res) => {
         setComments(res.data);
         console.log(comments);
@@ -33,7 +33,10 @@ const Comments = () => {
   const deletePost = async (postid, commentid) => {
     await axios
       .delete(
-        'http://localhost:5001/delete-comment/' + postid + '/' + commentid
+        'https://jinx-social.herokuapp.com/delete-comment/' +
+          postid +
+          '/' +
+          commentid
       )
       .then((res) => {
         window.location.reload();

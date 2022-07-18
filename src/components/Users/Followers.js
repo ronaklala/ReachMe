@@ -19,7 +19,7 @@ const Followers = () => {
 
   const getFollowers = async () => {
     await axios
-      .get('http://localhost:5001/followers/' + uid.uid)
+      .get('https://jinx-social.herokuapp.com/followers/' + uid.uid)
       .then((res) => {
         setFollowers(res.data[0].user_details);
         setLoading(false);

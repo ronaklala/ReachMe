@@ -24,7 +24,7 @@ const ShowSinglePost = (props) => {
   //Getting Post Data here
   const getPostData = async () => {
     await axios
-      .get('http://localhost:5001/p-self/' + postid.postid)
+      .get('https://jinx-social.herokuapp.com/p-self/' + postid.postid)
       .then((res) => {
         if (res.status === 201) {
           setPost(res.data[0]);

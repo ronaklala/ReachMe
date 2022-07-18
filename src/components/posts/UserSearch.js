@@ -26,7 +26,7 @@ const UserSearch = () => {
   const getuser = async () => {
     console.log(search.search);
     await axios
-      .get('http://localhost:5001/search')
+      .get('https://jinx-social.herokuapp.com/search')
       .then((res) => {
         setuser(res.data);
         onsearch1(
@@ -45,7 +45,7 @@ const UserSearch = () => {
   };
   const [posts, setPosts] = useState({});
   const getpost = async () => {
-    await axios.get('http://localhost:5001/posts').then((res) => {
+    await axios.get('https://jinx-social.herokuapp.com/posts').then((res) => {
       setPosts(res.data);
       setLoading(false);
     });

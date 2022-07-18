@@ -35,7 +35,7 @@ const Header = () => {
   const [getuser, setusers] = useState([]);
   const getUsersData = async () => {
     await axios
-      .get('http://localhost:5001/getusers/' + user.wallet)
+      .get('https://jinx-social.herokuapp.com/getusers/' + user.wallet)
       .then((res) => {
         setusers(...res.data.doc);
 

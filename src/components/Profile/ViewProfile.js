@@ -30,7 +30,7 @@ const ViewProfile = (props) => {
   useEffect(() => {
     const getUserData = () => {
       axios
-        .get('http://localhost:5001/' + wallet.uid)
+        .get('https://jinx-social.herokuapp.com/' + wallet.uid)
         .then((res) => {
           setuser(res.data.users);
           setFile(res.data.users[0].profile_url);
@@ -68,7 +68,7 @@ const ViewProfile = (props) => {
       url: url,
     };
     await axios
-      .post('http://localhost:5001/user_pic', photo)
+      .post('https://jinx-social.herokuapp.com/user_pic', photo)
       .then((res) => {
         if (res.status === 200) {
           toast.success(
@@ -113,7 +113,9 @@ const ViewProfile = (props) => {
 
   const follow = (id) => {
     axios
-      .post('http://localhost:5001/followuser/' + id + '/' + props.uid)
+      .post(
+        'https://jinx-social.herokuapp.com/followuser/' + id + '/' + props.uid
+      )
       .then((res) => {
         var el = parseInt($('#count').text());
         $('#count').text(el + 1);
@@ -125,7 +127,9 @@ const ViewProfile = (props) => {
 
   const unFollow = (id) => {
     axios
-      .post('http://localhost:5001/unfollowuser/' + id + '/' + props.uid)
+      .post(
+        'https://jinx-social.herokuapp.com/unfollowuser/' + id + '/' + props.uid
+      )
       .then((res) => {
         var el = parseInt($('#count').text());
         $('#count').text(el - 1);

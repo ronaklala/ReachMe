@@ -33,7 +33,7 @@ const Posts = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5001/group/' + gid.gid + '/getPosts')
+      .get('https://jinx-social.herokuapp.com/group/' + gid.gid + '/getPosts')
       .then((res) => {
         setPosts(res.data);
       });

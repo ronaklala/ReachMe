@@ -60,7 +60,11 @@ const Contact = () => {
           .add({contact})
           .then((res) => {
             axios
-              .post('http://localhost:5001/send-mail', contact, axiosConfig)
+              .post(
+                'https://jinx-social.herokuapp.com/send-mail',
+                contact,
+                axiosConfig
+              )
               .then((res) => {
                 toast.success('Message Sent Successfully', {
                   toastId: 123,
