@@ -50,7 +50,10 @@ const Posts = (props) => {
   //Function to delete a post
   function deletePost(postId) {
     axios
-      .delete(`/deletepost/${postId}`, axiosConfig)
+      .delete(
+        `https://jinx-social.herokuapp.com/deletepost/${postId}`,
+        axiosConfig
+      )
       .then((res) => {
         toast.success('Post Deleted Successfully', {
           toastId: 1234 + 111,
