@@ -3,10 +3,9 @@ import axios from 'axios';
 import React, {useState} from 'react';
 import {toast, ToastContainer} from 'react-toastify';
 import './sass/main.scss';
-import {Link, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {TextField} from '@mui/material';
 import {db} from '../firebase';
-import LazyLoad from 'react-lazyload';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -63,7 +62,7 @@ const Register = () => {
       db.collection('users').add(data);
       console.log(data);
       axios
-        .post('https://jinx-social.herokuapp.com/register', user, axiosConfig)
+        .post('http://localhost:5001/register', user, axiosConfig)
         .then((res) => {
           if (res.status === 201) {
             toast.success('Wallet Registration Done Successfully', {
@@ -138,14 +137,12 @@ const Register = () => {
       <section className="login">
         <div className="form">
           <center>
-            <LazyLoad>
-              <img
-                src="https://res.cloudinary.com/ronaklala-games/image/upload/v1657619895/posts/favicon_dfjgrb.png"
-                alt="logo img"
-                height={'150px'}
-                style={{borderRadius: '50%'}}
-              />
-            </LazyLoad>
+            <img
+              src="https://res.cloudinary.com/ronaklala-games/image/upload/v1657619895/posts/favicon_dfjgrb.png"
+              alt="logo img"
+              height={'150px'}
+              style={{borderRadius: '50%'}}
+            />
             <h1>Register Into {process.env.REACT_APP_NAME}</h1>
           </center>
           <label>Wallet Address</label>

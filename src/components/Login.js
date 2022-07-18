@@ -5,7 +5,6 @@ import {Link} from 'react-router-dom';
 import {toast, ToastContainer} from 'react-toastify';
 import './sass/main.scss';
 import {useMoralis} from 'react-moralis';
-import LazyLoad from 'react-lazyload';
 
 const Login = () => {
   const {authenticate, isAuthenticated, user} = useMoralis();
@@ -107,14 +106,12 @@ const Login = () => {
       <section className="login">
         <div className="form">
           <center>
-            <LazyLoad>
-              <img
-                src="https://res.cloudinary.com/ronaklala-games/image/upload/v1657619895/posts/favicon_dfjgrb.png"
-                alt="logo img"
-                height={'150px'}
-                style={{borderRadius: '50%'}}
-              />
-            </LazyLoad>
+            <img
+              src="https://res.cloudinary.com/ronaklala-games/image/upload/v1657619895/posts/favicon_dfjgrb.png"
+              alt="logo img"
+              height={'150px'}
+              style={{borderRadius: '50%'}}
+            />
             <h1>Login Into {process.env.REACT_APP_NAME}</h1>
           </center>
           <label>Wallet Address</label>

@@ -308,6 +308,7 @@ const HomePage = (props) => {
                   <img
                     src="https://res.cloudinary.com/ronaklala-games/image/upload/v1657799759/posts/Untitled_design_1_lfhe7e.gif"
                     height={250}
+                    alt="logo"
                   />
                   <h1 style={{color: '#fff', fontSize: '36px'}}>
                     No Posts Found
