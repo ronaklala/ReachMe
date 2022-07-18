@@ -32,27 +32,31 @@ const Saved_post = () => {
   const uname = useParams();
 
   const getPosts = async () => {
-    await axios.get('' + uname.username).then((res) => {
-      setsavePosts(res.data.doc);
-      setLoading(false);
-    });
+    await axios
+      .get('https://jinx-social.herokuapp.com/saved-post/' + uname.username)
+      .then((res) => {
+        setsavePosts(res.data.doc);
+        setLoading(false);
+      });
   };
   useEffect(() => {
     getPosts();
   }, []);
   const deletePost = async (postid) => {
-    await axios.delete(`/delete-savedpost/${postid}`).then((res) => {
-      toast.success('saved Post Deleted Successfully', {
-        toastId: 1234 + 111,
-        position: 'top-center',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
+    await axios
+      .delete(`https://jinx-social.herokuapp.com/delete-savedpost/${postid}`)
+      .then((res) => {
+        toast.success('saved Post Deleted Successfully', {
+          toastId: 1234 + 111,
+          position: 'top-center',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+        });
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
       });
-      setTimeout(() => {
-        window.location.reload();
-      }, 2000);
-    });
   };
   return (
     <>
