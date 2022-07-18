@@ -62,7 +62,7 @@ const Register = () => {
       db.collection('users').add(data);
       console.log(data);
       axios
-        .post('http://localhost:5001/register', user, axiosConfig)
+        .post('https://jinx-social.herokuapp.com/register', user, axiosConfig)
         .then((res) => {
           if (res.status === 201) {
             toast.success('Wallet Registration Done Successfully', {
