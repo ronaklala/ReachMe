@@ -6,7 +6,7 @@
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import './sass/sidebar.scss';
-import {SyncLoader} from 'react-spinners';
+import {MoonLoader, PuffLoader, SyncLoader} from 'react-spinners';
 import {css} from '@emotion/react';
 import {Avatar} from '@mui/material';
 import {Icon} from '@iconify/react';
@@ -205,7 +205,7 @@ const HomePage = (props) => {
   const checkLike = (post) => {
     setTimeout(() => {
       post.likes.includes(user._id) ? isLiked(post._id) : isunLiked(post._id);
-    }, 1500);
+    }, 500);
   };
 
   //function for LIKING a post
@@ -457,104 +457,117 @@ const HomePage = (props) => {
                             </>
                           )}
 
-                          <div className="buttons">
-                            {checkLike(post)}
-                            {setBtnLoading === true ? <>...</> : <></>}
-                            <button
-                              id={'unlike' + post._id}
-                              type="submit"
-                              style={{display: 'none'}}
-                              onClick={() => {
-                                unlikePost(post._id);
-                              }}>
-                              <FavoriteIcon />
-                            </button>
-
-                            <button
-                              id={'like' + post._id}
-                              type="submit"
-                              onClick={() => {
-                                likePost(post._id);
-                              }}>
-                              <FavoriteBorderIcon />
-                            </button>
-                            {post.username === user.username ? (
-                              <></>
-                            ) : (
-                              <>
+                          {checkLike(post)}
+                          {button === true ? (
+                            <>
+                              <PuffLoader color="#fff" size={30} />
+                            </>
+                          ) : (
+                            <>
+                              <div className="buttons">
                                 <button
-                                  onClick={handleTip(post.wallet, post._id)}>
-                                  Tip 0.005 &nbsp;
-                                  <Icon icon="mdi:ethereum" />
+                                  id={'unlike' + post._id}
+                                  type="submit"
+                                  style={{display: 'none'}}
+                                  onClick={() => {
+                                    unlikePost(post._id);
+                                  }}>
+                                  <FavoriteIcon />
                                 </button>
-                              </>
-                            )}
-                          </div>
 
-                          <div className="comment-section">
-                            {post.likes.length > 0 ? (
-                              <>
-                                <span class={'likes' + post._id}>
-                                  {post.likes.length}
-                                </span>
-                                Likes
-                              </>
-                            ) : (
-                              <>
-                                <span class={'likes' + post._id}>0</span>
-                                likes
-                              </>
-                            )}
-                            <a
-                              href={'/post/' + post._id + '/comments'}
-                              style={{color: '#fff'}}>
-                              {post.comment.length === 1 ? (
-                                <>
-                                  <span>{post.comment.length} Comment</span>
-                                </>
-                              ) : (
-                                <>
-                                  <span>{post.comment.length} Comments</span>
-                                </>
-                              )}
-                            </a>
-                            {getsavepost.filter(
-                              (e) =>
-                                e.username == user.username &&
-                                e.postid == post._id
-                            ).length > 0 ? (
-                              // {getsavepost[ind].postid!=(post._id)  && getsavepost[ind].username!=(post.username)
-                              <button
-                                style={{
-                                  background: 'none',
-                                  outline: 'none',
-                                  color: '#fefe',
-                                  border: 'none',
-                                }}
-                                disabled>
-                                Saved
-                              </button>
-                            ) : (
-                              <button
-                                style={{
-                                  background: 'none',
-                                  outline: 'none',
-                                  color: '#fff',
-                                  border: 'none',
-                                }}
-                                onClick={(event) =>
-                                  save(
-                                    event,
-                                    post._id,
-                                    user.username,
-                                    user._id,
-                                    post.image
-                                  )
-                                }>
-                                <span>Save</span>
-                              </button>
-                            )}
-                          </div>
+                                <button
+                                  id={'like' + post._id}
+                                  type="submit"
+                                  style={{display: 'none'}}
+                                  onClick={() => {
+                                    likePost(post._id);
+                                  }}>
+                                  <FavoriteBorderIcon />
+                                </button>
+                                {post.username === user.username ? (
+                                  <></>
+                                ) : (
+                                  <>
+                                    <button
+                                      onClick={handleTip(
+                                        post.wallet,
+                                        post._id
+                                      )}>
+                                      Tip 0.005 &nbsp;
+                                      <Icon icon="mdi:ethereum" />
+                                    </button>
+                                  </>
+                                )}
+                              </div>
+
+                              <div className="comment-section">
+                                {post.likes.length > 0 ? (
+                                  <>
+                                    <span class={'likes' + post._id}>
+                                      {post.likes.length}
+                                    </span>
+                                    Likes
+                                  </>
+                                ) : (
+                                  <>
+                                    <span class={'likes' + post._id}>0</span>
+                                    likes
+                                  </>
+                                )}
+                                <a
+                                  href={'/post/' + post._id + '/comments'}
+                                  style={{color: '#fff'}}>
+                                  {post.comment.length === 1 ? (
+                                    <>
+                                      <span>{post.comment.length} Comment</span>
+                                    </>
+                                  ) : (
+                                    <>
+                                      <span>
+                                        {post.comment.length} Comments
+                                      </span>
+                                    </>
+                                  )}
+                                </a>
+                                {getsavepost.filter(
+                                  (e) =>
+                                    e.username == user.username &&
+                                    e.postid == post._id
+                                ).length > 0 ? (
+                                  // {getsavepost[ind].postid!=(post._id)  && getsavepost[ind].username!=(post.username)
+                                  <button
+                                    style={{
+                                      background: 'none',
+                                      outline: 'none',
+                                      color: '#fefe',
+                                      border: 'none',
+                                    }}
+                                    disabled>
+                                    Saved
+                                  </button>
+                                ) : (
+                                  <button
+                                    style={{
+                                      background: 'none',
+                                      outline: 'none',
+                                      color: '#fff',
+                                      border: 'none',
+                                    }}
+                                    onClick={(event) =>
+                                      save(
+                                        event,
+                                        post._id,
+                                        user.username,
+                                        user._id,
+                                        post.image
+                                      )
+                                    }>
+                                    <span>Save</span>
+                                  </button>
+                                )}
+                              </div>
+                            </>
+                          )}
                         </div>
                       </>
                     )
