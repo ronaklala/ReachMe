@@ -59,6 +59,7 @@ const HomePage = (props) => {
 
   //User Data
   const [user, setUser] = useState({});
+  const [button, setBtnLoading] = useState(true);
 
   const [time, setTime] = useState({});
   let [loading, setLoading] = useState(true);
@@ -185,12 +186,14 @@ const HomePage = (props) => {
   function isLiked(id) {
     $('#like' + id).hide();
     $('#unlike' + id).show();
+    setBtnLoading(false);
   }
 
   //Function for if a post is not liked by user
   function isunLiked(id) {
     $('#like' + id).show();
     $('#unlike' + id).hide();
+    setBtnLoading(false);
   }
 
   let axiosConfig = {
@@ -198,6 +201,11 @@ const HomePage = (props) => {
       'Content-Type': 'application/json;charset=UTF-8',
       'Access-Control-Allow-Origin': '*',
     },
+  };
+  const checkLike = (post) => {
+    setTimeout(() => {
+      post.likes.includes(user._id) ? isLiked(post._id) : isunLiked(post._id);
+    }, 1500);
   };
 
   //function for LIKING a post
@@ -450,14 +458,8 @@ const HomePage = (props) => {
                           )}
 
                           <div className="buttons">
-                            <>
-                              {setTimeout(() => {
-                                post.likes.includes(user._id)
-                                  ? isLiked(post._id)
-                                  : isunLiked(post._id);
-                              }, 1000)}
-                              ;
-                            </>
+                            {checkLike(post)}
+                            {setBtnLoading === true ? <>...</> : <></>}
                             <button
                               id={'unlike' + post._id}
                               type="submit"
