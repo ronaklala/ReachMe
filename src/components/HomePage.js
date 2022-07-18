@@ -107,8 +107,10 @@ const HomePage = (props) => {
   };
 
   useEffect(() => {
-    getPosts();
-    getSavePosts();
+    setTimeout(() => {
+      getPosts();
+      getSavePosts();
+    }, 3000);
     const web3 = Moralis.enableWeb3();
     setTime(today.getHours());
     if (sessionStorage.getItem('user') !== null) {
