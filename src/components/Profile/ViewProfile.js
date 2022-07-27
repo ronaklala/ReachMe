@@ -36,6 +36,7 @@ const ViewProfile = (props) => {
           setFile(res.data.users[0].profile_url);
           setPostCount(res.data.numbers);
           setLoading(false);
+          document.title = res.data.users[0].username;
         })
         .catch((err) => {
           if (err.response.status === 500) {

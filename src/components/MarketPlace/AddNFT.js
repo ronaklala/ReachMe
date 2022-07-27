@@ -69,7 +69,12 @@ const AddNFT = (props) => {
     data.append('upload_preset', 'social_posts');
     const imageFile = new Moralis.File(datafile.name, datafile);
 
-    await imageFile.saveIPFS();
+    await imageFile
+      .saveIPFS()
+      .then(() => {})
+      .catch((err) => {
+        alert(err);
+      });
     const imagehash = imageFile.hash();
     console.log(imageFile.ipfs(), imagehash);
 
@@ -208,7 +213,7 @@ const AddNFT = (props) => {
         <>
           <section className="home">
             <div className="post">
-              {/* <form>
+              <form>
                 <center>
                   <h2>Add NFT to {process.env.REACT_APP_NAME} & Rarible</h2>
                 </center>
@@ -277,12 +282,12 @@ const AddNFT = (props) => {
                 ) : (
                   <></>
                 )}
-              </form> */}
+              </form>
             </div>
-            <center>
+            {/* <center>
               Rarible is currently Down and wont be able to mint NFTs, we will
               let you lazyMint NFTs once they are UP again
-            </center>
+            </center> */}
             <p>
               Note * After Minting if you dont see your NFT in rarible account,
               Try Waiting, BlockChain works in a smooth manner. It may take up

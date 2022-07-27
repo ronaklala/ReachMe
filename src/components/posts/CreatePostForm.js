@@ -43,7 +43,7 @@ const CreatePostForm = (props) => {
     $('#image-text').hide();
     setLoading(true);
     const dataFile = await fetch(
-      'https://api.cloudinary.com/v1_1/ronaklala-games/image/upload',
+      'https://api.cloudinary.com/v1_1/ronaklala-games/video/upload',
       {
         method: 'POST',
         body: data,
@@ -165,7 +165,7 @@ const CreatePostForm = (props) => {
                 name="btn-upload"
                 style={{display: 'none'}}
                 type="file"
-                accept="image/*"
+                accept="file/*"
                 onChange={handleChange}
               />
               <Button

@@ -12,6 +12,7 @@ import {useEffect, useState} from 'react';
 import img from './images/close.png';
 import $ from 'jquery';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 
 const MobileMenu = () => {
   const [user, setUser] = useState({});
@@ -90,6 +91,12 @@ const MobileMenu = () => {
               <a href="/messages">
                 <SendIcon />
                 Messages
+              </a>
+            </li>
+            <li>
+              <a href="/buy-crypto">
+                <ShoppingBagIcon />
+                Buy Crypto
               </a>
             </li>
             <li>

@@ -92,6 +92,12 @@
             max-height: 800px;
             max-width: 800px;
         }
+
+        img {
+            height: auto;
+            width: auto;
+            max-width: 80%;
+        }
     }
 
     .MuiSvgIcon-root {

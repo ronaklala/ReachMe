@@ -8,15 +8,15 @@ import {useMoralis} from 'react-moralis';
 
 const Login = () => {
   const {authenticate, isAuthenticated, user} = useMoralis();
-
+  document.title = 'Login';
   const login = async () => {
     if (!isAuthenticated) {
       await authenticate()
         .then(function (user) {
           console.log(user.get('ethAddress'));
         })
-        .catch(function (error) {
-          console.log(error);
+        .catch((err) => {
+          console.log(err);
         });
     } else {
       console.log(user);

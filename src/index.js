@@ -42,8 +42,8 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <MoralisProvider
-        appId="YOsHkiiqqXGHTomrUabQKcLdJtw6qaW62zj7mjhJ"
-        serverUrl="https://ufap6tsvslyi.usemoralis.com:2053/server">
+        appId="8HCIsqfbqINlv1MIEEXWvMg7i3AzOxUBw3uZx8MH"
+        serverUrl="https://55pvnkfokjbd.usemoralis.com:2053/server">
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/login" element={<Login />} />

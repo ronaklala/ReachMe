@@ -18,6 +18,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const HomePage = (props) => {
+  document.title = 'JinX - Home';
   const {Moralis, isAuthenticated, authenticate} = useMoralis();
   //Function for if a post has link in it, it will make it redirectable
   function urlify(text) {

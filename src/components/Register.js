@@ -8,6 +8,7 @@ import {TextField} from '@mui/material';
 import {db} from '../firebase';
 
 const Register = () => {
+  document.title = 'Register';
   const navigate = useNavigate();
   let axiosConfig = {
     headers: {

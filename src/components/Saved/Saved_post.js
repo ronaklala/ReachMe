@@ -10,6 +10,7 @@ import Header from '../Header';
 import Sidebar from '../Sidebar';
 import {toast} from 'react-toastify';
 import FooterSection from '../FooterSection';
+import MobileMenu from '../MobileMenu';
 
 const Saved_post = () => {
   const override = css`
@@ -68,7 +69,7 @@ const Saved_post = () => {
             wallet={user.wallet}
             profile_url={user.profile_url}
           />
-
+          <MobileMenu />
           {loading === true ? (
             <>
               <div className="spinner">
