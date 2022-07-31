@@ -505,14 +505,16 @@ const HomePage = (props) => {
                               <div className="comment-section">
                                 {post.likes.length > 0 ? (
                                   <>
-                                    <span class={'likes' + post._id}>
+                                    <span className={'likes' + post._id}>
                                       {post.likes.length}
                                     </span>
                                     Likes
                                   </>
                                 ) : (
                                   <>
-                                    <span class={'likes' + post._id}>0</span>
+                                    <span className={'likes' + post._id}>
+                                      0
+                                    </span>
                                     likes
                                   </>
                                 )}

@@ -12,7 +12,6 @@ import Sidebar from '../Sidebar';
 import MobileMenu from '../MobileMenu';
 import FooterSection from '../FooterSection';
 const UserSearch = () => {
-  var count;
   const search = useParams();
   const override = css`
     display: block;
@@ -24,7 +23,6 @@ const UserSearch = () => {
   var [serach1, onsearch1] = useState({});
   // var data2= {};
   const getuser = async () => {
-    console.log(search.search);
     await axios
       .get('https://jinx-social.herokuapp.com/search')
       .then((res) => {
@@ -37,7 +35,6 @@ const UserSearch = () => {
               .includes(search.search.toString().toLowerCase())
           )
         );
-        console.log(serach1);
       })
       .catch((err) => {
         console.log(err);
@@ -51,17 +48,9 @@ const UserSearch = () => {
     });
   };
 
-  function post_count(username1, count) {
-    posts.map((username) => {
-      if (username.username === username1) {
-        count = count + 1;
-      }
-    });
-    return count;
-  }
-
   const [user1, setUser] = useState({});
   useEffect(() => {
+    document.title = 'Search - ' + search.search;
     getpost();
     if (sessionStorage.getItem('user') !== null) {
       setUser(JSON.parse(sessionStorage.getItem('user')));
@@ -101,6 +90,7 @@ const UserSearch = () => {
                     <img
                       src="https://res.cloudinary.com/ronaklala-games/image/upload/v1657799759/posts/Untitled_design_1_lfhe7e.gif"
                       height={250}
+                      alt="User Img"
                     />
                     <h1 style={{color: '#fff', fontSize: '36px'}}>
                       No User Found

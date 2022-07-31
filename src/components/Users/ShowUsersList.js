@@ -52,6 +52,7 @@ const ShowUsersList = (props) => {
   };
 
   useEffect(() => {
+    document.title = 'Users';
     getUsersData();
     getPosts();
   }, []);

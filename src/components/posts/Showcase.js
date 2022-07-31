@@ -9,6 +9,7 @@ import Self_NFT_Showcase from './Self_NFT_Showcase';
 const Showcase = () => {
   const [user, setUser] = useState({});
   useEffect(() => {
+    document.title = 'NFts Minted';
     if (sessionStorage.getItem('user') !== null) {
       setUser(JSON.parse(sessionStorage.getItem('user')));
     } else {

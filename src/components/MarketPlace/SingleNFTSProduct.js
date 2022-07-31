@@ -13,13 +13,11 @@ const SingleNFTSProduct = () => {
   useEffect(() => {
     getNftData();
   }, []);
-  document.title = nft.token_name + ' - JinX NFT';
 
   const getNftData = async () => {
     await axios
       .get('https://jinx-social.herokuapp.com/getsinglenft/' + url.nftid)
       .then((res) => {
-        console.log(res.data[0]);
         setNft(res.data[0]);
         setLoading(false);
       });
@@ -30,6 +28,12 @@ const SingleNFTSProduct = () => {
     margin: 0 auto;
     border-color: red;
   `;
+
+  if (nft !== undefined) {
+    document.title = nft.token_name + ' - JinX NFT';
+  } else {
+    document.title = 'Not Found - JinX NFT';
+  }
 
   return (
     <>
@@ -51,37 +55,49 @@ const SingleNFTSProduct = () => {
         </>
       ) : (
         <>
-          <section className="single-nft">
-            <div className="nft-image">
-              <img src={nft.image} alt={nft.image} />
-            </div>
-            <div className="info">
-              <div className="user-info">
-                {nft.user_details.map((user, index) =>
-                  user.profile_url === null ? (
-                    <>
-                      <Avatar src="https://cdn-icons-png.flaticon.com/512/149/149071.png" />
-                    </>
-                  ) : (
-                    <>
-                      <Avatar src={user.profile_url} />
-                    </>
-                  )
-                )}
+          {nft === undefined ? (
+            <>
+              <center>
+                <h1>NFT Not Found</h1>
+              </center>
+            </>
+          ) : (
+            <>
+              <section className="single-nft">
+                <div className="nft-image">
+                  <img src={nft.image} alt={nft.image} />
+                </div>
+                <div className="info">
+                  <div className="user-info">
+                    {nft.user_details.map((user, index) =>
+                      user.profile_url === null ? (
+                        <>
+                          <Avatar src="https://cdn-icons-png.flaticon.com/512/149/149071.png" />
+                        </>
+                      ) : (
+                        <>
+                          <Avatar src={user.profile_url} />
+                        </>
+                      )
+                    )}
 
-                {nft.username}
-              </div>
-              <span>{nft.token_name}</span>
-              <span>{nft.description}</span>
-              <greyscale>Minted {moment(nft.createdAt).fromNow()}</greyscale>
-              <a
-                href={'https://rarible.com/user/' + nft.wallet + '/owned'}
-                target="_blank"
-                rel="noreferrer">
-                <button>View On Rarible</button>
-              </a>
-            </div>
-          </section>
+                    {nft.username}
+                  </div>
+                  <span>{nft.token_name}</span>
+                  <span>{nft.description}</span>
+                  <greyscale>
+                    Minted {moment(nft.createdAt).fromNow()}
+                  </greyscale>
+                  <a
+                    href={'https://rarible.com/user/' + nft.wallet + '/owned'}
+                    target="_blank"
+                    rel="noreferrer">
+                    <button>View On Rarible</button>
+                  </a>
+                </div>
+              </section>
+            </>
+          )}
         </>
       )}
     </>

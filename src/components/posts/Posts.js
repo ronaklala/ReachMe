@@ -29,6 +29,7 @@ const Posts = (props) => {
       setUser();
     }
     getPosts();
+    document.title = 'Posts';
   }, []);
   const getPosts = async () => {
     await axios

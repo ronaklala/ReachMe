@@ -7,6 +7,7 @@ const GroupList = () => {
   const [groups, setGroups] = useState([]);
 
   useEffect(() => {
+    document.title = 'Groups';
     axios.get('https://jinx-social.herokuapp.com/groups').then((res) => {
       setGroups(res.data);
     });

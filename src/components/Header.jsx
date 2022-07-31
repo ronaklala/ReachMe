@@ -9,12 +9,14 @@ import {useNavigate} from 'react-router-dom';
 import {MenuRounded, Search} from '@mui/icons-material';
 import {Avatar} from '@mui/material';
 import $ from 'jquery';
+import {useMoralis} from 'react-moralis';
 // import { search } from '../backend/queries/transaction';
 
 const Header = () => {
   const navigate = useNavigate();
   const user = JSON.parse(sessionStorage.getItem('user'));
   var [search, onsearch] = useState([]);
+  const {Moralis} = useMoralis();
   useEffect(() => {
     getUsersData();
     if (user === null) {
@@ -43,7 +45,6 @@ const Header = () => {
         console.log(err);
       });
   };
-
   function showMenu() {
     $('.m-menu').fadeIn();
   }
@@ -67,9 +68,10 @@ const Header = () => {
               name="search"
               onChange={(e) => onsearch(e.target.value)}
               placeholder="Search User"
+              required
             />
             <a href={'/search/' + search}>
-              <button>
+              <button type="submit">
                 <Search />
               </button>
             </a>

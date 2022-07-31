@@ -25,10 +25,11 @@ const SingleGroup = () => {
       .get('https://jinx-social.herokuapp.com/group/' + gr.gid)
       .then((res) => {
         setGroupData(res.data[0]);
+
         setLoading(false);
       })
       .catch((err) => {
-        setGroupData(null);
+        setGroupData(undefined);
         setLoading(false);
       });
   };
@@ -95,7 +96,7 @@ const SingleGroup = () => {
         }, 2000);
       });
   };
-
+  document.title = 'Group - ' + group.name;
   return (
     <>
       <Header />
@@ -125,7 +126,7 @@ const SingleGroup = () => {
             </>
           ) : (
             <>
-              {group === null ? (
+              {group === undefined ? (
                 <>
                   <center style={{width: '100%', marginTop: '20px'}}>
                     <img

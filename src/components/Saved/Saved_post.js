@@ -41,6 +41,7 @@ const Saved_post = () => {
       });
   };
   useEffect(() => {
+    document.title = 'Saved Posts';
     getPosts();
   }, []);
   const deletePost = async (postid) => {

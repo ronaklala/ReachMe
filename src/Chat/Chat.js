@@ -32,6 +32,7 @@ const Chat = () => {
   const user1 = user.wallet;
 
   useEffect(() => {
+    document.title = 'Chat';
     db.collection('users')
       .get()
       .then((snapshot) => {
